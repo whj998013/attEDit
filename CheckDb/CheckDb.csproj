@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{63B33A01-6638-4B90-9078-DCABA7165CEA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CheckDb</RootNamespace>
+    <AssemblyName>CheckDb</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.1.0.145, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.1.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="model\ACGroup.cs" />
+    <Compile Include="model\acholiday.cs" />
+    <Compile Include="model\ACTimeZones.cs" />
+    <Compile Include="model\ACUnlockComb.cs" />
+    <Compile Include="model\AlarmLog.cs" />
+    <Compile Include="attContent.cs" />
+    <Compile Include="model\AttParam.cs" />
+    <Compile Include="model\AuditedExc.cs" />
+    <Compile Include="model\AUTHDEVICE.cs" />
+    <Compile Include="model\CHECKEXACT.cs" />
+    <Compile Include="model\CHECKINOUT.cs" />
+    <Compile Include="model\checkinoutgap.cs" />
+    <Compile Include="model\CIOT.cs" />
+    <Compile Include="model\DEPARTMENTS.cs" />
+    <Compile Include="model\DEPARTMENTS_OLD.cs" />
+    <Compile Include="model\DeptUsedSchs.cs" />
+    <Compile Include="model\DeptUsedSchs_old.cs" />
+    <Compile Include="model\dtproperties.cs" />
+    <Compile Include="model\EmOpLog.cs" />
+    <Compile Include="model\FaceTemp.cs" />
+    <Compile Include="model\HOLIDAYS.cs" />
+    <Compile Include="model\HOLIDAYS2.cs" />
+    <Compile Include="model\LeaveClass.cs" />
+    <Compile Include="model\LeaveClass1.cs" />
+    <Compile Include="model\Machines.cs" />
+    <Compile Include="model\NUM_RUN.cs" />
+    <Compile Include="model\NUM_RUN_DEIL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="model\ReportItem.cs" />
+    <Compile Include="model\SchClass.cs" />
+    <Compile Include="model\SECURITYDETAILS.cs" />
+    <Compile Include="model\ServerLog.cs" />
+    <Compile Include="model\SHIFT.cs" />
+    <Compile Include="model\SystemLog.cs" />
+    <Compile Include="model\TBSMSALLOT.cs" />
+    <Compile Include="model\TBSMSINFO.cs" />
+    <Compile Include="model\tday.cs" />
+    <Compile Include="model\TEMPLATE.cs" />
+    <Compile Include="model\tmp1.cs" />
+    <Compile Include="model\UserACMachines.cs" />
+    <Compile Include="model\UserACPrivilege.cs" />
+    <Compile Include="model\USERINFO.cs" />
+    <Compile Include="model\UsersMachines.cs" />
+    <Compile Include="model\UserUpdates.cs" />
+    <Compile Include="model\UserUsedSClasses.cs" />
+    <Compile Include="model\USER_OF_RUN.cs" />
+    <Compile Include="model\USER_SPEDAY.cs" />
+    <Compile Include="model\USER_TEMP_SCH.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

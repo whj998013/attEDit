@@ -1,0 +1,1423 @@
+﻿namespace 考勤调整
+{
+    partial class AttEdit
+    {
+        /// <summary>
+        /// 必需的设计器变量。
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// 清理所有正在使用的资源。
+        /// </summary>
+        /// <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows 窗体设计器生成的代码
+
+        /// <summary>
+        /// 设计器支持所需的方法 - 不要修改
+        /// 使用代码编辑器修改此方法的内容。
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AttEdit));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.empDgv = new System.Windows.Forms.DataGridView();
+            this.BigWeekHour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmpId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dayDgv = new System.Windows.Forms.DataGridView();
+            this.ShiftName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CheckRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NewCheckRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BtnBuildCheck = new System.Windows.Forms.Button();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.tool_con = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btn_SyncCheck = new System.Windows.Forms.ToolStripButton();
+            this.btn_LoadData = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.Pb = new System.Windows.Forms.ToolStripProgressBar();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.BtnWriteToDb = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.modeselect = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.班次 = new System.Windows.Forms.GroupBox();
+            this.shiftdgv = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.BeginTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.BtnSaveShift = new System.Windows.Forms.ToolStripButton();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.empNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deptNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.workTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.overTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hollydayTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.restdayTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstCheckDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.empCheckMonthBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.checkDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dayTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstAmendDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastAmendDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.workTimeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.overTimeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalTimeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.allTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.empCheckDayBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.checkModifyBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shiftBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label9 = new System.Windows.Forms.Label();
+            this.YearHoliday = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.empDgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dayDgv)).BeginInit();
+            this.toolStrip1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            this.班次.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.shiftdgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
+            this.bindingNavigator1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.empCheckMonthBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.empCheckDayBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkModifyBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shiftBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.YearHoliday)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // empDgv
+            // 
+            this.empDgv.AllowUserToAddRows = false;
+            this.empDgv.AllowUserToDeleteRows = false;
+            this.empDgv.AutoGenerateColumns = false;
+            this.empDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.empDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.empNameDataGridViewTextBoxColumn,
+            this.deptNameDataGridViewTextBoxColumn1,
+            this.workTimeDataGridViewTextBoxColumn,
+            this.overTimeDataGridViewTextBoxColumn,
+            this.hollydayTimeDataGridViewTextBoxColumn,
+            this.restdayTimeDataGridViewTextBoxColumn,
+            this.totalTimeDataGridViewTextBoxColumn,
+            this.BigWeekHour,
+            this.firstCheckDateDataGridViewTextBoxColumn,
+            this.EmpId});
+            this.empDgv.DataSource = this.empCheckMonthBindingSource;
+            this.empDgv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.empDgv.Location = new System.Drawing.Point(0, 0);
+            this.empDgv.Name = "empDgv";
+            this.empDgv.RowHeadersWidth = 40;
+            this.empDgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.empDgv.RowTemplate.Height = 23;
+            this.empDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.empDgv.Size = new System.Drawing.Size(494, 554);
+            this.empDgv.TabIndex = 0;
+            this.empDgv.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DataGridView1_RowPostPaint);
+            this.empDgv.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            // 
+            // BigWeekHour
+            // 
+            this.BigWeekHour.DataPropertyName = "BigWeekHour";
+            this.BigWeekHour.HeaderText = "最大周工时";
+            this.BigWeekHour.Name = "BigWeekHour";
+            this.BigWeekHour.ReadOnly = true;
+            // 
+            // EmpId
+            // 
+            this.EmpId.DataPropertyName = "EmpId";
+            this.EmpId.HeaderText = "员工ID";
+            this.EmpId.Name = "EmpId";
+            this.EmpId.ReadOnly = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(582, 20);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(60, 34);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "修改";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
+            // dayDgv
+            // 
+            this.dayDgv.AllowUserToAddRows = false;
+            this.dayDgv.AllowUserToDeleteRows = false;
+            this.dayDgv.AutoGenerateColumns = false;
+            this.dayDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dayDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.checkDateDataGridViewTextBoxColumn,
+            this.dayTypeDataGridViewTextBoxColumn,
+            this.ShiftName,
+            this.CheckRecord,
+            this.NewCheckRecord,
+            this.firstAmendDataGridViewTextBoxColumn,
+            this.lastAmendDataGridViewTextBoxColumn,
+            this.workTimeDataGridViewTextBoxColumn1,
+            this.overTimeDataGridViewTextBoxColumn1,
+            this.totalTimeDataGridViewTextBoxColumn1,
+            this.allTimeDataGridViewTextBoxColumn});
+            this.dayDgv.DataSource = this.empCheckDayBindingSource;
+            this.dayDgv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dayDgv.Location = new System.Drawing.Point(0, 0);
+            this.dayDgv.Name = "dayDgv";
+            this.dayDgv.ReadOnly = true;
+            this.dayDgv.RowHeadersWidth = 30;
+            this.dayDgv.RowTemplate.Height = 23;
+            this.dayDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dayDgv.Size = new System.Drawing.Size(941, 554);
+            this.dayDgv.TabIndex = 2;
+            this.dayDgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DayDgv_CellContentClick);
+            // 
+            // ShiftName
+            // 
+            this.ShiftName.DataPropertyName = "ShiftName";
+            this.ShiftName.HeaderText = "班次";
+            this.ShiftName.Name = "ShiftName";
+            this.ShiftName.ReadOnly = true;
+            this.ShiftName.Width = 60;
+            // 
+            // CheckRecord
+            // 
+            this.CheckRecord.DataPropertyName = "CheckRecord";
+            this.CheckRecord.HeaderText = "打卡记录";
+            this.CheckRecord.Name = "CheckRecord";
+            this.CheckRecord.ReadOnly = true;
+            this.CheckRecord.Width = 250;
+            // 
+            // NewCheckRecord
+            // 
+            this.NewCheckRecord.DataPropertyName = "NewCheckRecord";
+            this.NewCheckRecord.HeaderText = "调整后";
+            this.NewCheckRecord.Name = "NewCheckRecord";
+            this.NewCheckRecord.ReadOnly = true;
+            this.NewCheckRecord.Width = 350;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "DayType";
+            this.dataGridViewTextBoxColumn1.HeaderText = "DayType";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // BtnBuildCheck
+            // 
+            this.BtnBuildCheck.BackColor = System.Drawing.Color.Chartreuse;
+            this.BtnBuildCheck.Location = new System.Drawing.Point(582, 103);
+            this.BtnBuildCheck.Name = "BtnBuildCheck";
+            this.BtnBuildCheck.Size = new System.Drawing.Size(130, 80);
+            this.BtnBuildCheck.TabIndex = 3;
+            this.BtnBuildCheck.Text = "生成调整考勤";
+            this.BtnBuildCheck.UseVisualStyleBackColor = false;
+            this.BtnBuildCheck.Click += new System.EventHandler(this.BtnBuildCheck_Click);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.AutoSize = false;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel1,
+            this.tool_con,
+            this.toolStripButton1,
+            this.toolStripSeparator1,
+            this.btn_SyncCheck,
+            this.btn_LoadData,
+            this.toolStripSeparator2,
+            this.Pb,
+            this.toolStripSeparator3,
+            this.BtnWriteToDb,
+            this.toolStripSeparator4,
+            this.modeselect,
+            this.toolStripLabel2,
+            this.toolStripSeparator5});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1453, 30);
+            this.toolStrip1.TabIndex = 5;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(56, 27);
+            this.toolStripLabel1.Text = "数据库：";
+            // 
+            // tool_con
+            // 
+            this.tool_con.AutoSize = false;
+            this.tool_con.AutoToolTip = true;
+            this.tool_con.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tool_con.DropDownWidth = 221;
+            this.tool_con.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
+            this.tool_con.Name = "tool_con";
+            this.tool_con.Size = new System.Drawing.Size(221, 25);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(72, 27);
+            this.toolStripButton1.Text = "连接数据库";
+            this.toolStripButton1.ToolTipText = "连接数据库";
+            this.toolStripButton1.Click += new System.EventHandler(this.ToolStripButton1_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 30);
+            // 
+            // btn_SyncCheck
+            // 
+            this.btn_SyncCheck.Enabled = false;
+            this.btn_SyncCheck.Image = ((System.Drawing.Image)(resources.GetObject("btn_SyncCheck.Image")));
+            this.btn_SyncCheck.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_SyncCheck.Name = "btn_SyncCheck";
+            this.btn_SyncCheck.Size = new System.Drawing.Size(76, 27);
+            this.btn_SyncCheck.Text = "考勤同步";
+            this.btn_SyncCheck.Click += new System.EventHandler(this.Btn_SyncCheck_Click);
+            // 
+            // btn_LoadData
+            // 
+            this.btn_LoadData.Enabled = false;
+            this.btn_LoadData.Image = ((System.Drawing.Image)(resources.GetObject("btn_LoadData.Image")));
+            this.btn_LoadData.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_LoadData.Name = "btn_LoadData";
+            this.btn_LoadData.Size = new System.Drawing.Size(100, 27);
+            this.btn_LoadData.Text = "载入考勤数据";
+            this.btn_LoadData.Click += new System.EventHandler(this.Btn_LoadData_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 30);
+            // 
+            // Pb
+            // 
+            this.Pb.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.Pb.Name = "Pb";
+            this.Pb.Size = new System.Drawing.Size(200, 27);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 30);
+            // 
+            // BtnWriteToDb
+            // 
+            this.BtnWriteToDb.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.BtnWriteToDb.Enabled = false;
+            this.BtnWriteToDb.Image = ((System.Drawing.Image)(resources.GetObject("BtnWriteToDb.Image")));
+            this.BtnWriteToDb.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnWriteToDb.Name = "BtnWriteToDb";
+            this.BtnWriteToDb.Size = new System.Drawing.Size(88, 27);
+            this.BtnWriteToDb.Text = "写入数据库";
+            this.BtnWriteToDb.Click += new System.EventHandler(this.BtnWriteToDb_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 30);
+            // 
+            // modeselect
+            // 
+            this.modeselect.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.modeselect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.modeselect.Enabled = false;
+            this.modeselect.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
+            this.modeselect.Items.AddRange(new object[] {
+            "覆盖模式(按调整数据生成全部数据)",
+            "调整模式(无调整数据则不删除原数据)"});
+            this.modeselect.Name = "modeselect";
+            this.modeselect.Size = new System.Drawing.Size(221, 30);
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(60, 27);
+            this.toolStripLabel2.Text = " 写入模式";
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 30);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Enabled = false;
+            this.tabControl1.Location = new System.Drawing.Point(0, 30);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1453, 781);
+            this.tabControl1.TabIndex = 5;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.splitContainer2);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1445, 755);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "考勤调整";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer2.IsSplitterFixed = true;
+            this.splitContainer2.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.splitContainer1);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.AutoScroll = true;
+            this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
+            this.splitContainer2.Panel2.Controls.Add(this.班次);
+            this.splitContainer2.Size = new System.Drawing.Size(1439, 749);
+            this.splitContainer2.SplitterDistance = 554;
+            this.splitContainer2.TabIndex = 5;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.empDgv);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.dayDgv);
+            this.splitContainer1.Size = new System.Drawing.Size(1439, 554);
+            this.splitContainer1.SplitterDistance = 494;
+            this.splitContainer1.TabIndex = 4;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.groupBox5);
+            this.groupBox1.Controls.Add(this.groupBox4);
+            this.groupBox1.Controls.Add(this.groupBox3);
+            this.groupBox1.Controls.Add(this.BtnBuildCheck);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.groupBox2);
+            this.groupBox1.Location = new System.Drawing.Point(713, -1);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(718, 189);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(648, 20);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(60, 34);
+            this.button3.TabIndex = 17;
+            this.button3.Text = "清除";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(582, 59);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(130, 34);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "导出考勤表";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label8);
+            this.groupBox5.Controls.Add(this.numericUpDown7);
+            this.groupBox5.Enabled = false;
+            this.groupBox5.Location = new System.Drawing.Point(392, 134);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(184, 49);
+            this.groupBox5.TabIndex = 11;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "未启用";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 20);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(89, 12);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "限制最大周工时";
+            // 
+            // numericUpDown7
+            // 
+            this.numericUpDown7.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.checkModifyBindingSource, "BigWeekHour", true));
+            this.numericUpDown7.Location = new System.Drawing.Point(130, 21);
+            this.numericUpDown7.Name = "numericUpDown7";
+            this.numericUpDown7.Size = new System.Drawing.Size(46, 21);
+            this.numericUpDown7.TabIndex = 7;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(11, 137);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(113, 12);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "随机忘打卡频率(%):";
+            // 
+            // numericUpDown5
+            // 
+            this.numericUpDown5.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.checkModifyBindingSource, "MissCheckPercent", true));
+            this.numericUpDown5.Enabled = false;
+            this.numericUpDown5.Location = new System.Drawing.Point(135, 135);
+            this.numericUpDown5.Name = "numericUpDown5";
+            this.numericUpDown5.Size = new System.Drawing.Size(46, 21);
+            this.numericUpDown5.TabIndex = 13;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.YearHoliday);
+            this.groupBox4.Controls.Add(this.label9);
+            this.groupBox4.Controls.Add(this.checkBox7);
+            this.groupBox4.Controls.Add(this.checkBox6);
+            this.groupBox4.Location = new System.Drawing.Point(392, 13);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(184, 115);
+            this.groupBox4.TabIndex = 10;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "考勤计算";
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Location = new System.Drawing.Point(8, 54);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(132, 16);
+            this.checkBox7.TabIndex = 2;
+            this.checkBox7.Text = "显示调整后工时数据";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            this.checkBox7.CheckedChanged += new System.EventHandler(this.CheckBox7_CheckedChanged);
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Checked = true;
+            this.checkBox6.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox6.Location = new System.Drawing.Point(8, 25);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(168, 16);
+            this.checkBox6.TabIndex = 1;
+            this.checkBox6.Text = "忽略首尾15分钟内出勤时间";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.CheckBox6_CheckedChanged);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.radioButton4);
+            this.groupBox3.Controls.Add(this.radioButton3);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.numericUpDown5);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.numericUpDown3);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.numericUpDown4);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.numericUpDown2);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.numericUpDown1);
+            this.groupBox3.Location = new System.Drawing.Point(182, 13);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(202, 170);
+            this.groupBox3.TabIndex = 9;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "生成随机范围";
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(10, 110);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(143, 16);
+            this.radioButton4.TabIndex = 1;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "打卡一次生成半天考勤";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.checkModifyBindingSource, "OneCheckBuildOneDay", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.radioButton3.Location = new System.Drawing.Point(10, 83);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(143, 16);
+            this.radioButton3.TabIndex = 0;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "打卡一次生成全天考勤";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(124, 54);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(17, 12);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "后";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(42, 54);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(17, 12);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "前";
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.checkModifyBindingSource, "OutB", true));
+            this.numericUpDown3.Location = new System.Drawing.Point(148, 50);
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(46, 21);
+            this.numericUpDown3.TabIndex = 10;
+            this.numericUpDown3.Value = new decimal(new int[] {
+            14,
+            0,
+            0,
+            0});
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 54);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(41, 12);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "下班：";
+            // 
+            // numericUpDown4
+            // 
+            this.numericUpDown4.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.checkModifyBindingSource, "OutF", true));
+            this.numericUpDown4.Location = new System.Drawing.Point(64, 50);
+            this.numericUpDown4.Name = "numericUpDown4";
+            this.numericUpDown4.Size = new System.Drawing.Size(46, 21);
+            this.numericUpDown4.TabIndex = 8;
+            this.numericUpDown4.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(124, 22);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(17, 12);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "后";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(42, 22);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(17, 12);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "前";
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.checkModifyBindingSource, "InB", true));
+            this.numericUpDown2.Location = new System.Drawing.Point(148, 18);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(46, 21);
+            this.numericUpDown2.TabIndex = 2;
+            this.numericUpDown2.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "上班：";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.checkModifyBindingSource, "InF", true));
+            this.numericUpDown1.Location = new System.Drawing.Point(64, 18);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(46, 21);
+            this.numericUpDown1.TabIndex = 0;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            14,
+            0,
+            0,
+            0});
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.checkBox5);
+            this.groupBox2.Controls.Add(this.checkBox1);
+            this.groupBox2.Controls.Add(this.checkBox3);
+            this.groupBox2.Controls.Add(this.checkBox4);
+            this.groupBox2.Controls.Add(this.checkBox2);
+            this.groupBox2.Controls.Add(this.radioButton1);
+            this.groupBox2.Controls.Add(this.radioButton2);
+            this.groupBox2.Location = new System.Drawing.Point(6, 13);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(170, 170);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "生成方式";
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.checkModifyBindingSource, "NoCheckAlwaysBuild", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBox5.Location = new System.Drawing.Point(8, 111);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(156, 16);
+            this.checkBox5.TabIndex = 16;
+            this.checkBox5.Text = "当天无打卡记录生成考勤";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.checkModifyBindingSource, "Need7Rest1", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBox1.Location = new System.Drawing.Point(8, 140);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(84, 16);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.Text = "保证七休一";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.checkModifyBindingSource, "Pm", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBox3.Location = new System.Drawing.Point(68, 25);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(36, 16);
+            this.checkBox3.TabIndex = 5;
+            this.checkBox3.Text = "PM";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.checkModifyBindingSource, "Ot", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBox4.Location = new System.Drawing.Point(128, 25);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(36, 16);
+            this.checkBox4.TabIndex = 6;
+            this.checkBox4.Text = "OT";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.checkModifyBindingSource, "Am", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBox2.Location = new System.Drawing.Point(9, 25);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(36, 16);
+            this.checkBox2.TabIndex = 4;
+            this.checkBox2.Text = "AM";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(9, 53);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(155, 16);
+            this.radioButton1.TabIndex = 2;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "仅生成首尾打卡区域考勤";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.checkModifyBindingSource, "BuildAllCheck", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.radioButton2.Location = new System.Drawing.Point(9, 80);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(95, 16);
+            this.radioButton2.TabIndex = 3;
+            this.radioButton2.Text = "生成全部考勤";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // 班次
+            // 
+            this.班次.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.班次.Controls.Add(this.shiftdgv);
+            this.班次.Controls.Add(this.bindingNavigator1);
+            this.班次.Location = new System.Drawing.Point(3, -1);
+            this.班次.Name = "班次";
+            this.班次.Size = new System.Drawing.Size(707, 192);
+            this.班次.TabIndex = 4;
+            this.班次.TabStop = false;
+            this.班次.Text = "班次";
+            // 
+            // shiftdgv
+            // 
+            this.shiftdgv.AllowUserToAddRows = false;
+            this.shiftdgv.AutoGenerateColumns = false;
+            this.shiftdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.shiftdgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.Column1,
+            this.BeginTime,
+            this.EndTime});
+            this.shiftdgv.DataSource = this.shiftBindingSource;
+            this.shiftdgv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.shiftdgv.Location = new System.Drawing.Point(3, 42);
+            this.shiftdgv.Name = "shiftdgv";
+            this.shiftdgv.RowHeadersWidth = 20;
+            this.shiftdgv.RowTemplate.Height = 23;
+            this.shiftdgv.Size = new System.Drawing.Size(701, 147);
+            this.shiftdgv.TabIndex = 1;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "RestDay";
+            this.Column1.HeaderText = "休息日";
+            this.Column1.Items.AddRange(new object[] {
+            "周日",
+            "周一",
+            "周二",
+            "周三",
+            "周四",
+            "周五",
+            "周六"});
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 80;
+            // 
+            // BeginTime
+            // 
+            this.BeginTime.DataPropertyName = "BeginTime";
+            this.BeginTime.HeaderText = "开始时间";
+            this.BeginTime.Name = "BeginTime";
+            this.BeginTime.Width = 80;
+            // 
+            // EndTime
+            // 
+            this.EndTime.DataPropertyName = "EndTime";
+            this.EndTime.HeaderText = "结束时间";
+            this.EndTime.Name = "EndTime";
+            this.EndTime.Width = 80;
+            // 
+            // bindingNavigator1
+            // 
+            this.bindingNavigator1.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.bindingNavigator1.CountItem = null;
+            this.bindingNavigator1.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorAddNewItem,
+            this.bindingNavigatorDeleteItem,
+            this.toolStripButton3,
+            this.toolStripButton2,
+            this.BtnSaveShift});
+            this.bindingNavigator1.Location = new System.Drawing.Point(3, 17);
+            this.bindingNavigator1.MoveFirstItem = null;
+            this.bindingNavigator1.MoveLastItem = null;
+            this.bindingNavigator1.MoveNextItem = null;
+            this.bindingNavigator1.MovePreviousItem = null;
+            this.bindingNavigator1.Name = "bindingNavigator1";
+            this.bindingNavigator1.PositionItem = null;
+            this.bindingNavigator1.Size = new System.Drawing.Size(701, 25);
+            this.bindingNavigator1.TabIndex = 0;
+            this.bindingNavigator1.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "新添";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "删除";
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(136, 22);
+            this.toolStripButton3.Text = "更改选定日期的班次";
+            this.toolStripButton3.Click += new System.EventHandler(this.ToolStripButton3_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(136, 22);
+            this.toolStripButton2.Text = "更改选定员工的班次";
+            this.toolStripButton2.Click += new System.EventHandler(this.ToolStripButton2_Click);
+            // 
+            // BtnSaveShift
+            // 
+            this.BtnSaveShift.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.BtnSaveShift.Image = ((System.Drawing.Image)(resources.GetObject("BtnSaveShift.Image")));
+            this.BtnSaveShift.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnSaveShift.Name = "BtnSaveShift";
+            this.BtnSaveShift.Size = new System.Drawing.Size(36, 22);
+            this.BtnSaveShift.Text = "保存";
+            this.BtnSaveShift.Click += new System.EventHandler(this.BtnSaveShift_Click);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1445, 755);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "考勤删除";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "xlsx";
+            this.saveFileDialog1.FileName = "考勤表";
+            this.saveFileDialog1.Filter = "Excel文件(*.xlsx)|*.xlsx";
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.SaveFileDialog1_FileOk);
+            // 
+            // empNameDataGridViewTextBoxColumn
+            // 
+            this.empNameDataGridViewTextBoxColumn.DataPropertyName = "EmpName";
+            this.empNameDataGridViewTextBoxColumn.HeaderText = "姓名";
+            this.empNameDataGridViewTextBoxColumn.Name = "empNameDataGridViewTextBoxColumn";
+            this.empNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.empNameDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // deptNameDataGridViewTextBoxColumn1
+            // 
+            this.deptNameDataGridViewTextBoxColumn1.DataPropertyName = "DeptName";
+            this.deptNameDataGridViewTextBoxColumn1.HeaderText = "部门";
+            this.deptNameDataGridViewTextBoxColumn1.Name = "deptNameDataGridViewTextBoxColumn1";
+            this.deptNameDataGridViewTextBoxColumn1.Width = 60;
+            // 
+            // workTimeDataGridViewTextBoxColumn
+            // 
+            this.workTimeDataGridViewTextBoxColumn.DataPropertyName = "WorkTime";
+            this.workTimeDataGridViewTextBoxColumn.HeaderText = "平日工作";
+            this.workTimeDataGridViewTextBoxColumn.Name = "workTimeDataGridViewTextBoxColumn";
+            this.workTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.workTimeDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // overTimeDataGridViewTextBoxColumn
+            // 
+            this.overTimeDataGridViewTextBoxColumn.DataPropertyName = "OverTime";
+            this.overTimeDataGridViewTextBoxColumn.HeaderText = "平日加班";
+            this.overTimeDataGridViewTextBoxColumn.Name = "overTimeDataGridViewTextBoxColumn";
+            this.overTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.overTimeDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // hollydayTimeDataGridViewTextBoxColumn
+            // 
+            this.hollydayTimeDataGridViewTextBoxColumn.DataPropertyName = "HollydayTime";
+            this.hollydayTimeDataGridViewTextBoxColumn.HeaderText = "假日加班";
+            this.hollydayTimeDataGridViewTextBoxColumn.Name = "hollydayTimeDataGridViewTextBoxColumn";
+            this.hollydayTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.hollydayTimeDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // restdayTimeDataGridViewTextBoxColumn
+            // 
+            this.restdayTimeDataGridViewTextBoxColumn.DataPropertyName = "RestdayTime";
+            this.restdayTimeDataGridViewTextBoxColumn.HeaderText = "休息日加班";
+            this.restdayTimeDataGridViewTextBoxColumn.Name = "restdayTimeDataGridViewTextBoxColumn";
+            this.restdayTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.restdayTimeDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // totalTimeDataGridViewTextBoxColumn
+            // 
+            this.totalTimeDataGridViewTextBoxColumn.DataPropertyName = "TotalTime";
+            this.totalTimeDataGridViewTextBoxColumn.HeaderText = "总工时";
+            this.totalTimeDataGridViewTextBoxColumn.Name = "totalTimeDataGridViewTextBoxColumn";
+            this.totalTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.totalTimeDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // firstCheckDateDataGridViewTextBoxColumn
+            // 
+            this.firstCheckDateDataGridViewTextBoxColumn.DataPropertyName = "FirstCheckDate";
+            this.firstCheckDateDataGridViewTextBoxColumn.HeaderText = "首次打卡日";
+            this.firstCheckDateDataGridViewTextBoxColumn.Name = "firstCheckDateDataGridViewTextBoxColumn";
+            this.firstCheckDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.firstCheckDateDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // empCheckMonthBindingSource
+            // 
+            this.empCheckMonthBindingSource.DataSource = typeof(考勤调整.EmpCheckMonth);
+            // 
+            // checkDateDataGridViewTextBoxColumn
+            // 
+            this.checkDateDataGridViewTextBoxColumn.DataPropertyName = "CheckDate";
+            dataGridViewCellStyle19.Format = "d";
+            dataGridViewCellStyle19.NullValue = null;
+            this.checkDateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle19;
+            this.checkDateDataGridViewTextBoxColumn.HeaderText = "日期";
+            this.checkDateDataGridViewTextBoxColumn.Name = "checkDateDataGridViewTextBoxColumn";
+            this.checkDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.checkDateDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // dayTypeDataGridViewTextBoxColumn
+            // 
+            this.dayTypeDataGridViewTextBoxColumn.DataPropertyName = "DayType";
+            this.dayTypeDataGridViewTextBoxColumn.HeaderText = "类型";
+            this.dayTypeDataGridViewTextBoxColumn.Name = "dayTypeDataGridViewTextBoxColumn";
+            this.dayTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dayTypeDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // firstAmendDataGridViewTextBoxColumn
+            // 
+            this.firstAmendDataGridViewTextBoxColumn.DataPropertyName = "FirstAmend";
+            dataGridViewCellStyle20.Format = "t";
+            dataGridViewCellStyle20.NullValue = null;
+            this.firstAmendDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle20;
+            this.firstAmendDataGridViewTextBoxColumn.HeaderText = "首次打卡修正";
+            this.firstAmendDataGridViewTextBoxColumn.Name = "firstAmendDataGridViewTextBoxColumn";
+            this.firstAmendDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastAmendDataGridViewTextBoxColumn
+            // 
+            this.lastAmendDataGridViewTextBoxColumn.DataPropertyName = "LastAmend";
+            dataGridViewCellStyle21.Format = "t";
+            dataGridViewCellStyle21.NullValue = null;
+            this.lastAmendDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle21;
+            this.lastAmendDataGridViewTextBoxColumn.HeaderText = "末次打卡修正";
+            this.lastAmendDataGridViewTextBoxColumn.Name = "lastAmendDataGridViewTextBoxColumn";
+            this.lastAmendDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // workTimeDataGridViewTextBoxColumn1
+            // 
+            this.workTimeDataGridViewTextBoxColumn1.DataPropertyName = "WorkTime";
+            this.workTimeDataGridViewTextBoxColumn1.HeaderText = "工作时间";
+            this.workTimeDataGridViewTextBoxColumn1.Name = "workTimeDataGridViewTextBoxColumn1";
+            this.workTimeDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // overTimeDataGridViewTextBoxColumn1
+            // 
+            this.overTimeDataGridViewTextBoxColumn1.DataPropertyName = "OverTime";
+            this.overTimeDataGridViewTextBoxColumn1.HeaderText = "加班时间";
+            this.overTimeDataGridViewTextBoxColumn1.Name = "overTimeDataGridViewTextBoxColumn1";
+            this.overTimeDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // totalTimeDataGridViewTextBoxColumn1
+            // 
+            this.totalTimeDataGridViewTextBoxColumn1.DataPropertyName = "TotalTime";
+            this.totalTimeDataGridViewTextBoxColumn1.HeaderText = "工时";
+            this.totalTimeDataGridViewTextBoxColumn1.Name = "totalTimeDataGridViewTextBoxColumn1";
+            this.totalTimeDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // allTimeDataGridViewTextBoxColumn
+            // 
+            this.allTimeDataGridViewTextBoxColumn.DataPropertyName = "AllTime";
+            this.allTimeDataGridViewTextBoxColumn.HeaderText = "出勤时间";
+            this.allTimeDataGridViewTextBoxColumn.Name = "allTimeDataGridViewTextBoxColumn";
+            this.allTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // empCheckDayBindingSource
+            // 
+            this.empCheckDayBindingSource.DataSource = typeof(考勤调整.EmpCheckDay);
+            // 
+            // checkModifyBindingSource
+            // 
+            this.checkModifyBindingSource.DataSource = typeof(考勤调整.CheckModify);
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "ShiftName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "班次名";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "AmCheckIn";
+            dataGridViewCellStyle22.Format = "t";
+            dataGridViewCellStyle22.NullValue = null;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle22;
+            this.dataGridViewTextBoxColumn3.HeaderText = "AM上";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "AmcheckOut";
+            dataGridViewCellStyle23.Format = "t";
+            dataGridViewCellStyle23.NullValue = null;
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle23;
+            this.dataGridViewTextBoxColumn4.HeaderText = "AM下";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "PmCheckIn";
+            dataGridViewCellStyle24.Format = "t";
+            dataGridViewCellStyle24.NullValue = null;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle24;
+            this.dataGridViewTextBoxColumn5.HeaderText = "PM上";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "PmCheckOut";
+            dataGridViewCellStyle25.Format = "t";
+            dataGridViewCellStyle25.NullValue = null;
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle25;
+            this.dataGridViewTextBoxColumn6.HeaderText = "PM下";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "OTCheckIn";
+            dataGridViewCellStyle26.Format = "t";
+            dataGridViewCellStyle26.NullValue = null;
+            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle26;
+            this.dataGridViewTextBoxColumn7.HeaderText = "OT上";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "OTCheckOut";
+            dataGridViewCellStyle27.Format = "t";
+            dataGridViewCellStyle27.NullValue = null;
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle27;
+            this.dataGridViewTextBoxColumn8.HeaderText = "OT下";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.Width = 70;
+            // 
+            // shiftBindingSource
+            // 
+            this.shiftBindingSource.DataSource = typeof(考勤调整.Shift);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(8, 85);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(65, 12);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "年休假天数";
+            // 
+            // YearHoliday
+            // 
+            this.YearHoliday.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.checkModifyBindingSource, "BigWeekHour", true));
+            this.YearHoliday.Location = new System.Drawing.Point(87, 79);
+            this.YearHoliday.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.YearHoliday.Name = "YearHoliday";
+            this.YearHoliday.Size = new System.Drawing.Size(46, 21);
+            this.YearHoliday.TabIndex = 16;
+            this.YearHoliday.ValueChanged += new System.EventHandler(this.NumericUpDown6_ValueChanged);
+            // 
+            // AttEdit
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1453, 811);
+            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.toolStrip1);
+            this.Name = "AttEdit";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "考勤调整";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.empDgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dayDgv)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.班次.ResumeLayout(false);
+            this.班次.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.shiftdgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
+            this.bindingNavigator1.ResumeLayout(false);
+            this.bindingNavigator1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.empCheckMonthBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.empCheckDayBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkModifyBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shiftBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.YearHoliday)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.DataGridView empDgv;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.BindingSource empCheckMonthBindingSource;
+        private System.Windows.Forms.DataGridView dayDgv;
+        private System.Windows.Forms.BindingSource empCheckDayBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.Button BtnBuildCheck;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripComboBox tool_con;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton btn_LoadData;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.ToolStripButton btn_SyncCheck;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.GroupBox 班次;
+        private System.Windows.Forms.DataGridView shiftdgv;
+        private System.Windows.Forms.BindingSource shiftBindingSource;
+        private System.Windows.Forms.BindingNavigator bindingNavigator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton BtnSaveShift;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripProgressBar Pb;
+        private System.Windows.Forms.ToolStripButton BtnWriteToDb;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.BindingSource checkModifyBindingSource;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown numericUpDown5;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn checkDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dayTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ShiftName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CheckRecord;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NewCheckRecord;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstAmendDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastAmendDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn workTimeDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn overTimeDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalTimeDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn allTimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn empNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deptNameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn workTimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn overTimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hollydayTimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn restdayTimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalTimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BigWeekHour;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstCheckDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmpId;
+        private System.Windows.Forms.CheckBox checkBox7;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.NumericUpDown numericUpDown7;
+        private System.Windows.Forms.ToolStripComboBox modeselect;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BeginTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EndTime;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.NumericUpDown YearHoliday;
+    }
+}
+
