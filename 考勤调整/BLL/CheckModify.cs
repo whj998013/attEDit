@@ -94,6 +94,7 @@ namespace 考勤调整
                                       OneCheckSet(d);
                                       BuildAllChecSet(d);
                                       BuildUserCheckInOut(d);
+                                      RemoveMillsecond(d);
                                   }
                               });
                           });
@@ -101,6 +102,19 @@ namespace 考勤调整
 
 
         }
+        private void RemoveMillsecond(EmpCheckDay ed)
+        {
+            ed.NewChecks.ForEach(p =>
+            {
+                var ml = p.CHECKTIME.Millisecond;
+                if (ml > 0)
+                {
+                    p.CHECKTIME = p.CHECKTIME.AddMilliseconds(-ml);
+                }
+
+            });
+        }
+
         /// <summary>
         /// 生成全部考勤
         /// </summary>
@@ -220,9 +234,7 @@ namespace 考勤调整
                         });
                     }
                 }
-
-
-
+                
                 if (Pm)
                 {
                     //pmIn
@@ -326,6 +338,9 @@ namespace 考勤调整
                         });
                     }
                 }
+
+                 
+                
             }
 
         }
