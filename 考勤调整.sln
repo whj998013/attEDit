@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "考勤调整", "考勤调整\考勤调整.csproj", "{953BDC63-403E-4E22-9993-8F4F509A4649}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{4B875AEC-1A1B-4D46-A522-36C8E3BB4F1F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckDb", "CheckDb\CheckDb.csproj", "{63B33A01-6638-4B90-9078-DCABA7165CEA}"
 EndProject
 Global
@@ -19,10 +17,6 @@ Global
 		{953BDC63-403E-4E22-9993-8F4F509A4649}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{953BDC63-403E-4E22-9993-8F4F509A4649}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{953BDC63-403E-4E22-9993-8F4F509A4649}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4B875AEC-1A1B-4D46-A522-36C8E3BB4F1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4B875AEC-1A1B-4D46-A522-36C8E3BB4F1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4B875AEC-1A1B-4D46-A522-36C8E3BB4F1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4B875AEC-1A1B-4D46-A522-36C8E3BB4F1F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{63B33A01-6638-4B90-9078-DCABA7165CEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{63B33A01-6638-4B90-9078-DCABA7165CEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63B33A01-6638-4B90-9078-DCABA7165CEA}.Release|Any CPU.ActiveCfg = Release|Any CPU

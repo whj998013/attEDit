@@ -112,13 +112,13 @@ namespace CheckDb
                 .Property(e => e.upsize_ts)
                 .IsFixedLength();
 
-            modelBuilder.Entity<USERINFO>()
-                .Property(e => e.IDCardNo)
-                .IsUnicode(false);
+            //modelBuilder.Entity<USERINFO>()
+            //    .Property(e => e.IDCardNo)
+            //    .IsUnicode(false);
 
-            modelBuilder.Entity<USERINFO>()
-                .Property(e => e.IDCardValidTime)
-                .IsUnicode(false);
+            //modelBuilder.Entity<USERINFO>()
+            //    .Property(e => e.IDCardValidTime)
+            //    .IsUnicode(false);
         }
     }
 }

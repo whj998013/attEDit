@@ -15,6 +15,10 @@ namespace 考勤调整
 
     public class EmpCheckDay
     {
+
+        public EmpCheckDay PreCheckDay { get; set; }
+        public EmpCheckDay AfterCheckDay { get; set; }
+
         public USERINFO Emp { get; set; }
         public DayType DayType { get; set; }
         public DateTime CheckDate { get; set; }
@@ -41,11 +45,41 @@ namespace 考勤调整
         /// </summary>
         public string DeptName { get; set; }
 
-       
+
         /// <summary>
         /// 班次
         /// </summary>
         public Shift EmpShift { get; set; } = new Shift();
+
+        /// <summary>
+        /// 班次符合度评分
+        /// </summary>
+        public int ShiftPoint
+        {
+            get
+            {
+                int point = 0;
+                if (FirstCheck != null)
+                {
+                    var ft = FirstCheck.Value - CheckDate;
+                    var lt = LastCheck.Value - CheckDate;
+                    if ((ft - EmpShift.AmCheckIn).TotalSeconds <= 0) point += 3;//不迟到1分
+                    if ((lt - EmpShift.PmCheckOut).TotalSeconds >= 0) point += 1; //未早退
+
+                    if (Math.Abs((ft - EmpShift.AmCheckIn).TotalMinutes) <= 15) point += 3;
+                    else if (Math.Abs((ft - EmpShift.AmCheckIn).TotalMinutes) < 30) point += 2;
+                    else if (Math.Abs((ft - EmpShift.AmCheckIn).TotalMinutes) >120) point += -3;
+                    
+                    if (Math.Abs((lt - EmpShift.OTCheckOut).TotalMinutes) < 60) point += 1;
+                    if ((lt - EmpShift.OTCheckOut).TotalMinutes > 180) point -=2;
+
+                    if (PreCheckDay != null && PreCheckDay.EmpShift.ShiftName == EmpShift.ShiftName) point += 1;
+                    
+                }
+
+                return point;
+            }
+        }
         /// <summary>
         /// 原始打卡记录
         /// </summary>
@@ -66,6 +100,7 @@ namespace 考勤调整
             }
 
         }
+
 
         public EmpCheckDay(USERINFO emp, CHECKINOUT obj)
         {
@@ -110,6 +145,7 @@ namespace 考勤调整
                 Checks = value ? NewChecks : RawChecks;
             }
         }
+
 
         /// <summary>
         /// 调整后的打卡记录显示

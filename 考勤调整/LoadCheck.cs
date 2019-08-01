@@ -27,7 +27,7 @@ namespace 考勤调整
             GetDeptName = _GetDeptName;
         }
 
-        public List<CHECKINOUT> GetCheckList(out DateTime beginDate,out DateTime endDate)
+        public List<CHECKINOUT> GetCheckList(out DateTime beginDate, out DateTime endDate)
         {
             this.ShowDialog();
             beginDate = BeginDate.Value;
@@ -36,34 +36,35 @@ namespace 考勤调整
         }
         private void Form2_Load(object sender, EventArgs e)
         {
-
-            nodes = new List<StNode>();
-            Depts.ForEach(p =>
+            if (nodes == null)
             {
-                nodes.Add(new StNode
+                nodes = new List<StNode>();
+                Depts.ForEach(p =>
                 {
-                    Name = p.DeptName,
-                    Text = p.DeptName,
-                    Id = p.DeptId,
-                    UpId = p.UpDptId,
+                    nodes.Add(new StNode
+                    {
+                        Name = p.DeptName,
+                        Text = p.DeptName,
+                        Id = p.DeptId,
+                        UpId = p.UpDptId,
+                    });
                 });
-            });
 
-            nodes.OrderBy(t => t.Name).ToList().ForEach(p =>
-              {
-                  if (p.UpId != 0)
+                nodes.OrderBy(t => t.Name).ToList().ForEach(p =>
                   {
-                      var f = nodes.Single(n => n.Id == p.UpId);
-                      f.Nodes.Add(p);
-                  }
-              });
-            DeptTree.Nodes.Add(nodes.Single(p => p.UpId == 0));
-            int d = DateTime.Now.Day - 1;
-            EndDate.Value = DateTime.Now.Date.AddDays(-d);
-            BeginDate.Value = EndDate.Value.AddMonths(-1);
-            EndDate.Value = EndDate.Value.AddDays(-1);
+                      if (p.UpId != 0)
+                      {
+                          var f = nodes.Single(n => n.Id == p.UpId);
+                          f.Nodes.Add(p);
+                      }
+                  });
+                DeptTree.Nodes.Add(nodes.Single(p => p.UpId == 0));
+                int d = DateTime.Now.Day - 1;
+                EndDate.Value = DateTime.Now.Date.AddDays(-d);
+                BeginDate.Value = EndDate.Value.AddMonths(-1);
+                EndDate.Value = EndDate.Value.AddDays(-1);
+            }
             DeptTree.ExpandAll();
-
         }
 
         private void DeptTree_AfterCheck(object sender, TreeViewEventArgs e)
@@ -121,8 +122,9 @@ namespace 考勤调整
             }
             var edate = EndDate.Value.AddDays(2);
             List<int> idList = emps.Where(p => p.IsSelect).Select(p => p.UserId).ToList();
+            clist.Clear();
             clist = Dc.CHECKINOUT.Where(p => p.CHECKTIME > BeginDate.Value && p.CHECKTIME < edate && idList.Contains(p.USERID)).ToList();
-            this.Close();
+            this.Hide();
 
         }
     }

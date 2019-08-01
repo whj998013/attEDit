@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using CheckDb;
+using EntityFramework.Utilities;
 namespace 考勤调整
 {
 
@@ -12,7 +13,6 @@ namespace 考勤调整
     public class EmpCheckMonth
     {
         public AttControlClass AttControl { get; set; }
-
         public DateTime BeginDate { get; set; }
         public DateTime EndDate { get; set; }
         public string DeptName { get; set; }
@@ -114,6 +114,13 @@ namespace 考勤调整
                 };
                 EmpChecks.Add(emp);
             }
+            //连接上下天
+            EmpChecks.ForEach(p =>
+            {
+                p.PreCheckDay = EmpChecks.SingleOrDefault(d => d.CheckDate == p.CheckDate.AddDays(-1));
+                p.AfterCheckDay = EmpChecks.SingleOrDefault(d => d.CheckDate == p.CheckDate.AddDays(1));
+            });
+
         }
         /// <summary>
         /// 年休假天数
@@ -134,18 +141,96 @@ namespace 考勤调整
                 DateTime ed = ecd.CheckDate.Add(newShift.EndTime);
                 ecd.RawChecks = Checks.Where(p => p.CHECKTIME >= bd && p.CHECKTIME <= ed).ToList();
                 ecd.Checks = ecd.RawChecks;
+                RemoveDuplicate(ecd);
             }
             ecd.EmpShift = newShift;
-
         }
 
+        public void RemoveDuplicate(EmpCheckDay ecd)
+        {
+            if (ecd.PreCheckDay != null && ecd.PreCheckDay.RawChecks.Count > 0)
+            {
+                ecd.PreCheckDay.RawChecks.ForEach(p =>
+                {
+                    if (ecd.RawChecks.Contains(p))
+                    {
+                        ecd.RawChecks.Remove(p);
+                    }
+                });
+            }
+
+        }
         public void ChangeShift(Shift newShift)
         {
             EmpChecks.ForEach(p =>
             {
                 ChangeShift(p, newShift);
             });
+        }
 
+
+        public void AutoChangeShift(List<Shift> shifts)
+        {
+            Shift preShift = new Shift();
+            EmpChecks.ForEach(p =>
+            {
+                var lm = p.ShiftPoint;
+
+                shifts.ForEach(s =>
+                {
+                    if (p.FirstAmend != null)
+                    {
+                        var oldShift = p.EmpShift;
+                        ChangeShift(p, s);
+                        if (p.ShiftPoint < lm) ChangeShift(p, oldShift);
+                        else lm = p.ShiftPoint;
+                        preShift = p.EmpShift;
+                    }
+                    else ChangeShift(p, preShift);
+
+                });
+            });
+
+            ///修正中间班次不一样问题
+            var elist = EmpChecks.OrderBy(p => p.CheckDate).ToList();
+
+            for (int i = 0; i < elist.Count; i++)
+            {
+
+                if (i == 0 && elist[i + 1].EmpShift.ShiftName == elist[i + 2].EmpShift.ShiftName && elist[i + 1].EmpShift.ShiftName != elist[i].EmpShift.ShiftName)
+                {
+                    ChangeShift(elist[i], elist[i + 1].EmpShift);
+                }
+                else if (i > 0 && i < elist.Count - 1 && elist[i - 1].EmpShift.ShiftName == elist[i + 1].EmpShift.ShiftName && elist[i + 1].EmpShift.ShiftName != elist[i].EmpShift.ShiftName)
+                {
+                    ChangeShift(elist[i], elist[i + 1].EmpShift);
+                }
+                else if (i == elist.Count - 1 && elist[i - 1].EmpShift.ShiftName == elist[i - 2].EmpShift.ShiftName && elist[i - 1].EmpShift.ShiftName != elist[i].EmpShift.ShiftName)
+                {
+                    ChangeShift(elist[i], elist[i - 1].EmpShift);
+                }
+
+            }
+
+
+        }
+
+        public void SetOneWeekIsSameShift()
+        {
+            BuildWeekCheck();
+            EmpWeeks.ForEach(p =>
+            {
+                if (p.Checks.Count > 0)
+                {
+                    var group = p.Checks.GroupBy(c => c.ShiftName).Select( c =>new { name = c.Key, clist = c.ToList(),count=c.ToList().Count()}).OrderByDescending(t=>t.count).ToList();
+                    var shift = group[0].clist[0].EmpShift;
+                    p.Checks.ForEach(c =>
+                    {
+                        ChangeShift(c,shift);
+                    });
+                    
+                }
+            });
         }
 
         public void SetIgnore15MinuteCheck(bool v)
@@ -239,24 +324,33 @@ namespace 考勤调整
             {
                 if (EmpWeeks == null)
                 {
-                    EmpWeeks = new List<EmpCheckWeek>();
 
-                    EmpChecks.ForEach(p =>
-                    {
-                        var wn = GetWeekOfYear(p.CheckDate);//取得周数
-                        var week = EmpWeeks.SingleOrDefault(w => w.WeekNum == wn);
-                        if (week == null)
-                        {
-                            week = new EmpCheckWeek(Emp, wn);
-                            EmpWeeks.Add(week);
-                        }
-                        week.Add(p);
-                    });
-
+                    BuildWeekCheck();
                 }
                 if (EmpWeeks.Count == 0) return 0;
                 return Math.Round(EmpWeeks.Max(p => p.TotalTime), 1);
             }
+        }
+        private void BuildWeekCheck()
+        {
+            if (EmpWeeks == null)
+            {
+                EmpWeeks = new List<EmpCheckWeek>();
+
+                EmpChecks.ForEach(p =>
+                {
+                    var wn = GetWeekOfYear(p.CheckDate);//取得周数
+                var week = EmpWeeks.SingleOrDefault(w => w.WeekNum == wn);
+                    if (week == null)
+                    {
+                        week = new EmpCheckWeek(Emp, wn);
+                        EmpWeeks.Add(week);
+                    }
+                    week.Add(p);
+                });
+
+            }
+
         }
 
         private int GetWeekOfYear(DateTime dt)
@@ -269,6 +363,8 @@ namespace 考勤调整
         /// </summary>
         public void WriteToDate(attContent dc, bool IsAllWriteMode)
         {
+
+
             EmpChecks.ForEach(p =>
             {
                 if (p.NewChecks.Count > 0 || IsAllWriteMode)
@@ -278,6 +374,31 @@ namespace 考勤调整
                 }
             });
             dc.SaveChanges();
+        }
+
+        /// <summary>
+        /// 写入数据库
+        /// </summary>
+        public void FastWriteToDate(attContent dc, bool IsAllWriteMode)
+        {
+            List<CHECKINOUT> oldlist = new List<CHECKINOUT>();
+            List<CHECKINOUT> newlist = new List<CHECKINOUT>();
+
+            EmpChecks.ForEach(p =>
+            {
+                if (p.NewChecks.Count > 0 || IsAllWriteMode)
+                {
+                    oldlist.AddRange(p.Checks);
+                    if (p.NewChecks.Count > 0) newlist.AddRange(p.NewChecks);
+                }
+            });
+
+            dc.CHECKINOUT.RemoveRange(oldlist);
+            dc.SaveChanges();
+            EFBatchOperation.For(dc, dc.CHECKINOUT)
+                .InsertAll(newlist);
+
+
         }
     }
 }

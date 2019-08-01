@@ -9,7 +9,7 @@ using NPOI.XSSF.UserModel;
 using NPOI.SS.UserModel;
 namespace 考勤调整
 {
-    public static class ExcelHelper
+    public static class ExcelBuildHelper
     {
         public static void SaveToExcel(this List<EmpCheckMonth> ecm, string Path)
         {
@@ -26,14 +26,14 @@ namespace 考勤调整
         private static void BuildDaySheets(XSSFWorkbook wb, List<EmpCheckMonth> ecm)
         {
             var ds = wb.CreateSheet("天考勤数据");
-            ds.SetColumnWidth(3, 11 * 256);
-            ds.SetColumnWidth(4, 17 * 256);
+            ds.SetColumnWidth(4, 11 * 256);
             ds.SetColumnWidth(5, 17 * 256);
-            ds.SetColumnWidth(11, 40 * 256);
+            ds.SetColumnWidth(6, 17 * 256);
+            ds.SetColumnWidth(13, 40 * 256);
 
             //生成表头
             var rc = ds.CreateRow(0);
-            List<string> ClName = new List<string>() { "部门", "姓名", "类型", "日期", "首次打卡", "末次打卡", "部出勤小时", "平日上班", "合计加班", "休息日加班", "法定加班", "打卡明细","卡号" };
+            List<string> ClName = new List<string>() { "部门", "姓名","卡号","类型", "日期", "首次打卡", "末次打卡","出勤时间", "当天总工时", "平日上班", "合计加班", "休息日加班", "法定加班", "打卡明细", };
             int ic = 0;
             ClName.ForEach(p =>
             {
@@ -52,29 +52,32 @@ namespace 考勤调整
                     var r = ds.CreateRow(rid++);
                     r.CreateCell(0).SetCellValue(e.DeptName);
                     r.CreateCell(1).SetCellValue(e.EmpName);
-                    r.CreateCell(2).SetCellValue(p.DayType.ToString());
-                    r.CreateCell(3).SetCellValue(p.CheckDate);
-                    r.Cells[3].CellStyle = cellStyle;
+                    r.CreateCell(2).SetCellValue(e.EmpId);
+                    r.CreateCell(3).SetCellValue(p.DayType.ToString());
+                    r.CreateCell(4).SetCellValue(p.CheckDate);
+                    r.Cells[4].CellStyle = cellStyle;
                     if (p.Checks != null && e.Checks.Count > 0)
                     {
 
-                        r.CreateCell(4).SetCellValue(p.FirstAmend.ToString());
-                        r.CreateCell(5).SetCellValue(p.LastAmend.ToString());
-                        r.CreateCell(6).SetCellValue(p.TotalTime);
+                        r.CreateCell(5).SetCellValue(p.FirstAmend.ToString());
+                        r.CreateCell(6).SetCellValue(p.LastAmend.ToString());
+                        r.CreateCell(7).SetCellValue(p.AllTime);
+                        r.CreateCell(8).SetCellValue(p.TotalTime);
+
                         if (p.DayType == DayType.平日)
                         {
-                            r.CreateCell(7).SetCellValue(p.WorkTime);
-                            r.CreateCell(8).SetCellValue(p.OverTime);
+                            r.CreateCell(9).SetCellValue(p.WorkTime);
+                            r.CreateCell(10).SetCellValue(p.OverTime);
                         }
                         else if(p.DayType == DayType.休息日){
-                            r.CreateCell(9).SetCellValue(p.WorkTime + p.OverTime);
+                            r.CreateCell(11).SetCellValue(p.WorkTime + p.OverTime);
                         }
                         else if (p.DayType == DayType.假日)
                         {
-                            r.CreateCell(10).SetCellValue(p.WorkTime + p.OverTime);
+                            r.CreateCell(12).SetCellValue(p.WorkTime + p.OverTime);
                         }
-                        r.CreateCell(11).SetCellValue(p.CheckRecord);
-                        r.CreateCell(12).SetCellValue(e.EmpId);
+                        r.CreateCell(13).SetCellValue(p.CheckRecord);
+                       
 
                     }
 

@@ -154,10 +154,10 @@ namespace CheckDb
 
         public int? TimeZone3 { get; set; }
 
-        [StringLength(18)]
-        public string IDCardNo { get; set; }
+        //[StringLength(18)]
+        //public string IDCardNo { get; set; }
 
-        [StringLength(21)]
-        public string IDCardValidTime { get; set; }
+        //[StringLength(21)]
+        //public string IDCardValidTime { get; set; }
     }
 }

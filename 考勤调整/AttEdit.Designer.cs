@@ -74,15 +74,17 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.YearHoliday = new System.Windows.Forms.NumericUpDown();
+            this.label9 = new System.Windows.Forms.Label();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
@@ -112,7 +114,39 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.BtnSaveShift = new System.Windows.Forms.ToolStripButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.sc = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.d4a = new System.Windows.Forms.DateTimePicker();
+            this.d4t1 = new System.Windows.Forms.DateTimePicker();
+            this.d4t2 = new System.Windows.Forms.DateTimePicker();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.delAttInfoDataGridView = new System.Windows.Forms.DataGridView();
+            this.bindingNavigator2 = new System.Windows.Forms.BindingNavigator(this.components);
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.label10 = new System.Windows.Forms.Label();
+            this.d1b = new System.Windows.Forms.DateTimePicker();
+            this.d1a = new System.Windows.Forms.DateTimePicker();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.button6 = new System.Windows.Forms.Button();
             this.empNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deptNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.workTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -140,8 +174,13 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.shiftBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label9 = new System.Windows.Forms.Label();
-            this.YearHoliday = new System.Windows.Forms.NumericUpDown();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.delAttInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.empDgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dayDgv)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -158,9 +197,10 @@
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.YearHoliday)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -170,11 +210,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.shiftdgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.delAttInfoDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator2)).BeginInit();
+            this.bindingNavigator2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.empCheckMonthBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.empCheckDayBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkModifyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shiftBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.YearHoliday)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.delAttInfoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // empDgv
@@ -202,7 +248,7 @@
             this.empDgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.empDgv.RowTemplate.Height = 23;
             this.empDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.empDgv.Size = new System.Drawing.Size(494, 554);
+            this.empDgv.Size = new System.Drawing.Size(494, 600);
             this.empDgv.TabIndex = 0;
             this.empDgv.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DataGridView1_RowPostPaint);
             this.empDgv.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
@@ -257,7 +303,7 @@
             this.dayDgv.RowHeadersWidth = 30;
             this.dayDgv.RowTemplate.Height = 23;
             this.dayDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dayDgv.Size = new System.Drawing.Size(941, 554);
+            this.dayDgv.Size = new System.Drawing.Size(941, 600);
             this.dayDgv.TabIndex = 2;
             this.dayDgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DayDgv_CellContentClick);
             // 
@@ -294,9 +340,9 @@
             // BtnBuildCheck
             // 
             this.BtnBuildCheck.BackColor = System.Drawing.Color.Chartreuse;
-            this.BtnBuildCheck.Location = new System.Drawing.Point(582, 103);
+            this.BtnBuildCheck.Location = new System.Drawing.Point(582, 110);
             this.BtnBuildCheck.Name = "BtnBuildCheck";
-            this.BtnBuildCheck.Size = new System.Drawing.Size(130, 80);
+            this.BtnBuildCheck.Size = new System.Drawing.Size(130, 74);
             this.BtnBuildCheck.TabIndex = 3;
             this.BtnBuildCheck.Text = "生成调整考勤";
             this.BtnBuildCheck.UseVisualStyleBackColor = false;
@@ -446,7 +492,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 30);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1453, 781);
+            this.tabControl1.Size = new System.Drawing.Size(1453, 827);
             this.tabControl1.TabIndex = 5;
             // 
             // tabPage1
@@ -455,7 +501,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1445, 755);
+            this.tabPage1.Size = new System.Drawing.Size(1445, 801);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "考勤调整";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -478,8 +524,8 @@
             this.splitContainer2.Panel2.AutoScroll = true;
             this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer2.Panel2.Controls.Add(this.班次);
-            this.splitContainer2.Size = new System.Drawing.Size(1439, 749);
-            this.splitContainer2.SplitterDistance = 554;
+            this.splitContainer2.Size = new System.Drawing.Size(1439, 795);
+            this.splitContainer2.SplitterDistance = 600;
             this.splitContainer2.TabIndex = 5;
             // 
             // splitContainer1
@@ -495,7 +541,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dayDgv);
-            this.splitContainer1.Size = new System.Drawing.Size(1439, 554);
+            this.splitContainer1.Size = new System.Drawing.Size(1439, 600);
             this.splitContainer1.SplitterDistance = 494;
             this.splitContainer1.TabIndex = 4;
             // 
@@ -529,9 +575,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(582, 59);
+            this.button2.Location = new System.Drawing.Point(582, 65);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(130, 34);
+            this.button2.Size = new System.Drawing.Size(126, 34);
             this.button2.TabIndex = 16;
             this.button2.Text = "导出考勤表";
             this.button2.UseVisualStyleBackColor = true;
@@ -566,24 +612,6 @@
             this.numericUpDown7.Size = new System.Drawing.Size(46, 21);
             this.numericUpDown7.TabIndex = 7;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 137);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(113, 12);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "随机忘打卡频率(%):";
-            // 
-            // numericUpDown5
-            // 
-            this.numericUpDown5.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.checkModifyBindingSource, "MissCheckPercent", true));
-            this.numericUpDown5.Enabled = false;
-            this.numericUpDown5.Location = new System.Drawing.Point(135, 135);
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(46, 21);
-            this.numericUpDown5.TabIndex = 13;
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.YearHoliday);
@@ -596,6 +624,29 @@
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "考勤计算";
+            // 
+            // YearHoliday
+            // 
+            this.YearHoliday.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.checkModifyBindingSource, "BigWeekHour", true));
+            this.YearHoliday.Location = new System.Drawing.Point(87, 79);
+            this.YearHoliday.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.YearHoliday.Name = "YearHoliday";
+            this.YearHoliday.Size = new System.Drawing.Size(46, 21);
+            this.YearHoliday.TabIndex = 16;
+            this.YearHoliday.ValueChanged += new System.EventHandler(this.NumericUpDown6_ValueChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(8, 85);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(65, 12);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "年休假天数";
             // 
             // checkBox7
             // 
@@ -667,6 +718,15 @@
             this.radioButton3.Text = "打卡一次生成全天考勤";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(11, 137);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(113, 12);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "随机忘打卡频率(%):";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -675,6 +735,15 @@
             this.label2.Size = new System.Drawing.Size(17, 12);
             this.label2.TabIndex = 12;
             this.label2.Text = "后";
+            // 
+            // numericUpDown5
+            // 
+            this.numericUpDown5.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.checkModifyBindingSource, "MissCheckPercent", true));
+            this.numericUpDown5.Enabled = false;
+            this.numericUpDown5.Location = new System.Drawing.Point(135, 135);
+            this.numericUpDown5.Name = "numericUpDown5";
+            this.numericUpDown5.Size = new System.Drawing.Size(46, 21);
+            this.numericUpDown5.TabIndex = 13;
             // 
             // label5
             // 
@@ -945,7 +1014,9 @@
             this.bindingNavigatorDeleteItem,
             this.toolStripButton3,
             this.toolStripButton2,
-            this.BtnSaveShift});
+            this.BtnSaveShift,
+            this.toolStripButton6,
+            this.toolStripButton7});
             this.bindingNavigator1.Location = new System.Drawing.Point(3, 17);
             this.bindingNavigator1.MoveFirstItem = null;
             this.bindingNavigator1.MoveLastItem = null;
@@ -1007,13 +1078,333 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button6);
+            this.tabPage2.Controls.Add(this.groupBox6);
+            this.tabPage2.Controls.Add(this.panel1);
+            this.tabPage2.Controls.Add(this.label10);
+            this.tabPage2.Controls.Add(this.d1b);
+            this.tabPage2.Controls.Add(this.d1a);
+            this.tabPage2.Controls.Add(this.label11);
+            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.label12);
+            this.tabPage2.Controls.Add(this.button4);
+            this.tabPage2.Controls.Add(this.button5);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1445, 755);
+            this.tabPage2.Size = new System.Drawing.Size(1445, 801);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "考勤删除";
+            this.tabPage2.Text = "考勤调整工具";
             this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Click += new System.EventHandler(this.TabPage2_Click);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.label13);
+            this.groupBox6.Controls.Add(this.label14);
+            this.groupBox6.Controls.Add(this.sc);
+            this.groupBox6.Controls.Add(this.label15);
+            this.groupBox6.Controls.Add(this.d4a);
+            this.groupBox6.Controls.Add(this.d4t1);
+            this.groupBox6.Controls.Add(this.d4t2);
+            this.groupBox6.Location = new System.Drawing.Point(898, 20);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(487, 110);
+            this.groupBox6.TabIndex = 21;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "删除操作";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label13.Location = new System.Drawing.Point(19, 25);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(29, 12);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "日期";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label14.Location = new System.Drawing.Point(131, 61);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(29, 12);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "小于";
+            // 
+            // sc
+            // 
+            this.sc.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.sc.Location = new System.Drawing.Point(272, 21);
+            this.sc.Name = "sc";
+            this.sc.Size = new System.Drawing.Size(75, 62);
+            this.sc.TabIndex = 5;
+            this.sc.Text = "删除";
+            this.sc.UseVisualStyleBackColor = true;
+            this.sc.Click += new System.EventHandler(this.Sc_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label15.Location = new System.Drawing.Point(18, 61);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(29, 12);
+            this.label15.TabIndex = 7;
+            this.label15.Text = "大于";
+            // 
+            // d4a
+            // 
+            this.d4a.CausesValidation = false;
+            this.d4a.Location = new System.Drawing.Point(74, 21);
+            this.d4a.Name = "d4a";
+            this.d4a.Size = new System.Drawing.Size(161, 21);
+            this.d4a.TabIndex = 2;
+            this.d4a.Value = new System.DateTime(2014, 10, 20, 0, 0, 0, 0);
+            // 
+            // d4t1
+            // 
+            this.d4t1.CausesValidation = false;
+            this.d4t1.CustomFormat = "hh:mm";
+            this.d4t1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.d4t1.Location = new System.Drawing.Point(53, 57);
+            this.d4t1.Name = "d4t1";
+            this.d4t1.ShowUpDown = true;
+            this.d4t1.Size = new System.Drawing.Size(72, 21);
+            this.d4t1.TabIndex = 6;
+            this.d4t1.Value = new System.DateTime(2014, 10, 20, 0, 0, 0, 0);
+            // 
+            // d4t2
+            // 
+            this.d4t2.CausesValidation = false;
+            this.d4t2.CustomFormat = "hh:mm";
+            this.d4t2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.d4t2.Location = new System.Drawing.Point(166, 57);
+            this.d4t2.Name = "d4t2";
+            this.d4t2.ShowUpDown = true;
+            this.d4t2.Size = new System.Drawing.Size(72, 21);
+            this.d4t2.TabIndex = 6;
+            this.d4t2.Value = new System.DateTime(2014, 10, 20, 23, 59, 59, 0);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.delAttInfoDataGridView);
+            this.panel1.Controls.Add(this.bindingNavigator2);
+            this.panel1.Location = new System.Drawing.Point(17, 65);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(806, 573);
+            this.panel1.TabIndex = 20;
+            // 
+            // delAttInfoDataGridView
+            // 
+            this.delAttInfoDataGridView.AllowUserToAddRows = false;
+            this.delAttInfoDataGridView.AutoGenerateColumns = false;
+            this.delAttInfoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.delAttInfoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn13});
+            this.delAttInfoDataGridView.DataSource = this.delAttInfoBindingSource;
+            this.delAttInfoDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.delAttInfoDataGridView.Location = new System.Drawing.Point(0, 25);
+            this.delAttInfoDataGridView.Name = "delAttInfoDataGridView";
+            this.delAttInfoDataGridView.RowTemplate.Height = 23;
+            this.delAttInfoDataGridView.Size = new System.Drawing.Size(806, 548);
+            this.delAttInfoDataGridView.TabIndex = 2;
+            // 
+            // bindingNavigator2
+            // 
+            this.bindingNavigator2.AddNewItem = this.toolStripButton4;
+            this.bindingNavigator2.BindingSource = this.delAttInfoBindingSource;
+            this.bindingNavigator2.CountItem = this.bindingNavigatorCountItem;
+            this.bindingNavigator2.DeleteItem = this.toolStripButton5;
+            this.bindingNavigator2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorMoveFirstItem,
+            this.bindingNavigatorMovePreviousItem,
+            this.bindingNavigatorSeparator,
+            this.bindingNavigatorPositionItem,
+            this.bindingNavigatorCountItem,
+            this.bindingNavigatorSeparator1,
+            this.bindingNavigatorMoveNextItem,
+            this.bindingNavigatorMoveLastItem,
+            this.bindingNavigatorSeparator2,
+            this.toolStripButton4,
+            this.toolStripButton5});
+            this.bindingNavigator2.Location = new System.Drawing.Point(0, 0);
+            this.bindingNavigator2.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.bindingNavigator2.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.bindingNavigator2.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.bindingNavigator2.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.bindingNavigator2.Name = "bindingNavigator2";
+            this.bindingNavigator2.PositionItem = this.bindingNavigatorPositionItem;
+            this.bindingNavigator2.Size = new System.Drawing.Size(806, 25);
+            this.bindingNavigator2.TabIndex = 2;
+            this.bindingNavigator2.Text = "bindingNavigator2";
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton4.Text = "新添";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(32, 22);
+            this.bindingNavigatorCountItem.Text = "/ {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "总项数";
+            // 
+            // toolStripButton5
+            // 
+            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
+            this.toolStripButton5.Name = "toolStripButton5";
+            this.toolStripButton5.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton5.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton5.Text = "删除";
+            // 
+            // bindingNavigatorMoveFirstItem
+            // 
+            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
+            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Text = "移到第一条记录";
+            // 
+            // bindingNavigatorMovePreviousItem
+            // 
+            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
+            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Text = "移到上一条记录";
+            // 
+            // bindingNavigatorSeparator
+            // 
+            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorPositionItem
+            // 
+            this.bindingNavigatorPositionItem.AccessibleName = "位置";
+            this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
+            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
+            this.bindingNavigatorPositionItem.Text = "0";
+            this.bindingNavigatorPositionItem.ToolTipText = "当前位置";
+            // 
+            // bindingNavigatorSeparator1
+            // 
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorMoveNextItem
+            // 
+            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
+            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Text = "移到下一条记录";
+            // 
+            // bindingNavigatorMoveLastItem
+            // 
+            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
+            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Text = "移到最后一条记录";
+            // 
+            // bindingNavigatorSeparator2
+            // 
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label10.Location = new System.Drawing.Point(157, 38);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 12);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "结束日期";
+            // 
+            // d1b
+            // 
+            this.d1b.CausesValidation = false;
+            this.d1b.Location = new System.Drawing.Point(240, 38);
+            this.d1b.Name = "d1b";
+            this.d1b.Size = new System.Drawing.Size(161, 21);
+            this.d1b.TabIndex = 16;
+            this.d1b.Value = new System.DateTime(2014, 10, 20, 0, 0, 0, 0);
+            // 
+            // d1a
+            // 
+            this.d1a.CausesValidation = false;
+            this.d1a.Location = new System.Drawing.Point(240, 10);
+            this.d1a.Name = "d1a";
+            this.d1a.Size = new System.Drawing.Size(161, 21);
+            this.d1a.TabIndex = 17;
+            this.d1a.Value = new System.DateTime(2014, 10, 20, 0, 0, 0, 0);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label11.Location = new System.Drawing.Point(157, 16);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(53, 12);
+            this.label11.TabIndex = 18;
+            this.label11.Text = "开始日期";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(600, 26);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(83, 21);
+            this.textBox1.TabIndex = 15;
+            this.textBox1.Text = "2010";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(529, 30);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 12);
+            this.label12.TabIndex = 14;
+            this.label12.Text = "基本工资";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(708, 20);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(115, 33);
+            this.button4.TabIndex = 13;
+            this.button4.Text = "开始调整";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.Button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(17, 20);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(115, 33);
+            this.button5.TabIndex = 12;
+            this.button5.Text = "打开考勤调整表";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.Button5_Click);
             // 
             // saveFileDialog1
             // 
@@ -1021,6 +1412,26 @@
             this.saveFileDialog1.FileName = "考勤表";
             this.saveFileDialog1.Filter = "Excel文件(*.xlsx)|*.xlsx";
             this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.SaveFileDialog1_FileOk);
+            // 
+            // toolStripButton6
+            // 
+            this.toolStripButton6.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
+            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton6.Name = "toolStripButton6";
+            this.toolStripButton6.Size = new System.Drawing.Size(124, 22);
+            this.toolStripButton6.Text = "选定员工自动排班";
+            this.toolStripButton6.Click += new System.EventHandler(this.ToolStripButton6_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(898, 186);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(245, 43);
+            this.button6.TabIndex = 22;
+            this.button6.Text = "姓名乱码修正";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.Button6_Click);
             // 
             // empNameDataGridViewTextBoxColumn
             // 
@@ -1235,34 +1646,55 @@
             // 
             this.shiftBindingSource.DataSource = typeof(考勤调整.Shift);
             // 
-            // label9
+            // dataGridViewTextBoxColumn9
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(8, 85);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 12);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "年休假天数";
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn9.HeaderText = "姓名";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             // 
-            // YearHoliday
+            // dataGridViewTextBoxColumn10
             // 
-            this.YearHoliday.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.checkModifyBindingSource, "BigWeekHour", true));
-            this.YearHoliday.Location = new System.Drawing.Point(87, 79);
-            this.YearHoliday.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.YearHoliday.Name = "YearHoliday";
-            this.YearHoliday.Size = new System.Drawing.Size(46, 21);
-            this.YearHoliday.TabIndex = 16;
-            this.YearHoliday.ValueChanged += new System.EventHandler(this.NumericUpDown6_ValueChanged);
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "LowGz";
+            this.dataGridViewTextBoxColumn10.HeaderText = "最低工资";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "Money";
+            this.dataGridViewTextBoxColumn11.HeaderText = "金额";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "Hours";
+            this.dataGridViewTextBoxColumn12.HeaderText = "拆合小时数";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "ReHours";
+            this.dataGridViewTextBoxColumn13.HeaderText = "调整小时";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            // 
+            // delAttInfoBindingSource
+            // 
+            this.delAttInfoBindingSource.DataSource = typeof(考勤调整.DelAttInfo);
+            // 
+            // toolStripButton7
+            // 
+            this.toolStripButton7.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
+            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton7.Name = "toolStripButton7";
+            this.toolStripButton7.Size = new System.Drawing.Size(112, 22);
+            this.toolStripButton7.Text = "一周为同一班次";
+            this.toolStripButton7.Click += new System.EventHandler(this.ToolStripButton7_Click);
             // 
             // AttEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1453, 811);
+            this.ClientSize = new System.Drawing.Size(1453, 857);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "AttEdit";
@@ -1287,11 +1719,12 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.YearHoliday)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
@@ -1304,11 +1737,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.delAttInfoDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator2)).EndInit();
+            this.bindingNavigator2.ResumeLayout(false);
+            this.bindingNavigator2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.empCheckMonthBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.empCheckDayBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkModifyBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.shiftBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.YearHoliday)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.delAttInfoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1418,6 +1861,45 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown YearHoliday;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button sc;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DateTimePicker d4a;
+        private System.Windows.Forms.DateTimePicker d4t1;
+        private System.Windows.Forms.DateTimePicker d4t2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DateTimePicker d1b;
+        private System.Windows.Forms.DateTimePicker d1a;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.BindingNavigator bindingNavigator2;
+        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
+        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.DataGridView delAttInfoDataGridView;
+        private System.Windows.Forms.BindingSource delAttInfoBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.ToolStripButton toolStripButton6;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.ToolStripButton toolStripButton7;
     }
 }
 

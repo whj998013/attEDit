@@ -18,10 +18,12 @@ namespace 考勤调整
     {
         attContent dc;
         bool IsConnect = false;
-        DeptOper Doper;
+        DeptOper Doper { get; set; }
         List<Shift> Shifts = new List<Shift>();
         CheckModify Cm = new CheckModify();
         List<EmpCheckMonth> Emps { get; set; }
+        LoadCheck lc;
+        List<DelAttInfo> dinfo = new List<DelAttInfo>();
         public AttEdit()
         {
             InitializeComponent();
@@ -43,6 +45,7 @@ namespace 考勤调整
         private void Form1_Load(object sender, EventArgs e)
         {
             var conList = ConfigurationManager.ConnectionStrings;
+
             for (int i = 1; i < conList.Count; i++)
             {
                 tool_con.Items.Add(conList[i].Name);
@@ -55,7 +58,11 @@ namespace 考勤调整
             checkModifyBindingSource.DataSource = Cm;
             tool_con.SelectedIndex = 0;
             modeselect.SelectedIndex = 0;
+            int d = DateTime.Today.Day;
 
+            d1a.Value = DateTime.Today.AddDays(-d + 1).AddMonths(-1);
+            d1b.Value = DateTime.Today.AddDays(-d);
+            d4a.Value = d1b.Value;
         }
         private void ReadShift()
         {   //读取班次
@@ -125,8 +132,8 @@ namespace 考勤调整
 
         private void Btn_LoadData_Click(object sender, EventArgs e)
         {
-            LoadCheck f2 = new LoadCheck(Doper.Depts, dc, Doper.GetDeptName);
-            var checks = f2.GetCheckList(out DateTime beginDate, out DateTime endDate);
+            if (lc == null) lc = new LoadCheck(Doper.Depts, dc, Doper.GetDeptName);
+            var checks = lc.GetCheckList(out DateTime beginDate, out DateTime endDate);
             var users = dc.USERINFO.ToList();
             var getday = new AttControlClass(dc);
             Emps = new List<EmpCheckMonth>();
@@ -175,23 +182,20 @@ namespace 考勤调整
 
             Shifts.ForEach(p =>
            {
-               if (p.ID == "")
+               var s = dc.AttParam.SingleOrDefault(at => at.PARANAME == p.ID);
+               if (s == null)
                {
-                   var ap = new AttParam
+                   s = new AttParam
                    {
                        PARANAME = p.ID,
                        PARATYPE = "si",
                        PARAVALUE = p.ToShiftString()
                    };
-                   dc.AttParam.Add(ap);
+                   dc.AttParam.Add(s);
                }
                else
                {
-                   var s = dc.AttParam.SingleOrDefault(at => at.PARANAME == p.ID);
-                   if (s != null)
-                   {
-                       s.PARAVALUE = p.ToShiftString();
-                   }
+                   s.PARAVALUE = p.ToShiftString();
                }
            });
             dc.SaveChanges();
@@ -316,15 +320,15 @@ namespace 考勤调整
                    {
                        Emps.ForEach(p =>
                           {
-                              p.WriteToDate(dc, isAllWriteMode);
+                              p.FastWriteToDate(dc, isAllWriteMode);
                               SetPbPos(1);
                           });
                    }
                 );
             t.Start();
 
-
         }
+
 
         private void Button3_Click(object sender, EventArgs e)
         {
@@ -370,6 +374,137 @@ namespace 考勤调整
                 Emps.ForEach(p => p.AnnualHolidays = v);
             }
 
+        }
+
+        private void TabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// 回载考勤调整表
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+
+                OpenFileDialog openFile = new OpenFileDialog();
+                if (openFile.ShowDialog() == DialogResult.OK)
+                {
+                    double zdgz = double.Parse(textBox1.Text);
+                    DataTable dt = ExcelOper.ReadExcelToTable(openFile.FileName);
+                    if (dt != null)
+                    {
+                        foreach (DataRow p in dt.Rows)
+                        {
+                            var m = p["金额"].ToString();
+                            if (m != "")
+                            {
+                                DelAttInfo ndai = new DelAttInfo();
+                                ndai.Name = p["姓名"].ToString();
+                                ndai.LowGz = zdgz;
+                                ndai.Money = Math.Round(double.Parse(m), 1);
+                                dinfo.Add(ndai);
+                            }
+                        }
+                        delAttInfoBindingSource.DataSource = dinfo;
+                    }
+                }
+            }
+            catch (Exception b)
+            {
+                MessageBox.Show(b.Message);
+            }
+        }
+        /// <summary>
+        /// 开始调整
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            dinfo.ForEach(p =>
+            {
+                CheckAutoDelete cad = new CheckAutoDelete(dc, this.Shifts);
+                cad.LoadCheck(p.Name, d1a.Value, d1b.Value);
+                p.ReHours = cad.DeleteHour(p.Hours);
+
+            });
+            delAttInfoDataGridView.Refresh();
+            MessageBox.Show("调整完成。");
+        }
+
+        private void Sc_Click(object sender, EventArgs e)
+        {
+            DateTime bt = d4a.Value.Add(d4t1.Value.TimeOfDay);
+            DateTime et = d4a.Value.Add(d4t2.Value.TimeOfDay);
+            int count = new CheckDelete(dc).DeleteCheck(bt, et);
+            MessageBox.Show(string.Format("共删除了{0}条打卡记录.", count));
+
+        }
+        /// <summary>
+        /// 自动排班
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripButton6_Click(object sender, EventArgs e)
+        {
+            var selectrows = shiftdgv.SelectedRows;
+            if (selectrows.Count > 0)
+            {
+                List<Shift> ls = new List<Shift>();
+
+                foreach(DataGridViewRow r in selectrows)
+                {
+                    ls.Add((Shift)r.DataBoundItem);
+                };
+                var rows = empDgv.SelectedRows;
+                foreach (DataGridViewRow r in rows)
+                {
+                    var empobj = (EmpCheckMonth)r.DataBoundItem;
+                    empobj.AutoChangeShift(ls);
+
+                }
+                dayDgv.Refresh();
+                MessageBox.Show("排班完成");
+            }
+
+        }
+
+        private void Button6_Click(object sender, EventArgs e)
+        {
+            var ulist = dc.USERINFO.ToList();
+            ulist.ForEach(p =>
+            {
+                p.Name = p.Name.Split('\0')[0];
+            });
+
+            dc.SaveChanges();
+            dayDgv.Refresh();
+            MessageBox.Show("修正完成");
+        }
+
+        private void ToolStripButton7_Click(object sender, EventArgs e)
+        {
+            var selectrows = shiftdgv.SelectedRows;
+            if (selectrows.Count > 0)
+            {
+             
+                                
+                var rows = empDgv.SelectedRows;
+                foreach (DataGridViewRow r in rows)
+                {
+                    var empobj = (EmpCheckMonth)r.DataBoundItem;
+                    empobj.SetOneWeekIsSameShift();
+
+                }
+                dayDgv.Refresh();
+                MessageBox.Show("排班完成");
+            }
         }
     }
 }

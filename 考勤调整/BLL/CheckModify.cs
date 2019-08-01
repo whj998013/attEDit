@@ -189,7 +189,7 @@ namespace 考勤调整
                         ed.NewChecks.Add(new CHECKINOUT
                         {
                             USERID = ed.Emp.USERID,
-                            CHECKTIME = ed.CheckDate + ed.FTS,
+                            CHECKTIME = ed.CheckDate.AddSeconds(1) + ed.FTS,
                             Memoinfo = ed.EmpShift.ID
                         });
                         amIn = true;
@@ -210,7 +210,7 @@ namespace 考勤调整
                         ed.NewChecks.Add(new CHECKINOUT
                         {
                             USERID = ed.Emp.USERID,
-                            CHECKTIME = ed.CheckDate + ed.LTS,
+                            CHECKTIME = ed.CheckDate.AddSeconds(1) + ed.LTS,
                             Memoinfo = ed.EmpShift.ID
 
                         });
@@ -239,7 +239,7 @@ namespace 考勤调整
                         ed.NewChecks.Add(new CHECKINOUT
                         {
                             USERID = ed.Emp.USERID,
-                            CHECKTIME = ed.CheckDate + ed.FTS,
+                            CHECKTIME = ed.CheckDate.AddSeconds(1) + ed.FTS,
                             Memoinfo = ed.EmpShift.ID
 
                         });
@@ -263,7 +263,7 @@ namespace 考勤调整
                         ed.NewChecks.Add(new CHECKINOUT
                         {
                             USERID = ed.Emp.USERID,
-                            CHECKTIME = ed.CheckDate + ed.LTS,
+                            CHECKTIME = ed.CheckDate.AddSeconds(1) + ed.LTS,
                             Memoinfo = ed.EmpShift.ID
 
                         });
@@ -292,7 +292,7 @@ namespace 考勤调整
                         ed.NewChecks.Add(new CHECKINOUT
                         {
                             USERID = ed.Emp.USERID,
-                            CHECKTIME = ed.CheckDate + ed.FTS,
+                            CHECKTIME = ed.CheckDate.AddSeconds(1) + ed.FTS,
                             Memoinfo = ed.EmpShift.ID
 
                         });
@@ -316,7 +316,7 @@ namespace 考勤调整
                         ed.NewChecks.Add(new CHECKINOUT
                         {
                             USERID = ed.Emp.USERID,
-                            CHECKTIME = ed.CheckDate + ed.LTS,
+                            CHECKTIME = ed.CheckDate.AddSeconds(1) + ed.LTS,
                             Memoinfo = ed.EmpShift.ID
 
                         });
@@ -337,7 +337,6 @@ namespace 考勤调整
         private DateTime GetOutTime(DateTime d, TimeSpan outTime, TimeSpan shift)
         {
             if ((outTime - shift).TotalMinutes < OutB && outTime != shift) return d.Add(outTime);
-
             int rn = rand.Next(1, OutF + OutB);
             var re = d.Add(shift).AddMinutes(rn - OutF).AddSeconds(rand.Next(0, 59));
             return re;
