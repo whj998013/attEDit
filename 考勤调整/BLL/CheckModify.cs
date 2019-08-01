@@ -292,7 +292,7 @@ namespace 考勤调整
                     //otIn
                     bool otIn = false;
 
-                    if (ed.FTS <= shift.OTCheckIn && ed.LTS > shift.OTCheckIn)
+                    if (ed.FTS <= shift.OTCheckIn && ed.LTS > shift.OTCheckIn.Add(new TimeSpan(1,30,0)))
                     {
                         ed.NewChecks.Add(new CHECKINOUT
                         {
