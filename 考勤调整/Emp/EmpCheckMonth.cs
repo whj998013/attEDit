@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using CheckDb;
 using EntityFramework.Utilities;
 namespace 考勤调整
@@ -383,18 +384,23 @@ namespace 考勤调整
         {
             List<CHECKINOUT> oldlist = new List<CHECKINOUT>();
             List<CHECKINOUT> newlist = new List<CHECKINOUT>();
-
+            string delstr = "";
             EmpChecks.ForEach(p =>
             {
                 if (p.NewChecks.Count > 0 || IsAllWriteMode)
                 {
-                    oldlist.AddRange(p.Checks);
+                  //  oldlist.AddRange(p.Checks);
+
+                    delstr = delstr + p.GetDeleteSqlStr();
                     if (p.NewChecks.Count > 0) newlist.AddRange(p.NewChecks);
                 }
             });
 
-            dc.CHECKINOUT.RemoveRange(oldlist);
-            dc.SaveChanges();
+            //dc.CHECKINOUT.RemoveRange(oldlist);
+            //dc.SaveChanges();
+
+            if (delstr!="") dc.Database.ExecuteSqlCommand(delstr);
+
             EFBatchOperation.For(dc, dc.CHECKINOUT)
                 .InsertAll(newlist);
 

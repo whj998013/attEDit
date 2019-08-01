@@ -47,9 +47,12 @@ namespace 考勤调整
         /// <summary>
         /// 打卡一次生成全天考勤
         /// </summary>
-        public bool OneCheckBuildOneDay { get; set; }
+        public bool OneCheckBuildOneDay { get; set; } 
 
-        //private bool _Ignore15MinuteCheck;
+        /// <summary>
+        /// 节假日不上班
+        /// </summary>
+        public bool IsHollyDayNotWork { get; set; }
         ///// <summary>
         ///// 忽略首尾15分钟内打卡
         ///// </summary>
@@ -164,7 +167,8 @@ namespace 考勤调整
         /// <param name="ed"></param>
         private void BuildUserCheckInOut(EmpCheckDay ed)
         {
-
+            if (IsHollyDayNotWork && ed.DayType == DayType.假日) return;
+            
             if (ed.Checks.Count > 0 || NoCheckAlwaysBuild)
             {
 
@@ -328,7 +332,7 @@ namespace 考勤调整
 
         private DateTime GetInTime(DateTime d, TimeSpan inTime, TimeSpan shift)
         {
-            if ((shift - inTime).TotalMinutes < InF && inTime != shift) return d.Add(inTime);
+            if ((shift - inTime).TotalMinutes < InF && inTime != shift) return d.Add(inTime).AddSeconds(1);
             int rn = rand.Next(1, InF + InB);
             var re = d.Add(shift).AddMinutes(rn - InF).AddSeconds(rand.Next(0, 59));
             return re;
@@ -336,7 +340,7 @@ namespace 考勤调整
 
         private DateTime GetOutTime(DateTime d, TimeSpan outTime, TimeSpan shift)
         {
-            if ((outTime - shift).TotalMinutes < OutB && outTime != shift) return d.Add(outTime);
+            if ((outTime - shift).TotalMinutes < OutB && outTime != shift) return d.Add(outTime).AddSeconds(1);
             int rn = rand.Next(1, OutF + OutB);
             var re = d.Add(shift).AddMinutes(rn - OutF).AddSeconds(rand.Next(0, 59));
             return re;

@@ -108,9 +108,7 @@ namespace CheckDb
                 .Property(e => e.PASSWORD)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<USERINFO>()
-                .Property(e => e.upsize_ts)
-                .IsFixedLength();
+       
 
             //modelBuilder.Entity<USERINFO>()
             //    .Property(e => e.IDCardNo)

@@ -506,5 +506,13 @@ namespace 考勤调整
                 MessageBox.Show("排班完成");
             }
         }
+
+        private void Button7_Click(object sender, EventArgs e)
+        {
+            AttDbRepair adr = new AttDbRepair();
+            adr.RepairDb(dc);
+            MessageBox.Show("修复命令执行完成.");
+
+        }
     }
 }

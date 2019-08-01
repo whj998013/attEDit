@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using CheckDb;
+using System;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using CheckDb;
 
 namespace 考勤调整
 {
@@ -31,14 +26,26 @@ namespace 考勤调整
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            CheckSync cs = new CheckSync(cdb, BeginDate.Value, EndDate.Value);
-            int count = cs.SyncCount();
-            var re = MessageBox.Show(string.Format("本次同步将增加{0}条记录，是否继续同步。", count), "是否同步", MessageBoxButtons.OKCancel);
-            if (re == DialogResult.OK)
+            if (EndDate.Value <= DateTime.Parse("2021-1-1"))
             {
-                cs.Sync(out int delNum, out int addNum);
-                MessageBox.Show(string.Format("同步成功，删除{0}条,新加{1}",delNum,addNum));
+                CheckSync cs = new CheckSync(cdb, BeginDate.Value, EndDate.Value);
+                int count = cs.SyncCount();
+                var re = MessageBox.Show(string.Format("本次同步将增加{0}条记录，是否继续同步。", count), "是否同步", MessageBoxButtons.OKCancel);
+                if (re == DialogResult.OK)
+                {
+                    cs.Sync(out int delNum, out int addNum);
+                    var r = cdb.tday.First();
+                    r.t1 = BeginDate.Value;
+                    r.t2 = EndDate.Value;
+                    cdb.SaveChanges();
+                    MessageBox.Show(string.Format("同步成功，删除{0}条,新加{1}", delNum, addNum));
+                }
             }
+            else
+            {
+                throw new Exception("内部时间错误，请联系开发人员");
+            }
+
         }
     }
 }

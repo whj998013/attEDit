@@ -30,15 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AttEdit));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.empDgv = new System.Windows.Forms.DataGridView();
             this.BigWeekHour = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmpId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -113,7 +113,11 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.BtnSaveShift = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -145,8 +149,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.button6 = new System.Windows.Forms.Button();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.empNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deptNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.workTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -180,7 +183,6 @@
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delAttInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.empDgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dayDgv)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -844,6 +846,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.checkBox8);
             this.groupBox2.Controls.Add(this.checkBox5);
             this.groupBox2.Controls.Add(this.checkBox1);
             this.groupBox2.Controls.Add(this.checkBox3);
@@ -862,7 +865,7 @@
             // 
             this.checkBox5.AutoSize = true;
             this.checkBox5.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.checkModifyBindingSource, "NoCheckAlwaysBuild", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.checkBox5.Location = new System.Drawing.Point(8, 111);
+            this.checkBox5.Location = new System.Drawing.Point(8, 100);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(156, 16);
             this.checkBox5.TabIndex = 16;
@@ -873,7 +876,7 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.checkModifyBindingSource, "Need7Rest1", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.checkBox1.Location = new System.Drawing.Point(8, 140);
+            this.checkBox1.Location = new System.Drawing.Point(8, 122);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(84, 16);
             this.checkBox1.TabIndex = 0;
@@ -917,7 +920,7 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(9, 53);
+            this.radioButton1.Location = new System.Drawing.Point(9, 49);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(155, 16);
             this.radioButton1.TabIndex = 2;
@@ -929,7 +932,7 @@
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.checkModifyBindingSource, "BuildAllCheck", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.radioButton2.Location = new System.Drawing.Point(9, 80);
+            this.radioButton2.Location = new System.Drawing.Point(9, 74);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(95, 16);
             this.radioButton2.TabIndex = 3;
@@ -1076,8 +1079,29 @@
             this.BtnSaveShift.Text = "保存";
             this.BtnSaveShift.Click += new System.EventHandler(this.BtnSaveShift_Click);
             // 
+            // toolStripButton6
+            // 
+            this.toolStripButton6.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
+            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton6.Name = "toolStripButton6";
+            this.toolStripButton6.Size = new System.Drawing.Size(124, 22);
+            this.toolStripButton6.Text = "选定员工自动排班";
+            this.toolStripButton6.Click += new System.EventHandler(this.ToolStripButton6_Click);
+            // 
+            // toolStripButton7
+            // 
+            this.toolStripButton7.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
+            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton7.Name = "toolStripButton7";
+            this.toolStripButton7.Size = new System.Drawing.Size(112, 22);
+            this.toolStripButton7.Text = "一周为同一班次";
+            this.toolStripButton7.Click += new System.EventHandler(this.ToolStripButton7_Click);
+            // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button7);
             this.tabPage2.Controls.Add(this.button6);
             this.tabPage2.Controls.Add(this.groupBox6);
             this.tabPage2.Controls.Add(this.panel1);
@@ -1097,6 +1121,26 @@
             this.tabPage2.Text = "考勤调整工具";
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Click += new System.EventHandler(this.TabPage2_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(898, 302);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(245, 43);
+            this.button7.TabIndex = 23;
+            this.button7.Text = "数据库修复";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.Button7_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(898, 186);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(245, 43);
+            this.button6.TabIndex = 22;
+            this.button6.Text = "姓名乱码修正";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.Button6_Click);
             // 
             // groupBox6
             // 
@@ -1413,25 +1457,16 @@
             this.saveFileDialog1.Filter = "Excel文件(*.xlsx)|*.xlsx";
             this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.SaveFileDialog1_FileOk);
             // 
-            // toolStripButton6
+            // checkBox8
             // 
-            this.toolStripButton6.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
-            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(124, 22);
-            this.toolStripButton6.Text = "选定员工自动排班";
-            this.toolStripButton6.Click += new System.EventHandler(this.ToolStripButton6_Click);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(898, 186);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(245, 43);
-            this.button6.TabIndex = 22;
-            this.button6.Text = "姓名乱码修正";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.Button6_Click);
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.checkModifyBindingSource, "IsHollyDayNotWork", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBox8.Location = new System.Drawing.Point(8, 145);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(96, 16);
+            this.checkBox8.TabIndex = 17;
+            this.checkBox8.Text = "节假日不上班";
+            this.checkBox8.UseVisualStyleBackColor = true;
             // 
             // empNameDataGridViewTextBoxColumn
             // 
@@ -1503,9 +1538,9 @@
             // checkDateDataGridViewTextBoxColumn
             // 
             this.checkDateDataGridViewTextBoxColumn.DataPropertyName = "CheckDate";
-            dataGridViewCellStyle19.Format = "d";
-            dataGridViewCellStyle19.NullValue = null;
-            this.checkDateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.checkDateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.checkDateDataGridViewTextBoxColumn.HeaderText = "日期";
             this.checkDateDataGridViewTextBoxColumn.Name = "checkDateDataGridViewTextBoxColumn";
             this.checkDateDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1522,9 +1557,9 @@
             // firstAmendDataGridViewTextBoxColumn
             // 
             this.firstAmendDataGridViewTextBoxColumn.DataPropertyName = "FirstAmend";
-            dataGridViewCellStyle20.Format = "t";
-            dataGridViewCellStyle20.NullValue = null;
-            this.firstAmendDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle2.Format = "t";
+            dataGridViewCellStyle2.NullValue = null;
+            this.firstAmendDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.firstAmendDataGridViewTextBoxColumn.HeaderText = "首次打卡修正";
             this.firstAmendDataGridViewTextBoxColumn.Name = "firstAmendDataGridViewTextBoxColumn";
             this.firstAmendDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1532,9 +1567,9 @@
             // lastAmendDataGridViewTextBoxColumn
             // 
             this.lastAmendDataGridViewTextBoxColumn.DataPropertyName = "LastAmend";
-            dataGridViewCellStyle21.Format = "t";
-            dataGridViewCellStyle21.NullValue = null;
-            this.lastAmendDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle3.Format = "t";
+            dataGridViewCellStyle3.NullValue = null;
+            this.lastAmendDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.lastAmendDataGridViewTextBoxColumn.HeaderText = "末次打卡修正";
             this.lastAmendDataGridViewTextBoxColumn.Name = "lastAmendDataGridViewTextBoxColumn";
             this.lastAmendDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1585,9 +1620,9 @@
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "AmCheckIn";
-            dataGridViewCellStyle22.Format = "t";
-            dataGridViewCellStyle22.NullValue = null;
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle4.Format = "t";
+            dataGridViewCellStyle4.NullValue = null;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewTextBoxColumn3.HeaderText = "AM上";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.Width = 70;
@@ -1595,9 +1630,9 @@
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "AmcheckOut";
-            dataGridViewCellStyle23.Format = "t";
-            dataGridViewCellStyle23.NullValue = null;
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle5.Format = "t";
+            dataGridViewCellStyle5.NullValue = null;
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewTextBoxColumn4.HeaderText = "AM下";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.Width = 70;
@@ -1605,9 +1640,9 @@
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "PmCheckIn";
-            dataGridViewCellStyle24.Format = "t";
-            dataGridViewCellStyle24.NullValue = null;
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle6.Format = "t";
+            dataGridViewCellStyle6.NullValue = null;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewTextBoxColumn5.HeaderText = "PM上";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.Width = 70;
@@ -1615,9 +1650,9 @@
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "PmCheckOut";
-            dataGridViewCellStyle25.Format = "t";
-            dataGridViewCellStyle25.NullValue = null;
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle7.Format = "t";
+            dataGridViewCellStyle7.NullValue = null;
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewTextBoxColumn6.HeaderText = "PM下";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.Width = 70;
@@ -1625,9 +1660,9 @@
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.DataPropertyName = "OTCheckIn";
-            dataGridViewCellStyle26.Format = "t";
-            dataGridViewCellStyle26.NullValue = null;
-            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle8.Format = "t";
+            dataGridViewCellStyle8.NullValue = null;
+            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewTextBoxColumn7.HeaderText = "OT上";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.Width = 70;
@@ -1635,9 +1670,9 @@
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.DataPropertyName = "OTCheckOut";
-            dataGridViewCellStyle27.Format = "t";
-            dataGridViewCellStyle27.NullValue = null;
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle9.Format = "t";
+            dataGridViewCellStyle9.NullValue = null;
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewTextBoxColumn8.HeaderText = "OT下";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.Width = 70;
@@ -1679,16 +1714,6 @@
             // delAttInfoBindingSource
             // 
             this.delAttInfoBindingSource.DataSource = typeof(考勤调整.DelAttInfo);
-            // 
-            // toolStripButton7
-            // 
-            this.toolStripButton7.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
-            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(112, 22);
-            this.toolStripButton7.Text = "一周为同一班次";
-            this.toolStripButton7.Click += new System.EventHandler(this.ToolStripButton7_Click);
             // 
             // AttEdit
             // 
@@ -1900,6 +1925,8 @@
         private System.Windows.Forms.ToolStripButton toolStripButton6;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.ToolStripButton toolStripButton7;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.CheckBox checkBox8;
     }
 }
 

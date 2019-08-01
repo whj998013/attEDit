@@ -45,7 +45,12 @@ namespace 考勤调整
         /// </summary>
         public string DeptName { get; set; }
 
-
+        public string GetDeleteSqlStr()
+        {
+            if (RawChecks.Count == 0) return "";
+            if(RawChecks.Count==1) return string.Format("delete checkinout where userid={0} and checktime='{1}';", Emp.USERID, FirstCheck);
+            return string.Format("delete checkinout where userid={0} and checktime>='{1}' and checktime<='{2}';", Emp.USERID, FirstCheck, LastCheck);
+        }
         /// <summary>
         /// 班次
         /// </summary>
@@ -68,13 +73,13 @@ namespace 考勤调整
 
                     if (Math.Abs((ft - EmpShift.AmCheckIn).TotalMinutes) <= 15) point += 3;
                     else if (Math.Abs((ft - EmpShift.AmCheckIn).TotalMinutes) < 30) point += 2;
-                    else if (Math.Abs((ft - EmpShift.AmCheckIn).TotalMinutes) >120) point += -3;
-                    
+                    else if (Math.Abs((ft - EmpShift.AmCheckIn).TotalMinutes) > 120) point += -3;
+
                     if (Math.Abs((lt - EmpShift.OTCheckOut).TotalMinutes) < 60) point += 1;
-                    if ((lt - EmpShift.OTCheckOut).TotalMinutes > 180) point -=2;
+                    if ((lt - EmpShift.OTCheckOut).TotalMinutes > 180) point -= 2;
 
                     if (PreCheckDay != null && PreCheckDay.EmpShift.ShiftName == EmpShift.ShiftName) point += 1;
-                    
+
                 }
 
                 return point;
