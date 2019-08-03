@@ -18,6 +18,12 @@ namespace 考勤调整
 
         public EmpCheckDay PreCheckDay { get; set; }
         public EmpCheckDay AfterCheckDay { get; set; }
+        public CHECKINOUT AmIn { get; set; }
+        public CHECKINOUT AmOut { get; set; }
+        public CHECKINOUT PmIn { get; set; }
+        public CHECKINOUT PmOut { get; set; }
+        public CHECKINOUT OtIn { get; set; }
+        public CHECKINOUT OtOut { get; set; }
 
         public USERINFO Emp { get; set; }
         public DayType DayType { get; set; }
@@ -47,9 +53,10 @@ namespace 考勤调整
 
         public string GetDeleteSqlStr()
         {
+            Checks = RawChecks;
             if (RawChecks.Count == 0) return "";
             if(RawChecks.Count==1) return string.Format("delete checkinout where userid={0} and checktime='{1}';", Emp.USERID, FirstCheck);
-            return string.Format("delete checkinout where userid={0} and checktime>='{1}' and checktime<='{2}';", Emp.USERID, FirstCheck, LastCheck);
+            return string.Format("delete checkinout where userid={0} and checktime>='{1}' and checktime<='{2}';", Emp.USERID, FirstCheck.Value.AddMinutes(-1), LastCheck.Value.AddMinutes(1));
         }
         /// <summary>
         /// 班次
@@ -68,10 +75,10 @@ namespace 考勤调整
                 {
                     var ft = FirstCheck.Value - CheckDate;
                     var lt = LastCheck.Value - CheckDate;
-                    if ((ft - EmpShift.AmCheckIn).TotalSeconds <= 0) point += 3;//不迟到1分
-                    if ((lt - EmpShift.PmCheckOut).TotalSeconds >= 0) point += 1; //未早退
+                    if ((ft - EmpShift.AmCheckIn).TotalSeconds <= 0) point += 2;//不迟到1分
+                    if ((lt - EmpShift.PmCheckOut).TotalSeconds >= 0) point += 2; //未早退
 
-                    if (Math.Abs((ft - EmpShift.AmCheckIn).TotalMinutes) <= 15) point += 3;
+                    if (Math.Abs((ft - EmpShift.AmCheckIn).TotalMinutes) <= 10) point += 4;
                     else if (Math.Abs((ft - EmpShift.AmCheckIn).TotalMinutes) < 30) point += 2;
                     else if (Math.Abs((ft - EmpShift.AmCheckIn).TotalMinutes) > 120) point += -3;
 
@@ -219,15 +226,14 @@ namespace 考勤调整
             {
                 if (Checks.Count == 0) return null;
                 var first = (DateTime)FirstCheck;
-                var fd = first.TimeOfDay;
+                var fd = first-CheckDate;
                 if (Ignore15MinuteCheck)
                 {
-                    if (fd.Minutes > 45) fd = new TimeSpan(fd.Hours + 1, 0, 0);
-                    //if ((EmpShift.AmCheckIn - fd).TotalMinutes <= 15 && (EmpShift.AmCheckIn - fd).TotalMinutes > -10) fd = EmpShift.AmCheckIn;
-                    //else if ((EmpShift.PmCheckIn - fd).TotalMinutes <= 15 && (EmpShift.PmCheckIn - fd).TotalMinutes > -10) fd = EmpShift.PmCheckIn;
-                    //else if ((EmpShift.OTCheckIn - fd).TotalMinutes <= 15 && (EmpShift.OTCheckIn - fd).TotalMinutes > -10) fd = EmpShift.OTCheckIn;
+                    if ((EmpShift.AmCheckIn - fd).TotalMinutes <= 15 && (EmpShift.AmCheckIn - fd).TotalMinutes > -5) fd = EmpShift.AmCheckIn;
+                    else if ((EmpShift.PmCheckIn - fd).TotalMinutes <= 15 && (EmpShift.PmCheckIn - fd).TotalMinutes > -5) fd = EmpShift.PmCheckIn;
+                    else if ((EmpShift.OTCheckIn - fd).TotalMinutes <= 15 && (EmpShift.OTCheckIn - fd).TotalMinutes > -5) fd = EmpShift.OTCheckIn;
                 }
-                return first.Date + fd;
+                return CheckDate + fd;
             }
         }
         /// <summary>
@@ -250,15 +256,14 @@ namespace 考勤调整
             {
                 if (Checks.Count == 0) return null;
                 var last = (DateTime)LastCheck;
-                var ld = last.TimeOfDay;
+                var ld = last-CheckDate;
                 if (Ignore15MinuteCheck)
                 {
-                    if (ld.Minutes < 15) ld = new TimeSpan(ld.Hours, 0, 0);
-                    //if ((ld - EmpShift.OTCheckOut).TotalMinutes <= 15 && (ld - EmpShift.OTCheckOut).TotalMinutes > -10) ld = EmpShift.OTCheckOut;
-                    //else if ((ld - EmpShift.PmCheckOut).TotalMinutes <= 15 && (ld - EmpShift.PmCheckOut).TotalMinutes > -10) ld = EmpShift.PmCheckOut;
-                    //else if ((ld - EmpShift.AmcheckOut).TotalMinutes <= 15 && (ld - EmpShift.AmcheckOut).TotalMinutes > -10) ld = EmpShift.AmcheckOut;
+                    if ((ld - EmpShift.OTCheckOut).TotalMinutes <= 15 && (ld - EmpShift.OTCheckOut).TotalMinutes > -5) ld = EmpShift.OTCheckOut;
+                    else if ((ld - EmpShift.PmCheckOut).TotalMinutes <= 15 && (ld - EmpShift.PmCheckOut).TotalMinutes > -5) ld = EmpShift.PmCheckOut;
+                    else if ((ld - EmpShift.AmcheckOut).TotalMinutes <= 15 && (ld - EmpShift.AmcheckOut).TotalMinutes > -5) ld = EmpShift.AmcheckOut;
                 }
-                return last.Date + ld;
+                return CheckDate + ld;
             }
         }
         /// <summary>

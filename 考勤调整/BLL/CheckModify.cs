@@ -32,6 +32,11 @@ namespace 考勤调整
         /// 下班后
         /// </summary>
         public int OutB { get; set; } = 13;
+
+        /// <summary>
+        /// 限制最大周工时
+        /// </summary>
+        public int LimtBigWeekTime { get; set; } = 60;
         /// <summary>
         /// 七休一
         /// </summary>
@@ -47,7 +52,7 @@ namespace 考勤调整
         /// <summary>
         /// 打卡一次生成全天考勤
         /// </summary>
-        public bool OneCheckBuildOneDay { get; set; } 
+        public bool OneCheckBuildOneDay { get; set; }
 
         /// <summary>
         /// 节假日不上班
@@ -97,11 +102,67 @@ namespace 考勤调整
                                       RemoveMillsecond(d);
                                   }
                               });
+                              SetLimtWeekTime(emp);
                           });
             }
 
 
         }
+        /// <summary>
+        /// 限制最大周工时
+        /// </summary>
+        /// <param name="ed"></param>
+        private void SetLimtWeekTime(EmpCheckMonth em)
+        {
+            em.BuildWeekCheck();
+           
+            em.EmpWeeks.ForEach(p =>
+            {
+                p.ShowNewCheckData = true;
+                if (p.TotalTime > LimtBigWeekTime)
+                {
+                    var needReHour = p.TotalTime - LimtBigWeekTime;
+                    foreach (EmpCheckDay c in p.Checks.Where(c => c.OverTime > 0).ToList().ToRandomSortList())
+                    {
+                        var over1 = c.OverTime;
+                        if (c.OtIn != null) c.Checks.Remove(c.OtIn);
+                        if (c.OtOut != null) c.Checks.Remove(c.OtOut);
+                        c.OtIn = null;
+                        c.OtOut = null;
+                        needReHour -= (over1 - c.OverTime);
+                        if (needReHour <= 0) break;
+                    };
+                    if (needReHour > 0)
+                    {
+                        foreach(EmpCheckDay  c in p.Checks.ToRandomSortList())
+                        {
+                            var over1 = c.TotalTime;
+                            c.Checks.Clear();
+                            c.AmIn = null;
+                            c.AmOut = null;
+                            c.PmIn = null;
+                            c.PmOut = null;
+                            needReHour -= (over1 - c.TotalTime);
+                            if (needReHour <= 0) break;
+                        }
+                    }
+
+                }
+                p.ShowNewCheckData = false;
+
+
+
+
+            });
+
+        }
+
+
+
+        /// <summary>
+        /// 删除毫秒
+        /// </summary>
+        /// <param name="ed"></param>
         private void RemoveMillsecond(EmpCheckDay ed)
         {
             ed.NewChecks.ForEach(p =>
@@ -182,7 +243,7 @@ namespace 考勤调整
         private void BuildUserCheckInOut(EmpCheckDay ed)
         {
             if (IsHollyDayNotWork && ed.DayType == DayType.假日) return;
-            
+
             if (ed.Checks.Count > 0 || NoCheckAlwaysBuild)
             {
 
@@ -194,20 +255,22 @@ namespace 考勤调整
                     //amIn
                     if (ed.FTS <= shift.AmCheckIn)
                     {
-                        ed.NewChecks.Add(new CHECKINOUT
+                        ed.AmIn = new CHECKINOUT
                         {
                             USERID = ed.Emp.USERID,
                             CHECKTIME = GetInTime(ed.CheckDate, ed.FTS, ed.EmpShift.AmCheckIn),
-                            Memoinfo=ed.EmpShift.ID
-                        });
+                            Memoinfo = ed.EmpShift.ID
+                        };
+                        ed.NewChecks.Add(ed.AmIn);
                         amIn = true;
                     }
                     else if (ed.FTS < shift.AmcheckOut)
                     {
-                        ed.NewChecks.Add(new CHECKINOUT
+
+                        ed.NewChecks.Add(ed.AmIn = new CHECKINOUT
                         {
                             USERID = ed.Emp.USERID,
-                            CHECKTIME = ed.CheckDate.AddSeconds(1) + ed.FTS,
+                            CHECKTIME = ed.CheckDate.AddSeconds(Get1T60Rand()) + ed.FTS,
                             Memoinfo = ed.EmpShift.ID
                         });
                         amIn = true;
@@ -216,7 +279,7 @@ namespace 考勤调整
                     //inOut
                     if (ed.LTS >= shift.AmcheckOut && amIn)
                     {
-                        ed.NewChecks.Add(new CHECKINOUT
+                        ed.NewChecks.Add(ed.AmOut = new CHECKINOUT
                         {
                             USERID = ed.Emp.USERID,
                             CHECKTIME = GetOutTime(ed.CheckDate, ed.LTS, ed.EmpShift.AmcheckOut),
@@ -225,7 +288,7 @@ namespace 考勤调整
                     }
                     else if (amIn)
                     {
-                        ed.NewChecks.Add(new CHECKINOUT
+                        ed.NewChecks.Add(ed.AmOut = new CHECKINOUT
                         {
                             USERID = ed.Emp.USERID,
                             CHECKTIME = ed.CheckDate.AddSeconds(1) + ed.LTS,
@@ -234,14 +297,14 @@ namespace 考勤调整
                         });
                     }
                 }
-                
+
                 if (Pm)
                 {
                     //pmIn
                     bool pmIn = false;
                     if (ed.FTS <= shift.PmCheckIn && ed.LTS >= shift.PmCheckIn)
                     {
-                        ed.NewChecks.Add(new CHECKINOUT
+                        ed.NewChecks.Add(ed.PmIn = new CHECKINOUT
                         {
                             USERID = ed.Emp.USERID,
                             CHECKTIME = GetInTime(ed.CheckDate, ed.FTS, ed.EmpShift.PmCheckIn),
@@ -252,10 +315,10 @@ namespace 考勤调整
                     }
                     else if (ed.FTS < shift.PmCheckOut && ed.FTS > shift.PmCheckIn)
                     {
-                        ed.NewChecks.Add(new CHECKINOUT
+                        ed.NewChecks.Add(ed.PmIn = new CHECKINOUT
                         {
                             USERID = ed.Emp.USERID,
-                            CHECKTIME = ed.CheckDate.AddSeconds(1) + ed.FTS,
+                            CHECKTIME = ed.CheckDate.AddSeconds(Get1T60Rand()) + ed.FTS,
                             Memoinfo = ed.EmpShift.ID
 
                         });
@@ -266,7 +329,7 @@ namespace 考勤调整
                     //pmOut
                     if (ed.LTS >= shift.PmCheckOut && pmIn)
                     {
-                        ed.NewChecks.Add(new CHECKINOUT
+                        ed.NewChecks.Add(ed.PmIn = new CHECKINOUT
                         {
                             USERID = ed.Emp.USERID,
                             CHECKTIME = GetOutTime(ed.CheckDate, ed.LTS, ed.EmpShift.PmCheckOut),
@@ -276,7 +339,7 @@ namespace 考勤调整
                     }
                     else if (ed.LTS >= shift.PmCheckIn && pmIn)
                     {
-                        ed.NewChecks.Add(new CHECKINOUT
+                        ed.NewChecks.Add(ed.PmIn = new CHECKINOUT
                         {
                             USERID = ed.Emp.USERID,
                             CHECKTIME = ed.CheckDate.AddSeconds(1) + ed.LTS,
@@ -292,9 +355,9 @@ namespace 考勤调整
                     //otIn
                     bool otIn = false;
 
-                    if (ed.FTS <= shift.OTCheckIn && ed.LTS > shift.OTCheckIn.Add(new TimeSpan(1,30,0)))
+                    if (ed.FTS <= shift.OTCheckIn && ed.LTS > shift.OTCheckIn.Add(new TimeSpan(0, 30, 0)))
                     {
-                        ed.NewChecks.Add(new CHECKINOUT
+                        ed.NewChecks.Add(ed.OtIn = new CHECKINOUT
                         {
                             USERID = ed.Emp.USERID,
                             CHECKTIME = GetInTime(ed.CheckDate, ed.FTS, ed.EmpShift.OTCheckIn),
@@ -305,10 +368,10 @@ namespace 考勤调整
                     }
                     else if (ed.FTS < shift.OTCheckOut && ed.FTS > shift.OTCheckIn)
                     {
-                        ed.NewChecks.Add(new CHECKINOUT
+                        ed.NewChecks.Add(ed.OtIn = new CHECKINOUT
                         {
                             USERID = ed.Emp.USERID,
-                            CHECKTIME = ed.CheckDate.AddSeconds(1) + ed.FTS,
+                            CHECKTIME = ed.CheckDate.AddSeconds(Get1T60Rand()) + ed.FTS,
                             Memoinfo = ed.EmpShift.ID
 
                         });
@@ -319,7 +382,7 @@ namespace 考勤调整
                     //otOut
                     if (ed.LTS >= shift.OTCheckOut && otIn)
                     {
-                        ed.NewChecks.Add(new CHECKINOUT
+                        ed.NewChecks.Add(ed.OtOut = new CHECKINOUT
                         {
                             USERID = ed.Emp.USERID,
                             CHECKTIME = GetOutTime(ed.CheckDate, ed.LTS, ed.EmpShift.OTCheckOut),
@@ -329,18 +392,18 @@ namespace 考勤调整
                     }
                     else if (ed.LTS > shift.OTCheckIn && otIn)
                     {
-                        ed.NewChecks.Add(new CHECKINOUT
+                        ed.NewChecks.Add(ed.OtOut = new CHECKINOUT
                         {
                             USERID = ed.Emp.USERID,
-                            CHECKTIME = ed.CheckDate.AddSeconds(1) + ed.LTS,
+                            CHECKTIME = ed.CheckDate.AddSeconds(Get1T60Rand()) + ed.LTS,
                             Memoinfo = ed.EmpShift.ID
 
                         });
                     }
                 }
 
-                 
-                
+
+
             }
 
         }
@@ -349,7 +412,7 @@ namespace 考勤调整
         {
             if ((shift - inTime).TotalMinutes < InF && inTime != shift) return d.Add(inTime).AddSeconds(1);
             int rn = rand.Next(1, InF + InB);
-            var re = d.Add(shift).AddMinutes(rn - InF).AddSeconds(rand.Next(0, 59));
+            var re = d.Add(shift).AddMinutes(rn - InF).AddSeconds(Get1T60Rand());
             return re;
         }
 
@@ -357,7 +420,7 @@ namespace 考勤调整
         {
             if ((outTime - shift).TotalMinutes < OutB && outTime != shift) return d.Add(outTime).AddSeconds(1);
             int rn = rand.Next(1, OutF + OutB);
-            var re = d.Add(shift).AddMinutes(rn - OutF).AddSeconds(rand.Next(0, 59));
+            var re = d.Add(shift).AddMinutes(rn - OutF).AddSeconds(Get1T60Rand());
             return re;
         }
         /// <summary>
@@ -367,6 +430,10 @@ namespace 考勤调整
         private int GetRand()
         {
             return rand.Next(1, 250) * 4;
+        }
+        private int Get1T60Rand()
+        {
+            return rand.Next(1, 60);
         }
     }
 }

@@ -33,7 +33,7 @@ namespace 考勤调整
 
             //生成表头
             var rc = ds.CreateRow(0);
-            List<string> ClName = new List<string>() { "部门", "姓名","卡号","类型", "日期", "首次打卡", "末次打卡","出勤时间", "当天总工时", "平日上班", "合计加班", "休息日加班", "法定加班", "打卡明细", };
+            List<string> ClName = new List<string>() { "部门", "姓名", "卡号", "类型", "日期", "首次打卡", "末次打卡", "出勤时间", "当天总工时", "平日上班", "合计加班", "休息日加班", "法定加班", "打卡明细", };
             int ic = 0;
             ClName.ForEach(p =>
             {
@@ -47,7 +47,7 @@ namespace 考勤调整
 
             ecm.ForEach(e =>
             {
-                e.EmpChecks.ForEach(p =>
+                e.GetEmpChecks.ForEach(p =>
                 {
                     var r = ds.CreateRow(rid++);
                     r.CreateCell(0).SetCellValue(e.DeptName);
@@ -69,7 +69,8 @@ namespace 考勤调整
                             r.CreateCell(9).SetCellValue(p.WorkTime);
                             r.CreateCell(10).SetCellValue(p.OverTime);
                         }
-                        else if(p.DayType == DayType.休息日){
+                        else if (p.DayType == DayType.休息日)
+                        {
                             r.CreateCell(11).SetCellValue(p.WorkTime + p.OverTime);
                         }
                         else if (p.DayType == DayType.假日)
@@ -77,14 +78,11 @@ namespace 考勤调整
                             r.CreateCell(12).SetCellValue(p.WorkTime + p.OverTime);
                         }
                         r.CreateCell(13).SetCellValue(p.CheckRecord);
-                       
-
                     }
 
                 });
 
             });
-
         }
 
         /// <summary>
@@ -97,7 +95,7 @@ namespace 考勤调整
             var ms = wb.CreateSheet("考勤表");
             //生成表头
             var rc = ms.CreateRow(0);
-            List<string> ClName = new List<string>() { "序号", "部门", "姓名", "卡号", "总出勤", "平日上班", "平日加班", "休息日加班", "法定加班","法定假天数", "年休假天数", "第一天上班", "第一周", "第二周", "第三周", "第四周", "第五周", "第六周" };
+            List<string> ClName = new List<string>() { "序号", "部门", "姓名", "卡号", "总出勤", "平日上班", "平日加班", "休息日加班", "法定加班", "法定假天数", "年休假天数", "第一天上班", "第一周", "第二周", "第三周", "第四周", "第五周", "第六周" };
             int ic = 0;
             ClName.ForEach(p =>
             {

@@ -73,7 +73,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
+            this.bigeweektime = new System.Windows.Forms.NumericUpDown();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.YearHoliday = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
@@ -95,6 +95,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
@@ -149,7 +150,6 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.empNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deptNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.workTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -183,6 +183,7 @@
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delAttInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.empDgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dayDgv)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -198,7 +199,7 @@
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bigeweektime)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.YearHoliday)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -373,6 +374,7 @@
             this.toolStrip1.Size = new System.Drawing.Size(1453, 30);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ToolStrip1_ItemClicked);
             // 
             // toolStripLabel1
             // 
@@ -471,6 +473,7 @@
             "调整模式(无调整数据则不删除原数据)"});
             this.modeselect.Name = "modeselect";
             this.modeselect.Size = new System.Drawing.Size(221, 30);
+            this.modeselect.Click += new System.EventHandler(this.Modeselect_Click);
             // 
             // toolStripLabel2
             // 
@@ -587,8 +590,8 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.label8);
-            this.groupBox5.Controls.Add(this.numericUpDown7);
+            this.groupBox5.Controls.Add(this.label7);
+            this.groupBox5.Controls.Add(this.numericUpDown5);
             this.groupBox5.Enabled = false;
             this.groupBox5.Location = new System.Drawing.Point(392, 134);
             this.groupBox5.Name = "groupBox5";
@@ -600,19 +603,19 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 20);
+            this.label8.Location = new System.Drawing.Point(20, 144);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 12);
             this.label8.TabIndex = 15;
             this.label8.Text = "限制最大周工时";
             // 
-            // numericUpDown7
+            // bigeweektime
             // 
-            this.numericUpDown7.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.checkModifyBindingSource, "BigWeekHour", true));
-            this.numericUpDown7.Location = new System.Drawing.Point(130, 21);
-            this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.Size = new System.Drawing.Size(46, 21);
-            this.numericUpDown7.TabIndex = 7;
+            this.bigeweektime.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.checkModifyBindingSource, "LimtBigWeekTime", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.bigeweektime.Location = new System.Drawing.Point(118, 140);
+            this.bigeweektime.Name = "bigeweektime";
+            this.bigeweektime.Size = new System.Drawing.Size(46, 21);
+            this.bigeweektime.TabIndex = 7;
             // 
             // groupBox4
             // 
@@ -676,11 +679,11 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.bigeweektime);
+            this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.radioButton4);
             this.groupBox3.Controls.Add(this.radioButton3);
-            this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.numericUpDown5);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.numericUpDown3);
             this.groupBox3.Controls.Add(this.label6);
@@ -723,7 +726,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 137);
+            this.label7.Location = new System.Drawing.Point(11, 23);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(113, 12);
             this.label7.TabIndex = 14;
@@ -742,7 +745,7 @@
             // 
             this.numericUpDown5.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.checkModifyBindingSource, "MissCheckPercent", true));
             this.numericUpDown5.Enabled = false;
-            this.numericUpDown5.Location = new System.Drawing.Point(135, 135);
+            this.numericUpDown5.Location = new System.Drawing.Point(132, 19);
             this.numericUpDown5.Name = "numericUpDown5";
             this.numericUpDown5.Size = new System.Drawing.Size(46, 21);
             this.numericUpDown5.TabIndex = 13;
@@ -860,6 +863,17 @@
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "生成方式";
+            // 
+            // checkBox8
+            // 
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.checkModifyBindingSource, "IsHollyDayNotWork", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBox8.Location = new System.Drawing.Point(8, 145);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(96, 16);
+            this.checkBox8.TabIndex = 17;
+            this.checkBox8.Text = "节假日不上班";
+            this.checkBox8.UseVisualStyleBackColor = true;
             // 
             // checkBox5
             // 
@@ -1277,7 +1291,8 @@
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2,
             this.toolStripButton4,
-            this.toolStripButton5});
+            this.toolStripButton5,
+            this.toolStripButton8});
             this.bindingNavigator2.Location = new System.Drawing.Point(0, 0);
             this.bindingNavigator2.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator2.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -1456,17 +1471,6 @@
             this.saveFileDialog1.FileName = "考勤表";
             this.saveFileDialog1.Filter = "Excel文件(*.xlsx)|*.xlsx";
             this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.SaveFileDialog1_FileOk);
-            // 
-            // checkBox8
-            // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.checkModifyBindingSource, "IsHollyDayNotWork", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.checkBox8.Location = new System.Drawing.Point(8, 145);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(96, 16);
-            this.checkBox8.TabIndex = 17;
-            this.checkBox8.Text = "节假日不上班";
-            this.checkBox8.UseVisualStyleBackColor = true;
             // 
             // empNameDataGridViewTextBoxColumn
             // 
@@ -1715,6 +1719,16 @@
             // 
             this.delAttInfoBindingSource.DataSource = typeof(考勤调整.DelAttInfo);
             // 
+            // toolStripButton8
+            // 
+            this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton8.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton8.Image")));
+            this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton8.Name = "toolStripButton8";
+            this.toolStripButton8.Size = new System.Drawing.Size(36, 22);
+            this.toolStripButton8.Text = "清除";
+            this.toolStripButton8.Click += new System.EventHandler(this.ToolStripButton8_Click);
+            // 
             // AttEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1743,7 +1757,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bigeweektime)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.YearHoliday)).EndInit();
@@ -1869,7 +1883,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.NumericUpDown numericUpDown7;
+        private System.Windows.Forms.NumericUpDown bigeweektime;
         private System.Windows.Forms.ToolStripComboBox modeselect;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.Button button3;
@@ -1927,6 +1941,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton7;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.CheckBox checkBox8;
+        private System.Windows.Forms.ToolStripButton toolStripButton8;
     }
 }
 

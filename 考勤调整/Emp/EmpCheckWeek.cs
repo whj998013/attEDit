@@ -13,9 +13,9 @@ namespace 考勤调整
 
         public List<EmpCheckDay> Checks { get; set; } = new List<EmpCheckDay>();
 
-        public int WeekNum { get; set; }
+        public string WeekNum { get; set; }
 
-        public EmpCheckWeek(USERINFO emp, int weekNum)
+        public EmpCheckWeek(USERINFO emp, string weekNum)
         {
             Emp = emp;
             WeekNum = weekNum;
@@ -32,7 +32,13 @@ namespace 考勤调整
                 return Checks.Sum(p => p.TotalTime);
             }
         }
-
+        public bool ShowNewCheckData
+        {
+            set
+            {
+                Checks.ForEach(P => P.ShowNewCheckData = value);
+            }
+        }
         public int UserId
         {
             get

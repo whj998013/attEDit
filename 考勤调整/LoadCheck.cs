@@ -72,13 +72,16 @@ namespace 考勤调整
             foreach (TreeNode n in e.Node.Nodes)
             {
                 n.Checked = e.Node.Checked;
+                
             }
+            emps.Clear();
+            empBindingSource.DataSource = null;
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
             List<int> re = nodes.Where(p => p.Checked).Select(n => n.Id).ToList();
-            var ulist = Dc.USERINFO.Where(p => re.Contains(p.DEFAULTDEPTID)).ToList();
+            var ulist = Dc.USERINFO.Where(p => re.Contains(p.DEFAULTDEPTID)&&p.DEFAULTDEPTID>=0).ToList();
             emps = new List<Empb>();
             ulist.ForEach((Action<USERINFO>)(p => emps.Add(new Empb
             {
@@ -89,7 +92,8 @@ namespace 考勤调整
                 DeptName = GetDeptName(p.DEFAULTDEPTID),
                 DeptId = p.DEFAULTDEPTID,
             })));
-            empBindingSource.DataSource = emps.OrderBy(p => p.DeptId);
+
+            empBindingSource.DataSource =new BindingCollection<Empb>(emps.OrderBy(p => p.DeptId).ToList());
         }
 
         private void Button3_Click(object sender, EventArgs e)
@@ -125,6 +129,11 @@ namespace 考勤调整
             clist.Clear();
             clist = Dc.CHECKINOUT.Where(p => p.CHECKTIME > BeginDate.Value && p.CHECKTIME < edate && idList.Contains(p.USERID)).ToList();
             this.Hide();
+
+        }
+
+        private void DeptTree_AfterSelect(object sender, TreeViewEventArgs e)
+        {
 
         }
     }

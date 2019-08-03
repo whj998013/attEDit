@@ -20,6 +20,15 @@ namespace 考勤调整
         public GetDayTypeDelgate GetDayType { get; set; }
         public List<Shift> Shifts { get; set; }
         public GetDeptNameDelgate GetDeptName { get; set; }
+
+        public List<EmpCheckDay> GetEmpChecks
+        {
+            get
+            {
+
+                return EmpChecks.Where(p => p.CheckDate <= EndDate).ToList();
+            }
+        }
         /// <summary>
         /// 日考勤信息
         /// </summary>
@@ -65,6 +74,9 @@ namespace 考勤调整
             GetDayType = AttControl.GetDayType;
         }
 
+        /// <summary>
+        /// 设置班次
+        /// </summary>
         public void SetShifts()
         {
             EmpChecks.ForEach(p =>
@@ -79,6 +91,28 @@ namespace 考勤调整
                     }
                 }
 
+            });
+
+            EmpChecks.ForEach(p =>
+            {
+                if (p.Checks.Count > 0)
+                {
+                    if (p.AfterCheckDay != null)
+                    {
+                        for (int i = p.Checks.Count - 1; i >= 0; i--)
+                        {
+                            if (p.AfterCheckDay.Checks.Contains(p.Checks[i]))
+                            {
+                                if (p.IsRestDay) p.Checks.Remove(p.Checks[i]);
+                                else p.AfterCheckDay.Checks.Remove(p.Checks[i]);
+                            }
+                        }
+
+
+
+
+                    }
+                }
 
             });
 
@@ -106,7 +140,7 @@ namespace 考勤调整
         {
             BeginDate = beginDate;
             EndDate = endDate;
-            for (DateTime d = beginDate; d <= endDate; d = d.AddDays(1))
+            for (DateTime d = beginDate; d <= endDate.AddDays(1); d = d.AddDays(1))
             {
                 var emp = new EmpCheckDay(Emp, d)
                 {
@@ -131,15 +165,31 @@ namespace 考勤调整
         {
             get
             {
-                return EmpChecks.Where(p => p.DayType == DayType.假日).Count();
+                return EmpChecks.Where(p => p.DayType == DayType.假日 && p.CheckDate <= EndDate).Count();
             }
         }
+        /// <summary>
+        /// 更改班次
+        /// </summary>
+        /// <param name="ecd"></param>
+        /// <param name="newShift"></param>
         public void ChangeShift(EmpCheckDay ecd, Shift newShift)
         {
             if (ecd.EmpShift.BeginTime != newShift.BeginTime || ecd.EmpShift.EndTime != newShift.EndTime)
             {
-                DateTime bd = ecd.CheckDate.Add(newShift.BeginTime);
-                DateTime ed = ecd.CheckDate.Add(newShift.EndTime);
+                if (ecd.DayType == DayType.假日) newShift = new Shift();
+                DateTime bd, ed;
+                if (ecd.AfterCheckDay!=null&&ecd.AfterCheckDay.DayType == DayType.假日)
+                {
+                     bd = ecd.CheckDate.Add(newShift.BeginTime);
+                     ed = ecd.CheckDate.Add(new TimeSpan(23,59,59));
+                }
+                else
+                {
+                     bd = ecd.CheckDate.Add(newShift.BeginTime);
+                     ed = ecd.CheckDate.Add(newShift.EndTime);
+                  }
+
                 ecd.RawChecks = Checks.Where(p => p.CHECKTIME >= bd && p.CHECKTIME <= ed).ToList();
                 ecd.Checks = ecd.RawChecks;
                 RemoveDuplicate(ecd);
@@ -147,6 +197,10 @@ namespace 考勤调整
             ecd.EmpShift = newShift;
         }
 
+        /// <summary>
+        /// 去重
+        /// </summary>
+        /// <param name="ecd"></param>
         public void RemoveDuplicate(EmpCheckDay ecd)
         {
             if (ecd.PreCheckDay != null && ecd.PreCheckDay.RawChecks.Count > 0)
@@ -223,13 +277,13 @@ namespace 考勤调整
             {
                 if (p.Checks.Count > 0)
                 {
-                    var group = p.Checks.GroupBy(c => c.ShiftName).Select( c =>new { name = c.Key, clist = c.ToList(),count=c.ToList().Count()}).OrderByDescending(t=>t.count).ToList();
+                    var group = p.Checks.GroupBy(c => c.ShiftName).Select(c => new { name = c.Key, clist = c.ToList(), count = c.ToList().Count() }).OrderByDescending(t => t.count).ToList();
                     var shift = group[0].clist[0].EmpShift;
                     p.Checks.ForEach(c =>
                     {
-                        ChangeShift(c,shift);
+                        ChangeShift(c, shift);
                     });
-                    
+
                 }
             });
         }
@@ -269,7 +323,7 @@ namespace 考勤调整
         {
             get
             {
-                return Math.Round(EmpChecks.Where(p => p.DayType == DayType.假日).Sum(p => p.TotalTime), 1);
+                return Math.Round(EmpChecks.Where(p => p.DayType == DayType.假日 && p.CheckDate <= EndDate).Sum(p => p.TotalTime), 1);
             }
         }
 
@@ -280,7 +334,7 @@ namespace 考勤调整
         {
             get
             {
-                return Math.Round(EmpChecks.Where(p => p.DayType == DayType.休息日).Sum(p => p.TotalTime), 1);
+                return Math.Round(EmpChecks.Where(p => p.DayType == DayType.休息日 && p.CheckDate <= EndDate).Sum(p => p.TotalTime), 1);
 
             }
         }
@@ -292,7 +346,7 @@ namespace 考勤调整
         {
             get
             {
-                return Math.Round(EmpChecks.Where(p => p.DayType == DayType.平日).Sum(p => p.WorkTime), 1);
+                return Math.Round(EmpChecks.Where(p => p.DayType == DayType.平日 && p.CheckDate <= EndDate).Sum(p => p.WorkTime), 1)+ AnnualHolidays*8;
             }
         }
         /// <summary>
@@ -302,7 +356,7 @@ namespace 考勤调整
         {
             get
             {
-                return Math.Round(EmpChecks.Where(p => p.DayType == DayType.平日).Sum(p => p.OverTime), 1);
+                return Math.Round(EmpChecks.Where(p => p.DayType == DayType.平日 && p.CheckDate <= EndDate).Sum(p => p.OverTime), 1);
             }
         }
         /// <summary>
@@ -312,7 +366,7 @@ namespace 考勤调整
         {
             get
             {
-                return Math.Round(EmpChecks.Sum(p => p.TotalTime), 1);
+                return Math.Round(EmpChecks.Where(p => p.CheckDate <= EndDate).Sum(p => p.TotalTime), 1);
             }
         }
 
@@ -332,7 +386,7 @@ namespace 考勤调整
                 return Math.Round(EmpWeeks.Max(p => p.TotalTime), 1);
             }
         }
-        private void BuildWeekCheck()
+        public void BuildWeekCheck()
         {
             if (EmpWeeks == null)
             {
@@ -340,8 +394,9 @@ namespace 考勤调整
 
                 EmpChecks.ForEach(p =>
                 {
-                    var wn = GetWeekOfYear(p.CheckDate);//取得周数
-                var week = EmpWeeks.SingleOrDefault(w => w.WeekNum == wn);
+                    var wn = p.CheckDate.Year + GetWeekOfYear(p.CheckDate).ToString();//取得周数
+
+                    var week = EmpWeeks.SingleOrDefault(w => w.WeekNum == wn);
                     if (week == null)
                     {
                         week = new EmpCheckWeek(Emp, wn);
@@ -368,7 +423,7 @@ namespace 考勤调整
 
             EmpChecks.ForEach(p =>
             {
-                if (p.NewChecks.Count > 0 || IsAllWriteMode)
+                if (p.NewChecks.Count > 0)
                 {
                     dc.CHECKINOUT.RemoveRange(p.Checks);
                     if (p.NewChecks.Count > 0) dc.CHECKINOUT.AddRange(p.NewChecks);
@@ -380,29 +435,46 @@ namespace 考勤调整
         /// <summary>
         /// 写入数据库
         /// </summary>
-        public void FastWriteToDate(attContent dc, bool IsAllWriteMode)
+        public void FastWriteToDate(attContent dc)
         {
-            List<CHECKINOUT> oldlist = new List<CHECKINOUT>();
+
             List<CHECKINOUT> newlist = new List<CHECKINOUT>();
-            string delstr = "";
+            ///删除考勤 
+            if (Checks.Count > 0)
+            {
+
+                var df1 = GetEmpChecks.Where(p => p.FirstCheck != null).OrderBy(p => p.CheckDate).FirstOrDefault();
+                var dl2 = GetEmpChecks.Where(p => p.FirstCheck != null).OrderBy(p => p.CheckDate).LastOrDefault();
+                if (df1 != null & dl2 != null)
+                {
+                    var d1 = df1.FirstCheck.Value;
+                    var d2 = dl2.LastCheck.Value;
+                    var cd1 = Checks.OrderBy(p => p.CHECKTIME).First();
+                    if (d1 != cd1.CHECKTIME)
+                    {
+                        if (cd1.Memoinfo == null) d1 = cd1.CHECKTIME;
+                    };
+                    string delstr = string.Format("delete checkinout where userid={0} and checktime>='{1}' and checktime<='{2}';", Emp.USERID, d1.AddMinutes(-1), d2.AddMinutes(1));
+                    if (delstr != "") dc.Database.ExecuteSqlCommand(delstr);
+
+                }
+
+
+            }
+
+            //添加考勤
             EmpChecks.ForEach(p =>
             {
-                if (p.NewChecks.Count > 0 || IsAllWriteMode)
+                if (p.NewChecks.Count > 0)
                 {
-                  //  oldlist.AddRange(p.Checks);
-
-                    delstr = delstr + p.GetDeleteSqlStr();
                     if (p.NewChecks.Count > 0) newlist.AddRange(p.NewChecks);
                 }
             });
 
-            //dc.CHECKINOUT.RemoveRange(oldlist);
-            //dc.SaveChanges();
-
-            if (delstr!="") dc.Database.ExecuteSqlCommand(delstr);
+            var l = new HashSet<CHECKINOUT>(newlist);
 
             EFBatchOperation.For(dc, dc.CHECKINOUT)
-                .InsertAll(newlist);
+                .InsertAll(l);
 
 
         }

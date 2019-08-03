@@ -36,8 +36,7 @@ namespace 考勤调整
             if (empDgv.SelectedRows.Count > 0)
             {
                 var obj = (EmpCheckMonth)empDgv.SelectedRows[0].DataBoundItem;
-                empCheckDayBindingSource.DataSource = obj.EmpChecks.OrderBy(p => p.CheckDate);
-
+                empCheckDayBindingSource.DataSource =obj.GetEmpChecks.OrderBy(p => p.CheckDate);
 
             }
         }
@@ -153,8 +152,9 @@ namespace 考勤调整
                 eobj.Add(p);
             });
             Emps.ForEach(p => p.SetShifts());
-            empCheckMonthBindingSource.DataSource = Emps.OrderByDescending(p => p.DeptName).ThenBy(p => p.EmpId).ToList();
-
+            var list = Emps.OrderByDescending(p => p.DeptName).ThenBy(p => p.EmpId).ToList();
+            empCheckMonthBindingSource.DataSource = new BindingCollection<EmpCheckMonth>(list);
+            YearHoliday.Value = 0;
         }
 
         private void DataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -268,6 +268,7 @@ namespace 考勤调整
                 p.SetIgnore15MinuteCheck(v);
             });
             dayDgv.Refresh();
+            empDgv.Refresh();
         }
 
         private void CheckBox7_CheckedChanged(object sender, EventArgs e)
@@ -320,8 +321,13 @@ namespace 考勤调整
                    {
                        Emps.ForEach(p =>
                           {
-                              p.FastWriteToDate(dc, isAllWriteMode);
-                              SetPbPos(1);
+                              if (isAllWriteMode)
+                              {
+                                  p.FastWriteToDate(dc);
+
+                              }
+                              else p.WriteToDate(dc, isAllWriteMode);
+                                  SetPbPos(1);
                           });
                    }
                 );
@@ -368,11 +374,12 @@ namespace 考勤调整
 
         private void NumericUpDown6_ValueChanged(object sender, EventArgs e)
         {
-            if (YearHoliday.Value > 0)
+            if (YearHoliday.Value >= 0)
             {
                 int v = (int)YearHoliday.Value;
                 Emps.ForEach(p => p.AnnualHolidays = v);
             }
+            empDgv.Refresh();
 
         }
 
@@ -390,7 +397,8 @@ namespace 考勤调整
         {
             try
             {
-
+                dinfo.Clear();
+                delAttInfoBindingSource.DataSource = null;
 
                 OpenFileDialog openFile = new OpenFileDialog();
                 if (openFile.ShowDialog() == DialogResult.OK)
@@ -458,7 +466,7 @@ namespace 考勤调整
             {
                 List<Shift> ls = new List<Shift>();
 
-                foreach(DataGridViewRow r in selectrows)
+                foreach (DataGridViewRow r in selectrows)
                 {
                     ls.Add((Shift)r.DataBoundItem);
                 };
@@ -490,11 +498,7 @@ namespace 考勤调整
 
         private void ToolStripButton7_Click(object sender, EventArgs e)
         {
-            var selectrows = shiftdgv.SelectedRows;
-            if (selectrows.Count > 0)
-            {
-             
-                                
+            
                 var rows = empDgv.SelectedRows;
                 foreach (DataGridViewRow r in rows)
                 {
@@ -504,7 +508,7 @@ namespace 考勤调整
                 }
                 dayDgv.Refresh();
                 MessageBox.Show("排班完成");
-            }
+            
         }
 
         private void Button7_Click(object sender, EventArgs e)
@@ -513,6 +517,22 @@ namespace 考勤调整
             adr.RepairDb(dc);
             MessageBox.Show("修复命令执行完成.");
 
+        }
+
+        private void ToolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void Modeselect_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ToolStripButton8_Click(object sender, EventArgs e)
+        {
+            dinfo.Clear();
+            delAttInfoBindingSource.DataSource = null; 
         }
     }
 }
