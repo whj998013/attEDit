@@ -95,7 +95,7 @@ namespace 考勤调整
             var ms = wb.CreateSheet("考勤表");
             //生成表头
             var rc = ms.CreateRow(0);
-            List<string> ClName = new List<string>() { "序号", "部门", "姓名", "卡号", "总出勤", "平日上班", "平日加班", "休息日加班", "法定加班", "法定假天数", "年休假天数", "第一天上班", "第一周", "第二周", "第三周", "第四周", "第五周", "第六周" };
+            List<string> ClName = new List<string>() { "序号", "部门", "姓名", "卡号", "总出勤", "平日上班", "平日加班", "休息日加班", "法定加班", "法定假天数", "年休假天数", "第一天上班", "出勤天数", "第一周", "第二周", "第三周", "第四周", "第五周", "第六周" };
             int ic = 0;
             ClName.ForEach(p =>
             {
@@ -122,16 +122,17 @@ namespace 考勤调整
                 r.CreateCell(10).SetCellValue(p.AnnualHolidays);// 年休假天数
                 r.CreateCell(11).SetCellValue(p.FirstCheckDate);// 第一天上班
                 r.Cells[11].CellStyle = cellStyle;
-                int wid = 12;
+                r.CreateCell(12).SetCellValue(p.CheckNum);// 出勤天数
+                int wid = 13;
 
                 var bigweek = p.BigWeekHour;
                 ///周工时
                 if (p.EmpWeeks != null && p.EmpWeeks.Count > 0)
                 {
                     p.EmpWeeks.ForEach(w =>
-                                    {
-                                        r.CreateCell(wid++).SetCellValue(w.TotalTime);
-                                    });
+                            {
+                                r.CreateCell(wid++).SetCellValue(w.TotalTime);
+                            });
                 }
 
             });

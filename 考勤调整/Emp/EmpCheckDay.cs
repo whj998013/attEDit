@@ -24,10 +24,16 @@ namespace 考勤调整
         public CHECKINOUT PmOut { get; set; }
         public CHECKINOUT OtIn { get; set; }
         public CHECKINOUT OtOut { get; set; }
-
         public USERINFO Emp { get; set; }
         public DayType DayType { get; set; }
         public DateTime CheckDate { get; set; }
+        /// <summary>
+        /// 班次
+        /// </summary>
+        public Shift EmpShift { get; set; } = new Shift();
+
+        private CHECKINOUT[] Ciol;
+        private bool _JSTimeByCheck { get; set; }
         /// <summary>
         /// 一次打卡计4小时
         /// </summary>
@@ -36,6 +42,16 @@ namespace 考勤调整
         /// 忽略15分钟内的打卡加间
         /// </summary>
         public bool Ignore15MinuteCheck { get; set; } = true;
+
+        public bool JSTimeByCheck
+        {
+            set
+            {
+                _JSTimeByCheck = value;
+                if (value && Ciol == null) BuildCheckList();
+
+            }
+        }
         /// <summary>
         /// 员工姓名
         /// </summary>
@@ -55,13 +71,9 @@ namespace 考勤调整
         {
             Checks = RawChecks;
             if (RawChecks.Count == 0) return "";
-            if(RawChecks.Count==1) return string.Format("delete checkinout where userid={0} and checktime='{1}';", Emp.USERID, FirstCheck);
+            if (RawChecks.Count == 1) return string.Format("delete checkinout where userid={0} and checktime='{1}';", Emp.USERID, FirstCheck);
             return string.Format("delete checkinout where userid={0} and checktime>='{1}' and checktime<='{2}';", Emp.USERID, FirstCheck.Value.AddMinutes(-1), LastCheck.Value.AddMinutes(1));
         }
-        /// <summary>
-        /// 班次
-        /// </summary>
-        public Shift EmpShift { get; set; } = new Shift();
 
         /// <summary>
         /// 班次符合度评分
@@ -226,7 +238,7 @@ namespace 考勤调整
             {
                 if (Checks.Count == 0) return null;
                 var first = (DateTime)FirstCheck;
-                var fd = first-CheckDate;
+                var fd = first - CheckDate;
                 if (Ignore15MinuteCheck)
                 {
                     if ((EmpShift.AmCheckIn - fd).TotalMinutes <= 15 && (EmpShift.AmCheckIn - fd).TotalMinutes > -5) fd = EmpShift.AmCheckIn;
@@ -256,7 +268,7 @@ namespace 考勤调整
             {
                 if (Checks.Count == 0) return null;
                 var last = (DateTime)LastCheck;
-                var ld = last-CheckDate;
+                var ld = last - CheckDate;
                 if (Ignore15MinuteCheck)
                 {
                     if ((ld - EmpShift.OTCheckOut).TotalMinutes <= 15 && (ld - EmpShift.OTCheckOut).TotalMinutes > -5) ld = EmpShift.OTCheckOut;
@@ -283,9 +295,52 @@ namespace 考勤调整
             get
             {
                 if (Checks.Count == 0) return 0;
-                double re = TotalTime;
-                if (TotalTime > 8) re = 8;
-                return Math.Round(re, 1, MidpointRounding.AwayFromZero);
+                var workhour = EmpShift.WorkHour;
+                if (_workHourIs8) workhour = 8;
+                if (_JSTimeByCheck)
+                {
+                    if (Ciol == null) BuildCheckList();
+
+                    return 0;
+                }
+                else
+                {
+                    double re = TotalTime;
+                    if (TotalTime > workhour) re = workhour;
+                    return Math.Round(re, 1, MidpointRounding.AwayFromZero);
+                }
+
+            }
+        }
+        /// <summary>
+        /// 按班次对号入座时间
+        /// </summary>
+        private void BuildCheckList()
+        {
+            if (Ciol == null)
+            {
+
+                Ciol = new CHECKINOUT[6];
+                Checks.OrderBy(p => p.CHECKTIME).ToList().ForEach(p =>
+                  {
+                      var ts = p.CHECKTIME - CheckDate;
+                      int id = EmpShift.GetCheckId(ts, 0);
+                      if (Ciol[id] == null)
+                      {
+                          Ciol[id] = p;
+                      }
+                      else
+                      {
+                          var tmp = Ciol[id];
+                          double sp = (p.CHECKTIME - Ciol[id].CHECKTIME).TotalMinutes;
+                          if (id == 1 || id == 3 || id == 5)
+                          {
+                              Ciol[id] = p;
+                              int id2 = EmpShift.GetCheckId(ts, 1);
+                              if (Ciol[id2] == null && sp > 15) Ciol[id2] = tmp;
+                          }
+                      }
+                  });
             }
         }
         /// <summary>
@@ -295,9 +350,11 @@ namespace 考勤调整
         {
             get
             {
+                var workhour = EmpShift.WorkHour;
+                if (_workHourIs8) workhour = 8;
                 if (Checks.Count == 0) return 0;
                 double re = 0;
-                if (TotalTime > 8) re = TotalTime - 8;
+                if (TotalTime > workhour) re = TotalTime - workhour;
                 return Math.Round(re, 1, MidpointRounding.AwayFromZero);
             }
         }
@@ -310,8 +367,15 @@ namespace 考勤调整
             {
                 if (Checks.Count == 0) return 0;
                 double re = AllTime;
-                if (AllTime >= 10) re = AllTime - 2;
-                else if (AllTime >= 5) re = AllTime - 1;
+
+
+                //if (AllTime >= 10) re = AllTime - EmpShift.Rest1-EmpShift.Rest2;
+                //else if (AllTime >= 5) re = AllTime - EmpShift.Rest1;
+                TimeSpan f = FirstCheck.Value - CheckDate;
+                TimeSpan l = LastCheck.Value - CheckDate;
+                if (EmpShift.AmcheckOut >= f && EmpShift.PmCheckIn <= l) re -= EmpShift.Rest1;
+                if (EmpShift.PmCheckOut >= f && EmpShift.OTCheckIn <= l) re -= EmpShift.Rest2;
+
                 return Math.Round(re, 1, MidpointRounding.AwayFromZero);
             }
         }
@@ -331,7 +395,13 @@ namespace 考勤调整
 
             }
         }
-
-
+        private bool _workHourIs8 = true;
+        public bool WorkHourIs8
+        {
+            set
+            {
+                _workHourIs8 = value;
+            }
+        }
     }
 }

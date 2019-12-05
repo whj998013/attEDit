@@ -20,6 +20,17 @@ namespace 考勤调整
         public GetDayTypeDelgate GetDayType { get; set; }
         public List<Shift> Shifts { get; set; }
         public GetDeptNameDelgate GetDeptName { get; set; }
+        /// <summary>
+        /// 出勤天数
+        /// </summary>
+        public int CheckNum
+        {
+            get
+            {
+                return GetEmpChecks.Count(p => p.TotalTime > 0);
+               
+            }
+        }
 
         public List<EmpCheckDay> GetEmpChecks
         {
@@ -179,16 +190,16 @@ namespace 考勤调整
             {
                 if (ecd.DayType == DayType.假日) newShift = new Shift();
                 DateTime bd, ed;
-                if (ecd.AfterCheckDay!=null&&ecd.AfterCheckDay.DayType == DayType.假日)
+                if (ecd.AfterCheckDay != null && ecd.AfterCheckDay.DayType == DayType.假日)
                 {
-                     bd = ecd.CheckDate.Add(newShift.BeginTime);
-                     ed = ecd.CheckDate.Add(new TimeSpan(23,59,59));
+                    bd = ecd.CheckDate.Add(newShift.BeginTime);
+                    ed = ecd.CheckDate.Add(new TimeSpan(23, 59, 59));
                 }
                 else
                 {
-                     bd = ecd.CheckDate.Add(newShift.BeginTime);
-                     ed = ecd.CheckDate.Add(newShift.EndTime);
-                  }
+                    bd = ecd.CheckDate.Add(newShift.BeginTime);
+                    ed = ecd.CheckDate.Add(newShift.EndTime);
+                }
 
                 ecd.RawChecks = Checks.Where(p => p.CHECKTIME >= bd && p.CHECKTIME <= ed).ToList();
                 ecd.Checks = ecd.RawChecks;
@@ -287,7 +298,21 @@ namespace 考勤调整
                 }
             });
         }
+        public void SetWorkHourTo8(bool v)
+        {
+            EmpChecks.ForEach(p =>
+            {
+                p.WorkHourIs8 = v;
+            });
+        }
 
+        public void SetJSTimeByCheck(bool v)
+        {
+            EmpChecks.ForEach(p =>
+            {
+                p.JSTimeByCheck = v;
+            });
+        }
         public void SetIgnore15MinuteCheck(bool v)
         {
             EmpChecks.ForEach(p =>
@@ -346,7 +371,7 @@ namespace 考勤调整
         {
             get
             {
-                return Math.Round(EmpChecks.Where(p => p.DayType == DayType.平日 && p.CheckDate <= EndDate).Sum(p => p.WorkTime), 1)+ AnnualHolidays*8;
+                return Math.Round(EmpChecks.Where(p => p.DayType == DayType.平日 && p.CheckDate <= EndDate).Sum(p => p.WorkTime), 1) + AnnualHolidays * 8;
             }
         }
         /// <summary>
@@ -470,7 +495,11 @@ namespace 考勤调整
                     if (p.NewChecks.Count > 0) newlist.AddRange(p.NewChecks);
                 }
             });
-
+            ///去重
+            //newlist.ForEach(p =>
+            //{
+            //    if (newlist.Count(n => n.CHECKTIME == p.CHECKTIME) > 0) p.CHECKTIME.AddSeconds(3); 
+            //});
             var l = new HashSet<CHECKINOUT>(newlist);
 
             EFBatchOperation.For(dc, dc.CHECKINOUT)

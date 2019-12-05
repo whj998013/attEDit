@@ -28,7 +28,7 @@ namespace 考勤调整
         /// <param name="EndDate"></param>
         public void LoadCheck(string Name, DateTime BeginDate, DateTime EndDate)
         {
-            var user = ac.USERINFO.FirstOrDefault(p => p.Name == Name&&p.DEFAULTDEPTID>=0);
+            var user = ac.USERINFO.FirstOrDefault(p =>p.Name.Contains(Name)&&p.DEFAULTDEPTID>=0);
             if (user != null)
             {
                 var getday = new AttControlClass(ac);

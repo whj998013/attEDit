@@ -36,7 +36,7 @@ namespace 考勤调整
             if (empDgv.SelectedRows.Count > 0)
             {
                 var obj = (EmpCheckMonth)empDgv.SelectedRows[0].DataBoundItem;
-                empCheckDayBindingSource.DataSource =obj.GetEmpChecks.OrderBy(p => p.CheckDate);
+                empCheckDayBindingSource.DataSource = obj.GetEmpChecks.OrderBy(p => p.CheckDate);
 
             }
         }
@@ -103,7 +103,9 @@ namespace 考勤调整
             }
             else
             {
-                dc = null;
+                dc.Dispose();
+                lc = null;
+                Doper=null;
                 toolStripButton1.Text = "连接数据库";
                 IsConnect = false;
                 empCheckMonthBindingSource.DataSource = null;
@@ -155,6 +157,7 @@ namespace 考勤调整
             var list = Emps.OrderByDescending(p => p.DeptName).ThenBy(p => p.EmpId).ToList();
             empCheckMonthBindingSource.DataSource = new BindingCollection<EmpCheckMonth>(list);
             YearHoliday.Value = 0;
+
         }
 
         private void DataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -312,26 +315,39 @@ namespace 考勤调整
             }
         }
 
+        /// <summary>
+        /// 写入数据库
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnWriteToDb_Click(object sender, EventArgs e)
         {
-            bool isAllWriteMode = modeselect.SelectedIndex == 0 ? true : false;
-            Pb.Maximum = Emps.Count;
-            setEnabled(false);
-            Task t = new Task(() =>
-                   {
-                       Emps.ForEach(p =>
-                          {
-                              if (isAllWriteMode)
+            if (Emps!=null&&Emps.Count > 0)
+            {
+                bool isAllWriteMode = modeselect.SelectedIndex == 0 ? true : false;
+                Pb.Maximum = Emps.Count;
+                setEnabled(false);
+                Task t = new Task(() =>
+                       {
+                           Emps.ForEach(p =>
                               {
-                                  p.FastWriteToDate(dc);
+                                  if (isAllWriteMode)
+                                  {
+                                      p.FastWriteToDate(dc);
 
-                              }
-                              else p.WriteToDate(dc, isAllWriteMode);
+                                  }
+                                  else p.WriteToDate(dc, isAllWriteMode);
                                   SetPbPos(1);
-                          });
-                   }
-                );
-            t.Start();
+                              });
+                       }
+                    );
+                t.Start();
+            }
+            else
+            {
+                MessageBox.Show("没有调整数据.");
+            }
+
 
         }
 
@@ -409,7 +425,7 @@ namespace 考勤调整
                     {
                         foreach (DataRow p in dt.Rows)
                         {
-                            var m = p["金额"].ToString();
+                            var m = p["金额"].ToString().Replace(" ","");
                             if (m != "")
                             {
                                 DelAttInfo ndai = new DelAttInfo();
@@ -498,17 +514,17 @@ namespace 考勤调整
 
         private void ToolStripButton7_Click(object sender, EventArgs e)
         {
-            
-                var rows = empDgv.SelectedRows;
-                foreach (DataGridViewRow r in rows)
-                {
-                    var empobj = (EmpCheckMonth)r.DataBoundItem;
-                    empobj.SetOneWeekIsSameShift();
 
-                }
-                dayDgv.Refresh();
-                MessageBox.Show("排班完成");
-            
+            var rows = empDgv.SelectedRows;
+            foreach (DataGridViewRow r in rows)
+            {
+                var empobj = (EmpCheckMonth)r.DataBoundItem;
+                empobj.SetOneWeekIsSameShift();
+
+            }
+            dayDgv.Refresh();
+            MessageBox.Show("排班完成");
+
         }
 
         private void Button7_Click(object sender, EventArgs e)
@@ -532,7 +548,23 @@ namespace 考勤调整
         private void ToolStripButton8_Click(object sender, EventArgs e)
         {
             dinfo.Clear();
-            delAttInfoBindingSource.DataSource = null; 
+            delAttInfoBindingSource.DataSource = null;
+        }
+
+        private void bindingNavigator2_RefreshItems(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox9_CheckedChanged(object sender, EventArgs e)
+        {
+            bool v = checkBox9.Checked;
+            Emps.ForEach(p =>
+            {
+                p.SetWorkHourTo8(v);
+            });
+            dayDgv.Refresh();
+            empDgv.Refresh();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CheckDb;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,8 @@ namespace 考勤调整
             BeginTime = TimeSpan.Parse(l[7]);
             EndTime = TimeSpan.Parse(l[8]);
             RestDayInt = int.Parse(l[9]);
-            AcrossDay = (int.Parse(l[10])==1);
+
+
         }
         public Shift()
         {
@@ -38,6 +40,31 @@ namespace 考勤调整
         public TimeSpan OTCheckOut { get; set; } = TimeSpan.Parse("20:00");
         public TimeSpan BeginTime { get; set; } = TimeSpan.Parse("00:00:00");
         public TimeSpan EndTime { get; set; } = TimeSpan.Parse("23:59:59");
+        public double Rest1
+        {
+            get
+            {
+                return (PmCheckIn - AmcheckOut).TotalHours;
+            }
+        }
+
+        public double Rest2
+        {
+            get
+            {
+                return (OTCheckIn - PmCheckOut).TotalHours;
+
+            }
+        }
+
+        public double WorkHour
+        {
+            get
+            {
+                return ((AmcheckOut - AmCheckIn) + (PmCheckOut - PmCheckIn)).TotalHours;
+            }
+        }
+
         /// <summary>
         /// 是否跨日
         /// </summary>
@@ -46,6 +73,20 @@ namespace 考勤调整
         /// 休息日
         /// </summary>
         public string RestDay { get; set; } = "周日";
+
+        public int GetCheckId(TimeSpan ts, int id)
+        {
+
+            Dictionary<int, double> tds = new Dictionary<int, double>();
+            tds.Add(0, Math.Abs((AmCheckIn - ts).TotalSeconds));
+            tds.Add(1, Math.Abs((AmcheckOut - ts).TotalSeconds));
+            tds.Add(2, Math.Abs((PmCheckIn - ts).TotalSeconds));
+            tds.Add(3, Math.Abs((PmCheckOut - ts).TotalSeconds));
+            tds.Add(4, Math.Abs((OTCheckIn - ts).TotalSeconds));
+            tds.Add(5, Math.Abs((OTCheckOut - ts).TotalSeconds));
+            var tdslit = tds.OrderBy(p => p.Value).ToList();
+            return tdslit[id].Key;
+        }
 
         public int RestDayInt
         {
@@ -128,12 +169,10 @@ namespace 考勤调整
             str += "," + BeginTime;
             str += "," + EndTime;
             str += "," + RestDayInt;
-            str += "," + RestDayInt;
-            str += "," + (AcrossDay ? 1 : 0);
             return str;
         }
 
-      
+
     }
 
 
