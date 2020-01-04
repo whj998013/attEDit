@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>false</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -74,6 +74,9 @@
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CSkin">
+      <HintPath>..\..\..\..\..\开发源码\CSkin 16.1.14.3\CSkin 4.0\CSkin.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -106,6 +109,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -133,10 +137,11 @@
     <Compile Include="DayCheckEdit.Designer.cs">
       <DependentUpon>DayCheckEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="db\GetDayTypeClass.cs" />
+    <Compile Include="db\AttControlClass.cs" />
     <Compile Include="Dept\Dept.cs" />
     <Compile Include="Dept\DeptOper.cs" />
     <Compile Include="Emp\CheckSync.cs" />
+    <Compile Include="Emp\EmpShiftInfo.cs" />
     <Compile Include="Emp\Shift.cs" />
     <Compile Include="Util\ConfigHelper.cs" />
     <Compile Include="Util\DelAttInfo.cs" />
@@ -165,6 +170,7 @@
     <Compile Include="Util\JsonHelper.cs" />
     <Compile Include="Util\ListHelper.cs" />
     <Compile Include="Util\ObjectPropertyCompare.cs" />
+    <Compile Include="Util\PinyinHelper.cs" />
     <EmbeddedResource Include="AttEdit.resx">
       <DependentUpon>AttEdit.cs</DependentUpon>
     </EmbeddedResource>

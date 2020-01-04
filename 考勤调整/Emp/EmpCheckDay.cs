@@ -100,6 +100,7 @@ namespace 考勤调整
                     if (PreCheckDay != null && PreCheckDay.EmpShift.ShiftName == EmpShift.ShiftName) point += 1;
 
                 }
+                else point += 3;
 
                 return point;
             }

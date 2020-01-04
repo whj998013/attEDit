@@ -11,7 +11,7 @@ namespace CheckDb
             : base("name=" + con)
         {
         }
-
+        public string ConName { get; set; }
         public virtual DbSet<ACGroup> ACGroup { get; set; }
         public virtual DbSet<acholiday> acholiday { get; set; }
         public virtual DbSet<ACTimeZones> ACTimeZones { get; set; }
@@ -119,4 +119,6 @@ namespace CheckDb
             //    .IsUnicode(false);
         }
     }
+
+   
 }

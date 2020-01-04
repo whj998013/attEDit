@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CheckDb;
 using EntityFramework.Utilities;
+using 考勤调整.Util;
 namespace 考勤调整
 {
 
@@ -28,7 +29,7 @@ namespace 考勤调整
             get
             {
                 return GetEmpChecks.Count(p => p.TotalTime > 0);
-               
+
             }
         }
 
@@ -56,6 +57,9 @@ namespace 考勤调整
         /// 员工信息表
         /// </summary>
         public USERINFO Emp { get; set; }
+
+        public EmpNoteInfo EmpNote { get; set; }
+
         /// <summary>
         /// 第一次出勤时间
         /// </summary>
@@ -83,6 +87,16 @@ namespace 考勤调整
             DeptName = GetDeptName(emp.DEFAULTDEPTID);
             AttControl = attControl;
             GetDayType = AttControl.GetDayType;
+            EmpNote = AttControl.GetEmpNoteInfoByByte(emp.Notes);
+
+            if (EmpNote==null)
+            {
+                EmpNote = new EmpNoteInfo();
+                EmpNote.EmpPyName = PinyinHelper.PinyinString(emp.Name);
+                EmpNote.IsHaveNote = true;
+                AttControl.UpDateEmpNoteInfo(emp.USERID, EmpNote);
+            }
+
         }
 
         /// <summary>
@@ -90,6 +104,21 @@ namespace 考勤调整
         /// </summary>
         public void SetShifts()
         {
+            //设置员工默认班次
+            if (EmpNote.Shifts.Count > 0)
+            {
+                if (EmpNote.AutoShift)
+                {
+                    AutoChangeShift(EmpNote.Shifts);
+                }
+                else
+                {
+                    ChangeShift(EmpNote.Shifts[0]);
+                }
+            }
+
+
+            //设置当天已更改的默认班次
             EmpChecks.ForEach(p =>
             {
                 if (p.Checks.Count > 0)
@@ -103,6 +132,7 @@ namespace 考勤调整
                 }
 
             });
+
 
             EmpChecks.ForEach(p =>
             {
@@ -118,13 +148,8 @@ namespace 考勤调整
                                 else p.AfterCheckDay.Checks.Remove(p.Checks[i]);
                             }
                         }
-
-
-
-
                     }
                 }
-
             });
 
         }
@@ -156,8 +181,10 @@ namespace 考勤调整
                 var emp = new EmpCheckDay(Emp, d)
                 {
                     DeptName = DeptName,
-                    DayType = GetDayType(d)
+                    DayType = GetDayType(d),
                 };
+                if(Shifts.Count>0) emp.EmpShift = Shifts[0];
+                
                 EmpChecks.Add(emp);
             }
             //连接上下天
@@ -184,12 +211,14 @@ namespace 考勤调整
         /// </summary>
         /// <param name="ecd"></param>
         /// <param name="newShift"></param>
-        public void ChangeShift(EmpCheckDay ecd, Shift newShift)
-        {
+        public void ChangeShift(EmpCheckDay ecd, Shift ns)
+        { 
+            DateTime bd, ed;
+            var newShift = ns;
             if (ecd.EmpShift.BeginTime != newShift.BeginTime || ecd.EmpShift.EndTime != newShift.EndTime)
             {
                 if (ecd.DayType == DayType.假日) newShift = new Shift();
-                DateTime bd, ed;
+               
                 if (ecd.AfterCheckDay != null && ecd.AfterCheckDay.DayType == DayType.假日)
                 {
                     bd = ecd.CheckDate.Add(newShift.BeginTime);
@@ -226,22 +255,40 @@ namespace 考勤调整
             }
 
         }
+        /// <summary>
+        /// 更改员工全部的班次
+        /// </summary>
+        /// <param name="newShift"></param>
         public void ChangeShift(Shift newShift)
         {
             EmpChecks.ForEach(p =>
             {
                 ChangeShift(p, newShift);
             });
+            ///更新员工默认班次
+            EmpNote.Shifts.Clear();
+            EmpNote.Shifts.Add(newShift);
+            EmpNote.AutoShift = false;
         }
 
+        /// <summary>
+        /// 保存员工班次至数据库
+        /// </summary>
+        public void SaveEmpShift()
+        {
+            AttControl.UpDateEmpNoteInfo(Emp.USERID, EmpNote);
+        }
+  
 
         public void AutoChangeShift(List<Shift> shifts)
         {
-            Shift preShift = new Shift();
+           
             EmpChecks.ForEach(p =>
             {
+               
+                Shift preShift =p.EmpShift;
+                ChangeShift(p, shifts[0]);
                 var lm = p.ShiftPoint;
-
                 shifts.ForEach(s =>
                 {
                     if (p.FirstAmend != null)
@@ -278,7 +325,9 @@ namespace 考勤调整
 
             }
 
-
+            EmpNote.Shifts.Clear();
+            EmpNote.Shifts.AddRange(shifts);
+            EmpNote.AutoShift = true;
         }
 
         public void SetOneWeekIsSameShift()
@@ -337,8 +386,7 @@ namespace 考勤调整
             Checks.Add(obj);
             var emp = EmpChecks.Where(p => p.CheckDate == obj.CHECKTIME.Date).SingleOrDefault();
             if (emp != null) emp.Add(obj);
-
-
+            
         }
 
         /// <summary>

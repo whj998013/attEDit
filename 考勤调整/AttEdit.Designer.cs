@@ -29,22 +29,43 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AttEdit));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.empDgv = new System.Windows.Forms.DataGridView();
+            this.empNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deptNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.workTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.overTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hollydayTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.restdayTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BigWeekHour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstCheckDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CheckNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmpId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.empCheckMonthBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.dayDgv = new System.Windows.Forms.DataGridView();
+            this.checkDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dayTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ShiftName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CheckRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NewCheckRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstAmendDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastAmendDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.workTimeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.overTimeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalTimeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.allTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.empCheckDayBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnBuildCheck = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -66,12 +87,17 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.SaveEmpShifts = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
+            this.checkModifyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.checkBox9 = new System.Windows.Forms.CheckBox();
             this.YearHoliday = new System.Windows.Forms.NumericUpDown();
@@ -102,19 +128,28 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.班次 = new System.Windows.Forms.GroupBox();
+            this.gbbc = new System.Windows.Forms.GroupBox();
             this.shiftdgv = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.BeginTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shiftBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
+            this.BtnAddShift = new System.Windows.Forms.ToolStripButton();
+            this.BtnDeleteShift = new System.Windows.Forms.ToolStripButton();
+            this.BtnEditShift = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.BtnSaveShift = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
+            this.BtnSaveShift = new System.Windows.Forms.ToolStripButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -128,6 +163,12 @@
             this.d4t2 = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
             this.delAttInfoDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.delAttInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigator2 = new System.Windows.Forms.BindingNavigator(this.components);
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -150,44 +191,10 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.empCheckMonthBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.checkDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dayTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstAmendDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastAmendDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.workTimeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.overTimeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalTimeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.allTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.empCheckDayBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.checkModifyBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.shiftBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.delAttInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.empNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deptNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.workTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.overTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hollydayTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.restdayTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BigWeekHour = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstCheckDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CheckNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmpId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.empDgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.empCheckMonthBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dayDgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.empCheckDayBindingSource)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -202,6 +209,7 @@
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkModifyBindingSource)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.YearHoliday)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -211,27 +219,27 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.班次.SuspendLayout();
+            this.gbbc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shiftdgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shiftBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.delAttInfoDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.delAttInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator2)).BeginInit();
             this.bindingNavigator2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.empCheckMonthBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.empCheckDayBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkModifyBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.shiftBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.delAttInfoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // empDgv
             // 
             this.empDgv.AllowUserToAddRows = false;
             this.empDgv.AllowUserToDeleteRows = false;
+            this.empDgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.empDgv.AutoGenerateColumns = false;
             this.empDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.empDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -247,17 +255,104 @@
             this.CheckNum,
             this.EmpId});
             this.empDgv.DataSource = this.empCheckMonthBindingSource;
-            this.empDgv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.empDgv.Location = new System.Drawing.Point(0, 0);
+            this.empDgv.Location = new System.Drawing.Point(0, 32);
             this.empDgv.Name = "empDgv";
             this.empDgv.RowHeadersWidth = 40;
             this.empDgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.empDgv.RowTemplate.Height = 23;
             this.empDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.empDgv.Size = new System.Drawing.Size(494, 600);
+            this.empDgv.Size = new System.Drawing.Size(494, 568);
             this.empDgv.TabIndex = 0;
             this.empDgv.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DataGridView1_RowPostPaint);
             this.empDgv.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            // 
+            // empNameDataGridViewTextBoxColumn
+            // 
+            this.empNameDataGridViewTextBoxColumn.DataPropertyName = "EmpName";
+            this.empNameDataGridViewTextBoxColumn.HeaderText = "姓名";
+            this.empNameDataGridViewTextBoxColumn.Name = "empNameDataGridViewTextBoxColumn";
+            this.empNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.empNameDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // deptNameDataGridViewTextBoxColumn1
+            // 
+            this.deptNameDataGridViewTextBoxColumn1.DataPropertyName = "DeptName";
+            this.deptNameDataGridViewTextBoxColumn1.HeaderText = "部门";
+            this.deptNameDataGridViewTextBoxColumn1.Name = "deptNameDataGridViewTextBoxColumn1";
+            this.deptNameDataGridViewTextBoxColumn1.Width = 60;
+            // 
+            // workTimeDataGridViewTextBoxColumn
+            // 
+            this.workTimeDataGridViewTextBoxColumn.DataPropertyName = "WorkTime";
+            this.workTimeDataGridViewTextBoxColumn.HeaderText = "平日工作";
+            this.workTimeDataGridViewTextBoxColumn.Name = "workTimeDataGridViewTextBoxColumn";
+            this.workTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.workTimeDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // overTimeDataGridViewTextBoxColumn
+            // 
+            this.overTimeDataGridViewTextBoxColumn.DataPropertyName = "OverTime";
+            this.overTimeDataGridViewTextBoxColumn.HeaderText = "平日加班";
+            this.overTimeDataGridViewTextBoxColumn.Name = "overTimeDataGridViewTextBoxColumn";
+            this.overTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.overTimeDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // hollydayTimeDataGridViewTextBoxColumn
+            // 
+            this.hollydayTimeDataGridViewTextBoxColumn.DataPropertyName = "HollydayTime";
+            this.hollydayTimeDataGridViewTextBoxColumn.HeaderText = "假日加班";
+            this.hollydayTimeDataGridViewTextBoxColumn.Name = "hollydayTimeDataGridViewTextBoxColumn";
+            this.hollydayTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.hollydayTimeDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // restdayTimeDataGridViewTextBoxColumn
+            // 
+            this.restdayTimeDataGridViewTextBoxColumn.DataPropertyName = "RestdayTime";
+            this.restdayTimeDataGridViewTextBoxColumn.HeaderText = "休息日加班";
+            this.restdayTimeDataGridViewTextBoxColumn.Name = "restdayTimeDataGridViewTextBoxColumn";
+            this.restdayTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.restdayTimeDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // totalTimeDataGridViewTextBoxColumn
+            // 
+            this.totalTimeDataGridViewTextBoxColumn.DataPropertyName = "TotalTime";
+            this.totalTimeDataGridViewTextBoxColumn.HeaderText = "总工时";
+            this.totalTimeDataGridViewTextBoxColumn.Name = "totalTimeDataGridViewTextBoxColumn";
+            this.totalTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.totalTimeDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // BigWeekHour
+            // 
+            this.BigWeekHour.DataPropertyName = "BigWeekHour";
+            this.BigWeekHour.HeaderText = "最大周工时";
+            this.BigWeekHour.Name = "BigWeekHour";
+            this.BigWeekHour.ReadOnly = true;
+            // 
+            // firstCheckDateDataGridViewTextBoxColumn
+            // 
+            this.firstCheckDateDataGridViewTextBoxColumn.DataPropertyName = "FirstCheckDate";
+            this.firstCheckDateDataGridViewTextBoxColumn.HeaderText = "首次打卡日";
+            this.firstCheckDateDataGridViewTextBoxColumn.Name = "firstCheckDateDataGridViewTextBoxColumn";
+            this.firstCheckDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.firstCheckDateDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // CheckNum
+            // 
+            this.CheckNum.DataPropertyName = "CheckNum";
+            this.CheckNum.HeaderText = "出勤天数";
+            this.CheckNum.Name = "CheckNum";
+            this.CheckNum.ReadOnly = true;
+            // 
+            // EmpId
+            // 
+            this.EmpId.DataPropertyName = "EmpId";
+            this.EmpId.HeaderText = "员工ID";
+            this.EmpId.Name = "EmpId";
+            this.EmpId.ReadOnly = true;
+            // 
+            // empCheckMonthBindingSource
+            // 
+            this.empCheckMonthBindingSource.DataSource = typeof(考勤调整.EmpCheckMonth);
             // 
             // button1
             // 
@@ -299,6 +394,25 @@
             this.dayDgv.TabIndex = 2;
             this.dayDgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DayDgv_CellContentClick);
             // 
+            // checkDateDataGridViewTextBoxColumn
+            // 
+            this.checkDateDataGridViewTextBoxColumn.DataPropertyName = "CheckDate";
+            dataGridViewCellStyle10.Format = "d";
+            dataGridViewCellStyle10.NullValue = null;
+            this.checkDateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
+            this.checkDateDataGridViewTextBoxColumn.HeaderText = "日期";
+            this.checkDateDataGridViewTextBoxColumn.Name = "checkDateDataGridViewTextBoxColumn";
+            this.checkDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.checkDateDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // dayTypeDataGridViewTextBoxColumn
+            // 
+            this.dayTypeDataGridViewTextBoxColumn.DataPropertyName = "DayType";
+            this.dayTypeDataGridViewTextBoxColumn.HeaderText = "类型";
+            this.dayTypeDataGridViewTextBoxColumn.Name = "dayTypeDataGridViewTextBoxColumn";
+            this.dayTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dayTypeDataGridViewTextBoxColumn.Width = 60;
+            // 
             // ShiftName
             // 
             this.ShiftName.DataPropertyName = "ShiftName";
@@ -322,6 +436,58 @@
             this.NewCheckRecord.Name = "NewCheckRecord";
             this.NewCheckRecord.ReadOnly = true;
             this.NewCheckRecord.Width = 350;
+            // 
+            // firstAmendDataGridViewTextBoxColumn
+            // 
+            this.firstAmendDataGridViewTextBoxColumn.DataPropertyName = "FirstAmend";
+            dataGridViewCellStyle11.Format = "t";
+            dataGridViewCellStyle11.NullValue = null;
+            this.firstAmendDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle11;
+            this.firstAmendDataGridViewTextBoxColumn.HeaderText = "首次打卡修正";
+            this.firstAmendDataGridViewTextBoxColumn.Name = "firstAmendDataGridViewTextBoxColumn";
+            this.firstAmendDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastAmendDataGridViewTextBoxColumn
+            // 
+            this.lastAmendDataGridViewTextBoxColumn.DataPropertyName = "LastAmend";
+            dataGridViewCellStyle12.Format = "t";
+            dataGridViewCellStyle12.NullValue = null;
+            this.lastAmendDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
+            this.lastAmendDataGridViewTextBoxColumn.HeaderText = "末次打卡修正";
+            this.lastAmendDataGridViewTextBoxColumn.Name = "lastAmendDataGridViewTextBoxColumn";
+            this.lastAmendDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // workTimeDataGridViewTextBoxColumn1
+            // 
+            this.workTimeDataGridViewTextBoxColumn1.DataPropertyName = "WorkTime";
+            this.workTimeDataGridViewTextBoxColumn1.HeaderText = "工作时间";
+            this.workTimeDataGridViewTextBoxColumn1.Name = "workTimeDataGridViewTextBoxColumn1";
+            this.workTimeDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // overTimeDataGridViewTextBoxColumn1
+            // 
+            this.overTimeDataGridViewTextBoxColumn1.DataPropertyName = "OverTime";
+            this.overTimeDataGridViewTextBoxColumn1.HeaderText = "加班时间";
+            this.overTimeDataGridViewTextBoxColumn1.Name = "overTimeDataGridViewTextBoxColumn1";
+            this.overTimeDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // totalTimeDataGridViewTextBoxColumn1
+            // 
+            this.totalTimeDataGridViewTextBoxColumn1.DataPropertyName = "TotalTime";
+            this.totalTimeDataGridViewTextBoxColumn1.HeaderText = "工时";
+            this.totalTimeDataGridViewTextBoxColumn1.Name = "totalTimeDataGridViewTextBoxColumn1";
+            this.totalTimeDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // allTimeDataGridViewTextBoxColumn
+            // 
+            this.allTimeDataGridViewTextBoxColumn.DataPropertyName = "AllTime";
+            this.allTimeDataGridViewTextBoxColumn.HeaderText = "出勤时间";
+            this.allTimeDataGridViewTextBoxColumn.Name = "allTimeDataGridViewTextBoxColumn";
+            this.allTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // empCheckDayBindingSource
+            // 
+            this.empCheckDayBindingSource.DataSource = typeof(考勤调整.EmpCheckDay);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -517,7 +683,7 @@
             // 
             this.splitContainer2.Panel2.AutoScroll = true;
             this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
-            this.splitContainer2.Panel2.Controls.Add(this.班次);
+            this.splitContainer2.Panel2.Controls.Add(this.gbbc);
             this.splitContainer2.Size = new System.Drawing.Size(1439, 795);
             this.splitContainer2.SplitterDistance = 600;
             this.splitContainer2.TabIndex = 5;
@@ -530,6 +696,10 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.SaveEmpShifts);
+            this.splitContainer1.Panel1.Controls.Add(this.textBox2);
+            this.splitContainer1.Panel1.Controls.Add(this.button9);
+            this.splitContainer1.Panel1.Controls.Add(this.button8);
             this.splitContainer1.Panel1.Controls.Add(this.empDgv);
             // 
             // splitContainer1.Panel2
@@ -538,6 +708,43 @@
             this.splitContainer1.Size = new System.Drawing.Size(1439, 600);
             this.splitContainer1.SplitterDistance = 494;
             this.splitContainer1.TabIndex = 4;
+            // 
+            // SaveEmpShifts
+            // 
+            this.SaveEmpShifts.Location = new System.Drawing.Point(387, 5);
+            this.SaveEmpShifts.Name = "SaveEmpShifts";
+            this.SaveEmpShifts.Size = new System.Drawing.Size(104, 23);
+            this.SaveEmpShifts.TabIndex = 4;
+            this.SaveEmpShifts.Text = "保存员工班次";
+            this.SaveEmpShifts.UseVisualStyleBackColor = true;
+            this.SaveEmpShifts.Click += new System.EventHandler(this.SaveEmpShifts_Click);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(6, 5);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(146, 21);
+            this.textBox2.TabIndex = 3;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(158, 4);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.TabIndex = 2;
+            this.button9.Text = "查找";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(254, 4);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(42, 23);
+            this.button8.TabIndex = 1;
+            this.button8.Text = "全选";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // groupBox1
             // 
@@ -606,6 +813,10 @@
             this.numericUpDown5.Name = "numericUpDown5";
             this.numericUpDown5.Size = new System.Drawing.Size(46, 21);
             this.numericUpDown5.TabIndex = 13;
+            // 
+            // checkModifyBindingSource
+            // 
+            this.checkModifyBindingSource.DataSource = typeof(考勤调整.CheckModify);
             // 
             // groupBox4
             // 
@@ -956,23 +1167,24 @@
             this.radioButton2.Text = "生成全部考勤";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // 班次
+            // gbbc
             // 
-            this.班次.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.gbbc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.班次.Controls.Add(this.shiftdgv);
-            this.班次.Controls.Add(this.bindingNavigator1);
-            this.班次.Location = new System.Drawing.Point(3, -1);
-            this.班次.Name = "班次";
-            this.班次.Size = new System.Drawing.Size(707, 192);
-            this.班次.TabIndex = 4;
-            this.班次.TabStop = false;
-            this.班次.Text = "班次";
+            this.gbbc.Controls.Add(this.shiftdgv);
+            this.gbbc.Controls.Add(this.bindingNavigator1);
+            this.gbbc.Location = new System.Drawing.Point(3, -1);
+            this.gbbc.Name = "gbbc";
+            this.gbbc.Size = new System.Drawing.Size(707, 192);
+            this.gbbc.TabIndex = 4;
+            this.gbbc.TabStop = false;
+            this.gbbc.Text = "班次";
             // 
             // shiftdgv
             // 
             this.shiftdgv.AllowUserToAddRows = false;
+            this.shiftdgv.AllowUserToDeleteRows = false;
             this.shiftdgv.AutoGenerateColumns = false;
             this.shiftdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.shiftdgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -990,14 +1202,91 @@
             this.shiftdgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.shiftdgv.Location = new System.Drawing.Point(3, 42);
             this.shiftdgv.Name = "shiftdgv";
+            this.shiftdgv.ReadOnly = true;
             this.shiftdgv.RowHeadersWidth = 20;
             this.shiftdgv.RowTemplate.Height = 23;
+            this.shiftdgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.shiftdgv.Size = new System.Drawing.Size(701, 147);
             this.shiftdgv.TabIndex = 1;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "ShiftName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "班次名";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "AmCheckIn";
+            dataGridViewCellStyle13.Format = "t";
+            dataGridViewCellStyle13.NullValue = null;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle13;
+            this.dataGridViewTextBoxColumn3.HeaderText = "AM上";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "AmcheckOut";
+            dataGridViewCellStyle14.Format = "t";
+            dataGridViewCellStyle14.NullValue = null;
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle14;
+            this.dataGridViewTextBoxColumn4.HeaderText = "AM下";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "PmCheckIn";
+            dataGridViewCellStyle15.Format = "t";
+            dataGridViewCellStyle15.NullValue = null;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle15;
+            this.dataGridViewTextBoxColumn5.HeaderText = "PM上";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "PmCheckOut";
+            dataGridViewCellStyle16.Format = "t";
+            dataGridViewCellStyle16.NullValue = null;
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle16;
+            this.dataGridViewTextBoxColumn6.HeaderText = "PM下";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "OTCheckIn";
+            dataGridViewCellStyle17.Format = "t";
+            dataGridViewCellStyle17.NullValue = null;
+            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle17;
+            this.dataGridViewTextBoxColumn7.HeaderText = "OT上";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "OTCheckOut";
+            dataGridViewCellStyle18.Format = "t";
+            dataGridViewCellStyle18.NullValue = null;
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle18;
+            this.dataGridViewTextBoxColumn8.HeaderText = "OT下";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Width = 70;
             // 
             // Column1
             // 
             this.Column1.DataPropertyName = "RestDay";
+            this.Column1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
             this.Column1.HeaderText = "休息日";
             this.Column1.Items.AddRange(new object[] {
             "周日",
@@ -1008,6 +1297,7 @@
             "周五",
             "周六"});
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             this.Column1.Width = 80;
             // 
             // BeginTime
@@ -1015,6 +1305,7 @@
             this.BeginTime.DataPropertyName = "BeginTime";
             this.BeginTime.HeaderText = "开始时间";
             this.BeginTime.Name = "BeginTime";
+            this.BeginTime.ReadOnly = true;
             this.BeginTime.Width = 80;
             // 
             // EndTime
@@ -1022,21 +1313,27 @@
             this.EndTime.DataPropertyName = "EndTime";
             this.EndTime.HeaderText = "结束时间";
             this.EndTime.Name = "EndTime";
+            this.EndTime.ReadOnly = true;
             this.EndTime.Width = 80;
+            // 
+            // shiftBindingSource
+            // 
+            this.shiftBindingSource.DataSource = typeof(考勤调整.Shift);
             // 
             // bindingNavigator1
             // 
-            this.bindingNavigator1.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.bindingNavigator1.AddNewItem = this.BtnAddShift;
             this.bindingNavigator1.CountItem = null;
-            this.bindingNavigator1.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.bindingNavigator1.DeleteItem = this.BtnDeleteShift;
             this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem,
+            this.BtnEditShift,
+            this.BtnAddShift,
+            this.BtnDeleteShift,
             this.toolStripButton3,
             this.toolStripButton2,
-            this.BtnSaveShift,
             this.toolStripButton6,
-            this.toolStripButton7});
+            this.toolStripButton7,
+            this.BtnSaveShift});
             this.bindingNavigator1.Location = new System.Drawing.Point(3, 17);
             this.bindingNavigator1.MoveFirstItem = null;
             this.bindingNavigator1.MoveLastItem = null;
@@ -1046,25 +1343,38 @@
             this.bindingNavigator1.PositionItem = null;
             this.bindingNavigator1.Size = new System.Drawing.Size(701, 25);
             this.bindingNavigator1.TabIndex = 0;
-            this.bindingNavigator1.Text = "bindingNavigator1";
+            this.bindingNavigator1.Text = "修改";
             // 
-            // bindingNavigatorAddNewItem
+            // BtnAddShift
             // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "新添";
+            this.BtnAddShift.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.BtnAddShift.Enabled = false;
+            this.BtnAddShift.Image = ((System.Drawing.Image)(resources.GetObject("BtnAddShift.Image")));
+            this.BtnAddShift.Name = "BtnAddShift";
+            this.BtnAddShift.RightToLeftAutoMirrorImage = true;
+            this.BtnAddShift.Size = new System.Drawing.Size(23, 22);
+            this.BtnAddShift.Text = "新添";
+        
             // 
-            // bindingNavigatorDeleteItem
+            // BtnDeleteShift
             // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "删除";
+            this.BtnDeleteShift.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.BtnDeleteShift.Enabled = false;
+            this.BtnDeleteShift.Image = ((System.Drawing.Image)(resources.GetObject("BtnDeleteShift.Image")));
+            this.BtnDeleteShift.Name = "BtnDeleteShift";
+            this.BtnDeleteShift.RightToLeftAutoMirrorImage = true;
+            this.BtnDeleteShift.Size = new System.Drawing.Size(23, 22);
+            this.BtnDeleteShift.Text = "删除";
+            // 
+            // BtnEditShift
+            // 
+            this.BtnEditShift.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.BtnEditShift.Image = ((System.Drawing.Image)(resources.GetObject("BtnEditShift.Image")));
+            this.BtnEditShift.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnEditShift.Name = "BtnEditShift";
+            this.BtnEditShift.Size = new System.Drawing.Size(36, 22);
+            this.BtnEditShift.Text = "编辑";
+            this.BtnEditShift.Click += new System.EventHandler(this.toolStripButton9_Click);
             // 
             // toolStripButton3
             // 
@@ -1086,16 +1396,6 @@
             this.toolStripButton2.Text = "更改选定员工的班次";
             this.toolStripButton2.Click += new System.EventHandler(this.ToolStripButton2_Click);
             // 
-            // BtnSaveShift
-            // 
-            this.BtnSaveShift.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.BtnSaveShift.Image = ((System.Drawing.Image)(resources.GetObject("BtnSaveShift.Image")));
-            this.BtnSaveShift.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BtnSaveShift.Name = "BtnSaveShift";
-            this.BtnSaveShift.Size = new System.Drawing.Size(36, 22);
-            this.BtnSaveShift.Text = "保存";
-            this.BtnSaveShift.Click += new System.EventHandler(this.BtnSaveShift_Click);
-            // 
             // toolStripButton6
             // 
             this.toolStripButton6.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -1115,6 +1415,17 @@
             this.toolStripButton7.Size = new System.Drawing.Size(112, 22);
             this.toolStripButton7.Text = "一周为同一班次";
             this.toolStripButton7.Click += new System.EventHandler(this.ToolStripButton7_Click);
+            // 
+            // BtnSaveShift
+            // 
+            this.BtnSaveShift.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.BtnSaveShift.Enabled = false;
+            this.BtnSaveShift.Image = ((System.Drawing.Image)(resources.GetObject("BtnSaveShift.Image")));
+            this.BtnSaveShift.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnSaveShift.Name = "BtnSaveShift";
+            this.BtnSaveShift.Size = new System.Drawing.Size(36, 22);
+            this.BtnSaveShift.Text = "保存";
+            this.BtnSaveShift.Click += new System.EventHandler(this.BtnSaveShift_Click);
             // 
             // tabPage2
             // 
@@ -1276,6 +1587,40 @@
             this.delAttInfoDataGridView.RowTemplate.Height = 23;
             this.delAttInfoDataGridView.Size = new System.Drawing.Size(806, 548);
             this.delAttInfoDataGridView.TabIndex = 2;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn9.HeaderText = "姓名";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "LowGz";
+            this.dataGridViewTextBoxColumn10.HeaderText = "最低工资";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "Money";
+            this.dataGridViewTextBoxColumn11.HeaderText = "金额";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "Hours";
+            this.dataGridViewTextBoxColumn12.HeaderText = "拆合小时数";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "ReHours";
+            this.dataGridViewTextBoxColumn13.HeaderText = "调整小时";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            // 
+            // delAttInfoBindingSource
+            // 
+            this.delAttInfoBindingSource.DataSource = typeof(考勤调整.DelAttInfo);
             // 
             // bindingNavigator2
             // 
@@ -1486,274 +1831,6 @@
             this.saveFileDialog1.Filter = "Excel文件(*.xlsx)|*.xlsx";
             this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.SaveFileDialog1_FileOk);
             // 
-            // empCheckMonthBindingSource
-            // 
-            this.empCheckMonthBindingSource.DataSource = typeof(考勤调整.EmpCheckMonth);
-            // 
-            // checkDateDataGridViewTextBoxColumn
-            // 
-            this.checkDateDataGridViewTextBoxColumn.DataPropertyName = "CheckDate";
-            dataGridViewCellStyle1.Format = "d";
-            dataGridViewCellStyle1.NullValue = null;
-            this.checkDateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.checkDateDataGridViewTextBoxColumn.HeaderText = "日期";
-            this.checkDateDataGridViewTextBoxColumn.Name = "checkDateDataGridViewTextBoxColumn";
-            this.checkDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.checkDateDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // dayTypeDataGridViewTextBoxColumn
-            // 
-            this.dayTypeDataGridViewTextBoxColumn.DataPropertyName = "DayType";
-            this.dayTypeDataGridViewTextBoxColumn.HeaderText = "类型";
-            this.dayTypeDataGridViewTextBoxColumn.Name = "dayTypeDataGridViewTextBoxColumn";
-            this.dayTypeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dayTypeDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // firstAmendDataGridViewTextBoxColumn
-            // 
-            this.firstAmendDataGridViewTextBoxColumn.DataPropertyName = "FirstAmend";
-            dataGridViewCellStyle2.Format = "t";
-            dataGridViewCellStyle2.NullValue = null;
-            this.firstAmendDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.firstAmendDataGridViewTextBoxColumn.HeaderText = "首次打卡修正";
-            this.firstAmendDataGridViewTextBoxColumn.Name = "firstAmendDataGridViewTextBoxColumn";
-            this.firstAmendDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lastAmendDataGridViewTextBoxColumn
-            // 
-            this.lastAmendDataGridViewTextBoxColumn.DataPropertyName = "LastAmend";
-            dataGridViewCellStyle3.Format = "t";
-            dataGridViewCellStyle3.NullValue = null;
-            this.lastAmendDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.lastAmendDataGridViewTextBoxColumn.HeaderText = "末次打卡修正";
-            this.lastAmendDataGridViewTextBoxColumn.Name = "lastAmendDataGridViewTextBoxColumn";
-            this.lastAmendDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // workTimeDataGridViewTextBoxColumn1
-            // 
-            this.workTimeDataGridViewTextBoxColumn1.DataPropertyName = "WorkTime";
-            this.workTimeDataGridViewTextBoxColumn1.HeaderText = "工作时间";
-            this.workTimeDataGridViewTextBoxColumn1.Name = "workTimeDataGridViewTextBoxColumn1";
-            this.workTimeDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // overTimeDataGridViewTextBoxColumn1
-            // 
-            this.overTimeDataGridViewTextBoxColumn1.DataPropertyName = "OverTime";
-            this.overTimeDataGridViewTextBoxColumn1.HeaderText = "加班时间";
-            this.overTimeDataGridViewTextBoxColumn1.Name = "overTimeDataGridViewTextBoxColumn1";
-            this.overTimeDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // totalTimeDataGridViewTextBoxColumn1
-            // 
-            this.totalTimeDataGridViewTextBoxColumn1.DataPropertyName = "TotalTime";
-            this.totalTimeDataGridViewTextBoxColumn1.HeaderText = "工时";
-            this.totalTimeDataGridViewTextBoxColumn1.Name = "totalTimeDataGridViewTextBoxColumn1";
-            this.totalTimeDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // allTimeDataGridViewTextBoxColumn
-            // 
-            this.allTimeDataGridViewTextBoxColumn.DataPropertyName = "AllTime";
-            this.allTimeDataGridViewTextBoxColumn.HeaderText = "出勤时间";
-            this.allTimeDataGridViewTextBoxColumn.Name = "allTimeDataGridViewTextBoxColumn";
-            this.allTimeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // empCheckDayBindingSource
-            // 
-            this.empCheckDayBindingSource.DataSource = typeof(考勤调整.EmpCheckDay);
-            // 
-            // checkModifyBindingSource
-            // 
-            this.checkModifyBindingSource.DataSource = typeof(考勤调整.CheckModify);
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "ShiftName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "班次名";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "AmCheckIn";
-            dataGridViewCellStyle4.Format = "t";
-            dataGridViewCellStyle4.NullValue = null;
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewTextBoxColumn3.HeaderText = "AM上";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 70;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "AmcheckOut";
-            dataGridViewCellStyle5.Format = "t";
-            dataGridViewCellStyle5.NullValue = null;
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewTextBoxColumn4.HeaderText = "AM下";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 70;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "PmCheckIn";
-            dataGridViewCellStyle6.Format = "t";
-            dataGridViewCellStyle6.NullValue = null;
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewTextBoxColumn5.HeaderText = "PM上";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Width = 70;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "PmCheckOut";
-            dataGridViewCellStyle7.Format = "t";
-            dataGridViewCellStyle7.NullValue = null;
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridViewTextBoxColumn6.HeaderText = "PM下";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.Width = 70;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "OTCheckIn";
-            dataGridViewCellStyle8.Format = "t";
-            dataGridViewCellStyle8.NullValue = null;
-            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridViewTextBoxColumn7.HeaderText = "OT上";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.Width = 70;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "OTCheckOut";
-            dataGridViewCellStyle9.Format = "t";
-            dataGridViewCellStyle9.NullValue = null;
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle9;
-            this.dataGridViewTextBoxColumn8.HeaderText = "OT下";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.Width = 70;
-            // 
-            // shiftBindingSource
-            // 
-            this.shiftBindingSource.DataSource = typeof(考勤调整.Shift);
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "Name";
-            this.dataGridViewTextBoxColumn9.HeaderText = "姓名";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "LowGz";
-            this.dataGridViewTextBoxColumn10.HeaderText = "最低工资";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "Money";
-            this.dataGridViewTextBoxColumn11.HeaderText = "金额";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "Hours";
-            this.dataGridViewTextBoxColumn12.HeaderText = "拆合小时数";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "ReHours";
-            this.dataGridViewTextBoxColumn13.HeaderText = "调整小时";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            // 
-            // delAttInfoBindingSource
-            // 
-            this.delAttInfoBindingSource.DataSource = typeof(考勤调整.DelAttInfo);
-            // 
-            // empNameDataGridViewTextBoxColumn
-            // 
-            this.empNameDataGridViewTextBoxColumn.DataPropertyName = "EmpName";
-            this.empNameDataGridViewTextBoxColumn.HeaderText = "姓名";
-            this.empNameDataGridViewTextBoxColumn.Name = "empNameDataGridViewTextBoxColumn";
-            this.empNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.empNameDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // deptNameDataGridViewTextBoxColumn1
-            // 
-            this.deptNameDataGridViewTextBoxColumn1.DataPropertyName = "DeptName";
-            this.deptNameDataGridViewTextBoxColumn1.HeaderText = "部门";
-            this.deptNameDataGridViewTextBoxColumn1.Name = "deptNameDataGridViewTextBoxColumn1";
-            this.deptNameDataGridViewTextBoxColumn1.Width = 60;
-            // 
-            // workTimeDataGridViewTextBoxColumn
-            // 
-            this.workTimeDataGridViewTextBoxColumn.DataPropertyName = "WorkTime";
-            this.workTimeDataGridViewTextBoxColumn.HeaderText = "平日工作";
-            this.workTimeDataGridViewTextBoxColumn.Name = "workTimeDataGridViewTextBoxColumn";
-            this.workTimeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.workTimeDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // overTimeDataGridViewTextBoxColumn
-            // 
-            this.overTimeDataGridViewTextBoxColumn.DataPropertyName = "OverTime";
-            this.overTimeDataGridViewTextBoxColumn.HeaderText = "平日加班";
-            this.overTimeDataGridViewTextBoxColumn.Name = "overTimeDataGridViewTextBoxColumn";
-            this.overTimeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.overTimeDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // hollydayTimeDataGridViewTextBoxColumn
-            // 
-            this.hollydayTimeDataGridViewTextBoxColumn.DataPropertyName = "HollydayTime";
-            this.hollydayTimeDataGridViewTextBoxColumn.HeaderText = "假日加班";
-            this.hollydayTimeDataGridViewTextBoxColumn.Name = "hollydayTimeDataGridViewTextBoxColumn";
-            this.hollydayTimeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.hollydayTimeDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // restdayTimeDataGridViewTextBoxColumn
-            // 
-            this.restdayTimeDataGridViewTextBoxColumn.DataPropertyName = "RestdayTime";
-            this.restdayTimeDataGridViewTextBoxColumn.HeaderText = "休息日加班";
-            this.restdayTimeDataGridViewTextBoxColumn.Name = "restdayTimeDataGridViewTextBoxColumn";
-            this.restdayTimeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.restdayTimeDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // totalTimeDataGridViewTextBoxColumn
-            // 
-            this.totalTimeDataGridViewTextBoxColumn.DataPropertyName = "TotalTime";
-            this.totalTimeDataGridViewTextBoxColumn.HeaderText = "总工时";
-            this.totalTimeDataGridViewTextBoxColumn.Name = "totalTimeDataGridViewTextBoxColumn";
-            this.totalTimeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.totalTimeDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // BigWeekHour
-            // 
-            this.BigWeekHour.DataPropertyName = "BigWeekHour";
-            this.BigWeekHour.HeaderText = "最大周工时";
-            this.BigWeekHour.Name = "BigWeekHour";
-            this.BigWeekHour.ReadOnly = true;
-            // 
-            // firstCheckDateDataGridViewTextBoxColumn
-            // 
-            this.firstCheckDateDataGridViewTextBoxColumn.DataPropertyName = "FirstCheckDate";
-            this.firstCheckDateDataGridViewTextBoxColumn.HeaderText = "首次打卡日";
-            this.firstCheckDateDataGridViewTextBoxColumn.Name = "firstCheckDateDataGridViewTextBoxColumn";
-            this.firstCheckDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.firstCheckDateDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // CheckNum
-            // 
-            this.CheckNum.DataPropertyName = "CheckNum";
-            this.CheckNum.HeaderText = "出勤天数";
-            this.CheckNum.Name = "CheckNum";
-            this.CheckNum.ReadOnly = true;
-            // 
-            // EmpId
-            // 
-            this.EmpId.DataPropertyName = "EmpId";
-            this.EmpId.HeaderText = "员工ID";
-            this.EmpId.Name = "EmpId";
-            this.EmpId.ReadOnly = true;
-            // 
             // AttEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1767,7 +1844,9 @@
             this.Text = "考勤调整";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.empDgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.empCheckMonthBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dayDgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.empCheckDayBindingSource)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -1777,6 +1856,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -1784,6 +1864,7 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkModifyBindingSource)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.YearHoliday)).EndInit();
@@ -1796,9 +1877,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.班次.ResumeLayout(false);
-            this.班次.PerformLayout();
+            this.gbbc.ResumeLayout(false);
+            this.gbbc.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shiftdgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shiftBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
@@ -1809,14 +1891,10 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.delAttInfoDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.delAttInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator2)).EndInit();
             this.bindingNavigator2.ResumeLayout(false);
             this.bindingNavigator2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.empCheckMonthBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.empCheckDayBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkModifyBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.shiftBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.delAttInfoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1842,15 +1920,9 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ToolStripButton btn_SyncCheck;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.GroupBox 班次;
+        private System.Windows.Forms.GroupBox gbbc;
         private System.Windows.Forms.DataGridView shiftdgv;
         private System.Windows.Forms.BindingSource shiftBindingSource;
-        private System.Windows.Forms.BindingNavigator bindingNavigator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton BtnSaveShift;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripProgressBar Pb;
         private System.Windows.Forms.ToolStripButton BtnWriteToDb;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
@@ -1903,16 +1975,6 @@
         private System.Windows.Forms.ToolStripComboBox modeselect;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BeginTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EndTime;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown YearHoliday;
@@ -1952,9 +2014,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.ToolStripButton toolStripButton6;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.ToolStripButton toolStripButton7;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.CheckBox checkBox8;
         private System.Windows.Forms.ToolStripButton toolStripButton8;
@@ -1970,6 +2030,29 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn firstCheckDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn CheckNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmpId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BeginTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EndTime;
+        private System.Windows.Forms.BindingNavigator bindingNavigator1;
+        private System.Windows.Forms.ToolStripButton BtnAddShift;
+        private System.Windows.Forms.ToolStripButton BtnDeleteShift;
+        private System.Windows.Forms.ToolStripButton BtnEditShift;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton toolStripButton6;
+        private System.Windows.Forms.ToolStripButton toolStripButton7;
+        private System.Windows.Forms.ToolStripButton BtnSaveShift;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button SaveEmpShifts;
     }
 }
 

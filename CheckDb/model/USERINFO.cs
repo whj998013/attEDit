@@ -105,8 +105,8 @@ namespace CheckDb
         //[StringLength(10)]
         //public string mverifypass { get; set; }
 
-        //[Column(TypeName = "image")]
-        //public byte[] Notes { get; set; }
+        [Column(TypeName = "image")]
+        public byte[] Notes { get; set; }
 
         //public int? privilege { get; set; }
 

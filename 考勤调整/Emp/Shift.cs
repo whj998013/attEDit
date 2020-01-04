@@ -31,7 +31,7 @@ namespace 考勤调整
         }
 
         public string ID { get; set; } = "";
-        public string ShiftName { get; set; } = "白班";
+        public string ShiftName { get; set; } = "默认班";
         public TimeSpan AmCheckIn { get; set; } = TimeSpan.Parse("08:00");
         public TimeSpan AmcheckOut { get; set; } = TimeSpan.Parse("11:30");
         public TimeSpan PmCheckIn { get; set; } = TimeSpan.Parse("12:30");

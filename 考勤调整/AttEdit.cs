@@ -16,7 +16,7 @@ namespace 考勤调整
 {
     public partial class AttEdit : Form
     {
-        attContent dc;
+        attContent dc { get; set; }
         bool IsConnect = false;
         DeptOper Doper { get; set; }
         List<Shift> Shifts = new List<Shift>();
@@ -57,8 +57,8 @@ namespace 考勤调整
             checkModifyBindingSource.DataSource = Cm;
             tool_con.SelectedIndex = 0;
             modeselect.SelectedIndex = 0;
+            shiftdgv.EditMode = DataGridViewEditMode.EditOnEnter;
             int d = DateTime.Today.Day;
-
             d1a.Value = DateTime.Today.AddDays(-d + 1).AddMonths(-1);
             d1b.Value = DateTime.Today.AddDays(-d);
             d4a.Value = d1b.Value;
@@ -90,6 +90,7 @@ namespace 考勤调整
                 if (dbcon != "")
                 {
                     dc = new attContent(dbcon);
+                    dc.ConName = dbcon;
                     Doper = new DeptOper(dc);
                     ReadShift();
                     toolStripButton1.Text = "关闭连接";
@@ -105,7 +106,7 @@ namespace 考勤调整
             {
                 dc.Dispose();
                 lc = null;
-                Doper=null;
+                Doper = null;
                 toolStripButton1.Text = "连接数据库";
                 IsConnect = false;
                 empCheckMonthBindingSource.DataSource = null;
@@ -136,7 +137,7 @@ namespace 考勤调整
             if (lc == null) lc = new LoadCheck(Doper.Depts, dc, Doper.GetDeptName);
             var checks = lc.GetCheckList(out DateTime beginDate, out DateTime endDate);
             var users = dc.USERINFO.ToList();
-            var getday = new AttControlClass(dc);
+            var Acc = new AttControlClass(dc);
             Emps = new List<EmpCheckMonth>();
             checks.ForEach(p =>
             {
@@ -146,7 +147,7 @@ namespace 考勤调整
                 {
                     var user = users.Where(u => u.USERID == p.USERID).Single();
 
-                    eobj = new EmpCheckMonth(user, getday, new DeptOper(dc).GetDeptName);
+                    eobj = new EmpCheckMonth(user, Acc, new DeptOper(dc).GetDeptName);
                     eobj.Shifts = this.Shifts;
                     eobj.SetDate(beginDate, endDate);
                     Emps.Add(eobj);
@@ -182,29 +183,42 @@ namespace 考勤调整
         private void BtnSaveShift_Click(object sender, EventArgs e)
         {
             //  ConfigHelper.UpdateAppConfig("shift", JsonHelper.ToJson(Shifts));
-
+            gbbc.Focus();
+            //保存编辑
             Shifts.ForEach(p =>
-           {
-               var s = dc.AttParam.SingleOrDefault(at => at.PARANAME == p.ID);
-               if (s == null)
-               {
-                   s = new AttParam
-                   {
-                       PARANAME = p.ID,
-                       PARATYPE = "si",
-                       PARAVALUE = p.ToShiftString()
-                   };
-                   dc.AttParam.Add(s);
-               }
-               else
-               {
-                   s.PARAVALUE = p.ToShiftString();
-               }
-           });
+             {
+                 var s = dc.AttParam.SingleOrDefault(at => at.PARANAME == p.ID);
+                 if (s == null)
+                 {
+                     s = new AttParam
+                     {
+                         PARANAME = p.ID,
+                         PARATYPE = "si",
+                         PARAVALUE = p.ToShiftString()
+                     };
+                     dc.AttParam.Add(s);
+                 }
+                 else
+                 {
+                     s.PARAVALUE = p.ToShiftString();
+                 }
+             });
+            //保存删除
+
+            dc.AttParam.Where(p => p.PARATYPE == "si").ToList().ForEach(p =>
+            {
+                if (Shifts.Count(s => s.ID == p.PARANAME) == 0) dc.AttParam.Remove(p);
+            });
+
             dc.SaveChanges();
+         
+            shiftdgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            shiftdgv.ReadOnly = true;
+            BtnDeleteShift.Enabled = false;
+            BtnAddShift.Enabled = false;
+            BtnSaveShift.Enabled = false;
+            BtnEditShift.Enabled = true;
             MessageBox.Show("保存成功");
-
-
 
         }
 
@@ -322,7 +336,7 @@ namespace 考勤调整
         /// <param name="e"></param>
         private void BtnWriteToDb_Click(object sender, EventArgs e)
         {
-            if (Emps!=null&&Emps.Count > 0)
+            if (Emps != null && Emps.Count > 0)
             {
                 bool isAllWriteMode = modeselect.SelectedIndex == 0 ? true : false;
                 Pb.Maximum = Emps.Count;
@@ -425,7 +439,7 @@ namespace 考勤调整
                     {
                         foreach (DataRow p in dt.Rows)
                         {
-                            var m = p["金额"].ToString().Replace(" ","");
+                            var m = p["金额"].ToString().Replace(" ", "");
                             if (m != "")
                             {
                                 DelAttInfo ndai = new DelAttInfo();
@@ -566,5 +580,42 @@ namespace 考勤调整
             dayDgv.Refresh();
             empDgv.Refresh();
         }
+
+        private void toolStripButton9_Click(object sender, EventArgs e)
+        {
+            shiftdgv.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            shiftdgv.ReadOnly = false;
+            BtnDeleteShift.Enabled = true;
+            BtnAddShift.Enabled = true;
+            BtnSaveShift.Enabled = true;
+            BtnEditShift.Enabled = false;
+        }
+
+
+
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            empDgv.SelectAll();
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+         
+
+        }
+
+
+        private void SaveEmpShifts_Click(object sender, EventArgs e)
+        {
+            Emps.ForEach(p =>
+            {
+                p.SaveEmpShift();
+            });
+            MessageBox.Show("保存成功!");
+        }
+
+       
     }
 }
