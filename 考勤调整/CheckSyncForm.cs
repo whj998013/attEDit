@@ -26,7 +26,7 @@ namespace 考勤调整
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (EndDate.Value <= DateTime.Parse("2021-1-1"))
+            if (EndDate.Value <= DateTime.Parse("2022-1-1"))
             {
                 CheckSync cs = new CheckSync(cdb, BeginDate.Value, EndDate.Value);
                 int count = cs.SyncCount();

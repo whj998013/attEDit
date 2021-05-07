@@ -84,12 +84,12 @@ namespace 考勤调整
         public EmpCheckMonth(USERINFO emp, AttControlClass attControl, GetDeptNameDelgate GetDeptName)
         {
             Emp = emp;
-            DeptName = GetDeptName(emp.DEFAULTDEPTID);
+            DeptName = GetDeptName((short)emp.DEFAULTDEPTID);
             AttControl = attControl;
             GetDayType = AttControl.GetDayType;
             EmpNote = AttControl.GetEmpNoteInfoByByte(emp.Notes);
 
-            if (EmpNote==null)
+            if (EmpNote == null)
             {
                 EmpNote = new EmpNoteInfo();
                 EmpNote.EmpPyName = PinyinHelper.PinyinString(emp.Name);
@@ -183,8 +183,8 @@ namespace 考勤调整
                     DeptName = DeptName,
                     DayType = GetDayType(d),
                 };
-                if(Shifts.Count>0) emp.EmpShift = Shifts[0];
-                
+                if (Shifts.Count > 0) emp.EmpShift = Shifts[0];
+
                 EmpChecks.Add(emp);
             }
             //连接上下天
@@ -212,13 +212,13 @@ namespace 考勤调整
         /// <param name="ecd"></param>
         /// <param name="newShift"></param>
         public void ChangeShift(EmpCheckDay ecd, Shift ns)
-        { 
+        {
             DateTime bd, ed;
             var newShift = ns;
             if (ecd.EmpShift.BeginTime != newShift.BeginTime || ecd.EmpShift.EndTime != newShift.EndTime)
             {
                 if (ecd.DayType == DayType.假日) newShift = new Shift();
-               
+
                 if (ecd.AfterCheckDay != null && ecd.AfterCheckDay.DayType == DayType.假日)
                 {
                     bd = ecd.CheckDate.Add(newShift.BeginTime);
@@ -278,15 +278,15 @@ namespace 考勤调整
         {
             AttControl.UpDateEmpNoteInfo(Emp.USERID, EmpNote);
         }
-  
+
 
         public void AutoChangeShift(List<Shift> shifts)
         {
-           
+
             EmpChecks.ForEach(p =>
             {
-               
-                Shift preShift =p.EmpShift;
+
+                Shift preShift = p.EmpShift;
                 ChangeShift(p, shifts[0]);
                 var lm = p.ShiftPoint;
                 shifts.ForEach(s =>
@@ -386,7 +386,7 @@ namespace 考勤调整
             Checks.Add(obj);
             var emp = EmpChecks.Where(p => p.CheckDate == obj.CHECKTIME.Date).SingleOrDefault();
             if (emp != null) emp.Add(obj);
-            
+
         }
 
         /// <summary>
@@ -521,6 +521,10 @@ namespace 考勤调整
                 if (df1 != null & dl2 != null)
                 {
                     var d1 = df1.FirstCheck.Value;
+                    if (df1.PreCheckDay != null && df1.PreCheckDay.ShiftName != df1.ShiftName)
+                    {
+                        d1 = (df1.PreCheckDay.CheckDate + df1.PreCheckDay.EmpShift.EndTime).AddMinutes(10);
+                    }
                     var d2 = dl2.LastCheck.Value;
                     var cd1 = Checks.OrderBy(p => p.CHECKTIME).First();
                     if (d1 != cd1.CHECKTIME)
@@ -543,15 +547,13 @@ namespace 考勤调整
                     if (p.NewChecks.Count > 0) newlist.AddRange(p.NewChecks);
                 }
             });
-            ///去重
-            //newlist.ForEach(p =>
-            //{
-            //    if (newlist.Count(n => n.CHECKTIME == p.CHECKTIME) > 0) p.CHECKTIME.AddSeconds(3); 
-            //});
+            //去重
+            newlist.ForEach(p =>
+            {
+                if (newlist.Count(n => n.CHECKTIME == p.CHECKTIME) > 0) p.CHECKTIME.AddSeconds(3);
+            });
             var l = new HashSet<CHECKINOUT>(newlist);
-
-            EFBatchOperation.For(dc, dc.CHECKINOUT)
-                .InsertAll(l);
+            EFBatchOperation.For(dc, dc.CHECKINOUT).InsertAll(l);
 
 
         }

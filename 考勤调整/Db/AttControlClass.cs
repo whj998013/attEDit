@@ -37,7 +37,7 @@ namespace 考勤调整
             eni.ConName = Con.ConName;
 
             var u = Con.USERINFO.SingleOrDefault(p => p.USERID == userid);
-            if (u != null && u.Notes != null)
+            if (u != null)
             {
                 var noteList = ByteToListEmpNote(u.Notes);
                 var e = noteList.SingleOrDefault(p => p.ConName == eni.ConName);
@@ -71,6 +71,7 @@ namespace 考勤调整
             return null;
 
         }
+
         private List<EmpNoteInfo> ByteToListEmpNote(byte[] notes)
         {
             try
@@ -81,9 +82,9 @@ namespace 考勤调整
             }
             catch
             {
-
+                return new List<EmpNoteInfo>();
             }
-            return new List<EmpNoteInfo>();
+
         }
 
         /// <summary>

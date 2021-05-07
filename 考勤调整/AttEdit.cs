@@ -11,10 +11,11 @@ using CheckDb;
 using 考勤调整.Util;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using CCWin;
 
 namespace 考勤调整
 {
-    public partial class AttEdit : Form
+    public partial class AttEdit : Skin_DevExpress
     {
         attContent dc { get; set; }
         bool IsConnect = false;
@@ -105,6 +106,7 @@ namespace 考勤调整
             else
             {
                 dc.Dispose();
+                textBox2.Text = "";
                 lc = null;
                 Doper = null;
                 toolStripButton1.Text = "连接数据库";
@@ -163,7 +165,7 @@ namespace 考勤调整
 
         private void DataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            DgvHelp.PointNum(empDgv, e);
+          //  DgvHelp.PointNum(empDgv, e);
         }
 
 
@@ -211,7 +213,7 @@ namespace 考勤调整
             });
 
             dc.SaveChanges();
-         
+
             shiftdgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             shiftdgv.ReadOnly = true;
             BtnDeleteShift.Enabled = false;
@@ -392,15 +394,7 @@ namespace 考勤调整
 
         }
 
-        private void DayDgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void SaveFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
-
-        }
+     
 
         private void NumericUpDown6_ValueChanged(object sender, EventArgs e)
         {
@@ -519,6 +513,10 @@ namespace 考勤调整
             ulist.ForEach(p =>
             {
                 p.Name = p.Name.Split('\0')[0];
+                if (p.DEFAULTDEPTID == null)
+                {
+                    p.DEFAULTDEPTID = 1;
+                }
             });
 
             dc.SaveChanges();
@@ -600,13 +598,6 @@ namespace 考勤调整
 
         }
 
-        private void button9_Click(object sender, EventArgs e)
-        {
-         
-
-        }
-
-
         private void SaveEmpShifts_Click(object sender, EventArgs e)
         {
             Emps.ForEach(p =>
@@ -616,6 +607,31 @@ namespace 考勤调整
             MessageBox.Show("保存成功!");
         }
 
-       
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            if ( Emps!=null&&Emps.Count > 0)
+            {
+                var s = textBox2.Text.ToUpper();
+                if (s != "")
+                {
+                    var re = Emps.Where(p => p.EmpNote.EmpPyName.Contains(s)).ToList();
+                    empCheckMonthBindingSource.DataSource = re;
+                }
+                else
+                {
+                    empCheckMonthBindingSource.DataSource = Emps;
+                }
+            }
+        }
+
+        private void skinTextBox1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dayDgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

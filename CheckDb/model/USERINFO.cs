@@ -57,7 +57,7 @@ namespace CheckDb
 
         //public short? VERIFICATIONMETHOD { get; set; }
 
-        public short DEFAULTDEPTID { get; set; }
+        public short ?DEFAULTDEPTID { get; set; }
 
         //public short? SECURITYFLAGS { get; set; }
 

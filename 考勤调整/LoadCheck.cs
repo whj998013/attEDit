@@ -81,7 +81,7 @@ namespace 考勤调整
         private void Button2_Click(object sender, EventArgs e)
         {
             List<int> re = nodes.Where(p => p.Checked).Select(n => n.Id).ToList();
-            var ulist = Dc.USERINFO.Where(p => re.Contains(p.DEFAULTDEPTID)&&p.DEFAULTDEPTID>=0).ToList();
+            var ulist = Dc.USERINFO.Where(p => re.Contains((short)p.DEFAULTDEPTID)&&p.DEFAULTDEPTID>=0).ToList();
             emps = new List<Empb>();
             ulist.ForEach((Action<USERINFO>)(p => emps.Add(new Empb
             {
@@ -89,8 +89,8 @@ namespace 考勤调整
                 UserName = p.Name,
                 HiredDay = p.HIREDDAY,
                 IsSelect = true,
-                DeptName = GetDeptName(p.DEFAULTDEPTID),
-                DeptId = p.DEFAULTDEPTID,
+                DeptName = GetDeptName((short)p.DEFAULTDEPTID),
+                DeptId = (short)p.DEFAULTDEPTID,
             })));
 
             empBindingSource.DataSource =new BindingCollection<Empb>(emps.OrderBy(p => p.DeptId).ToList());
