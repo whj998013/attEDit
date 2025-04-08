@@ -149,10 +149,6 @@ namespace 考勤调整
 
                 }
                 p.ShowNewCheckData = false;
-
-
-
-
             });
 
         }

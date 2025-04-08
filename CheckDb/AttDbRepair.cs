@@ -12,8 +12,8 @@ namespace CheckDb
         {
             string repairstr = string.Format("update userinfo set DEFAULTDEPTID=1 where DEFAULTDEPTID IS NULL");
             ac.Database.ExecuteSqlCommand(repairstr);
-            string str2 = string.Format("alter table CHECKINOUT alter column WorkCode int");
-            ac.Database.ExecuteSqlCommand(str2);
+            //string str2 = string.Format("alter table CHECKINOUT alter column WorkCode int");
+            //ac.Database.ExecuteSqlCommand(str2);
         }
     }
 }

@@ -11,11 +11,11 @@ using CheckDb;
 using 考勤调整.Util;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
-using CCWin;
+using System.Data.SqlClient;
 
 namespace 考勤调整
 {
-    public partial class AttEdit : Skin_DevExpress
+    public partial class AttEdit : Form
     {
         attContent dc { get; set; }
         bool IsConnect = false;
@@ -46,9 +46,12 @@ namespace 考勤调整
         {
             var conList = ConfigurationManager.ConnectionStrings;
 
+
             for (int i = 1; i < conList.Count; i++)
             {
-                tool_con.Items.Add(conList[i].Name);
+                var item = conList[i];
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(item.ConnectionString);
+                tool_con.Items.Add(string.Format("{0}/{1}",item.Name,builder.DataSource) );
             }
             Cm.Am = true;
             Cm.Pm = true;
@@ -87,7 +90,7 @@ namespace 考勤调整
             if (!IsConnect)
             {
 
-                string dbcon = tool_con.Text;
+                string dbcon = tool_con.Text.Split('/').First();
                 if (dbcon != "")
                 {
                     dc = new attContent(dbcon);
@@ -311,7 +314,6 @@ namespace 考勤调整
         /// 进度条值更新函数（参数必须跟声明的代理参数一样）
         /// </summary>
         /// <param name="ipos"></param>
-        /// <param name="vinfo"></param>
         private void SetPbPos(int ipos)
         {
             if (this.InvokeRequired)
@@ -630,6 +632,36 @@ namespace 考勤调整
         }
 
         private void dayDgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void empDgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void numericUpDown5_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripButton9_Click_1(object sender, EventArgs e)
+        {
+            new DbMangeForm().ShowDialog();
+        }
+
+        private void tool_con_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AttEdit_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.Save();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
         {
 
         }

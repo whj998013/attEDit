@@ -1,6 +1,7 @@
 ﻿using CheckDb;
 using System;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace 考勤调整
@@ -20,13 +21,18 @@ namespace 考勤调整
             EndDate.Value = DateTime.Now.Date.AddDays(-d);
             BeginDate.Value = EndDate.Value.AddMonths(-1);
             EndDate.Value = EndDate.Value.AddDays(-1);
+            if(cdb.tday.Count() == 0)
+            {
+                cdb.tday.Add(new tday() { t1 = BeginDate.Value, t2 = EndDate.Value });
+                cdb.SaveChanges();
+            }
             var r = cdb.tday.First();
             l4.Text += string.Format("开始日期:{0},结束日期:{1}", r.t1.Value.ToShortDateString(), r.t2.Value.ToShortDateString());
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (EndDate.Value <= DateTime.Parse("2022-1-1"))
+            if (EndDate.Value <= DateTime.Parse("2026-1-1"))
             {
                 CheckSync cs = new CheckSync(cdb, BeginDate.Value, EndDate.Value);
                 int count = cs.SyncCount();

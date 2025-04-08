@@ -536,8 +536,8 @@ namespace 考勤调整
 
                 }
 
-
             }
+
 
             //添加考勤
             EmpChecks.ForEach(p =>
@@ -547,6 +547,7 @@ namespace 考勤调整
                     if (p.NewChecks.Count > 0) newlist.AddRange(p.NewChecks);
                 }
             });
+
 
 
             //去重

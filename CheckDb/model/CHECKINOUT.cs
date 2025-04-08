@@ -19,17 +19,17 @@ namespace CheckDb
         public DateTime CHECKTIME { get; set; }
 
         [StringLength(1)]
-        public string CHECKTYPE { get; set; }
+        public string CHECKTYPE { get; set; } = "I";
 
-        public int? VERIFYCODE { get; set; }
+        public int? VERIFYCODE { get; set; } = 1;
 
         [StringLength(5)]
-        public string SENSORID { get; set; }
+        public string SENSORID { get; set; } = "2";
 
         [StringLength(30)]
         public string Memoinfo { get; set; }
 
-        public int? WorkCode { get; set; }
+        //public int? WorkCode { get; set; }
 
         [StringLength(20)]
         public string sn { get; set; }
