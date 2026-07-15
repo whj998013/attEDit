@@ -15,16 +15,55 @@ using System.Data.SqlClient;
 
 namespace 考勤调整
 {
+    /// <summary>
+    /// 主窗口：考勤调整界面
+    /// 负责连接数据库、加载/修改/保存打卡与排班数据，以及触发相关批量操作。
+    /// </summary>
     public partial class AttEdit : Form
     {
+        /// <summary>
+        /// 数据库上下文，用于访问和保存考勤相关表（attContent）。
+        /// </summary>
         attContent dc { get; set; }
+
+        /// <summary>
+        /// 当前是否与数据库建立连接的标志。
+        /// </summary>
         bool IsConnect = false;
+
+        /// <summary>
+        /// 部门操作封装（用于获取部门名称等）。
+        /// </summary>
         DeptOper Doper { get; set; }
+
+        /// <summary>
+        /// 系统中可用的班次列表。
+        /// </summary>
         List<Shift> Shifts = new List<Shift>();
+
+        /// <summary>
+        /// 考勤修改设置（如上/下午规则、是否合并等）。
+        /// </summary>
         CheckModify Cm = new CheckModify();
+
+        /// <summary>
+        /// 当前加载的员工月度考勤集合（用于界面绑定与批量处理）。
+        /// </summary>
         List<EmpCheckMonth> Emps { get; set; }
+
+        /// <summary>
+        /// 负责从数据库或文件加载打卡记录的辅助类实例。
+        /// </summary>
         LoadCheck lc;
+
+        /// <summary>
+        /// 导入/删除考勤相关的临时信息列表（例如工资签字表数据）。
+        /// </summary>
         List<DelAttInfo> dinfo = new List<DelAttInfo>();
+
+        /// <summary>
+        /// 构造函数：初始化窗口组件。
+        /// </summary>
         public AttEdit()
         {
             InitializeComponent();
@@ -42,6 +81,12 @@ namespace 考勤调整
             }
         }
 
+        /// <summary>
+        /// 窗体加载事件：初始化连接字符串下拉、默认考勤修改设置并绑定到界面控件。
+        /// 在程序启动时执行一次，用于准备界面和默认参数。
+        /// </summary>
+        /// <param name="sender">事件发送者</param>
+        /// <param name="e">事件参数</param>
         private void Form1_Load(object sender, EventArgs e)
         {
             var conList = ConfigurationManager.ConnectionStrings;
@@ -51,7 +96,7 @@ namespace 考勤调整
             {
                 var item = conList[i];
                 SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(item.ConnectionString);
-                tool_con.Items.Add(string.Format("{0}/{1}",item.Name,builder.DataSource) );
+                tool_con.Items.Add(string.Format("{0}/{1}", item.Name, builder.DataSource));
             }
             Cm.Am = true;
             Cm.Pm = true;
@@ -85,6 +130,12 @@ namespace 考勤调整
             bindingNavigator1.BindingSource = shiftBindingSource;
         }
 
+        /// <summary>
+        /// 连接/断开数据库按钮点击处理。
+        /// 连接时根据所选连接名创建 attContent、读取班次并启用界面功能；断开时释放资源并清空绑定数据。
+        /// </summary>
+        /// <param name="sender">事件发送者</param>
+        /// <param name="e">事件参数</param>
         private void ToolStripButton1_Click(object sender, EventArgs e)
         {
             if (!IsConnect)
@@ -137,6 +188,12 @@ namespace 考勤调整
             toolStripButton1.Enabled = yn;
         }
 
+        /// <summary>
+        /// 加载考勤数据按钮点击处理：从数据库读取打卡记录，按员工构建 EmpCheckMonth 对象并绑定到界面。
+        /// 会根据读取到的起止日期为每个员工初始化日考勤集合并设置默认班次。
+        /// </summary>
+        /// <param name="sender">事件发送者</param>
+        /// <param name="e">事件参数</param>
         private void Btn_LoadData_Click(object sender, EventArgs e)
         {
             if (lc == null) lc = new LoadCheck(Doper.Depts, dc, Doper.GetDeptName);
@@ -168,7 +225,7 @@ namespace 考勤调整
 
         private void DataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-          //  DgvHelp.PointNum(empDgv, e);
+            //  DgvHelp.PointNum(empDgv, e);
         }
 
 
@@ -396,7 +453,7 @@ namespace 考勤调整
 
         }
 
-     
+
 
         private void NumericUpDown6_ValueChanged(object sender, EventArgs e)
         {
@@ -430,7 +487,7 @@ namespace 考勤调整
                 if (openFile.ShowDialog() == DialogResult.OK)
                 {
                     double zdgz = double.Parse(textBox1.Text);
-                    DataTable dt = ExcelOper.ReadExcelToTable(openFile.FileName);
+                    DataTable dt = ExcelOper.ExcelToDataTable(openFile.FileName, "签字工资表", 1, 2);
                     if (dt != null)
                     {
                         foreach (DataRow p in dt.Rows)
@@ -495,7 +552,8 @@ namespace 考勤调整
                 foreach (DataGridViewRow r in selectrows)
                 {
                     ls.Add((Shift)r.DataBoundItem);
-                };
+                }
+                ;
                 var rows = empDgv.SelectedRows;
                 foreach (DataGridViewRow r in rows)
                 {
@@ -611,7 +669,7 @@ namespace 考勤调整
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            if ( Emps!=null&&Emps.Count > 0)
+            if (Emps != null && Emps.Count > 0)
             {
                 var s = textBox2.Text.ToUpper();
                 if (s != "")
@@ -661,7 +719,61 @@ namespace 考勤调整
             Properties.Settings.Default.Save();
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        /// <summary>
+        /// 将原始考勤复制到新考勤（撤销所有调整），用于恢复原始数据。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+        private void button9_Click_1(object sender, EventArgs e)
+        {
+            if (Emps != null && Emps.Count > 0)
+            {
+                Emps.ForEach(p =>
+                {
+                    p.EmpChecks.ForEach(check =>
+                    {
+                        check.NewChecks.Clear();
+                        check.RawChecks.ForEach(c =>
+                        {
+                            check.NewChecks.Add(c.Clone());
+                        });
+                    });
+
+                });
+                dayDgv.Refresh();
+            }
+        }
+        /// <summary>
+        /// 删除首位打卡中间的所有打卡记录。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button10_Click(object sender, EventArgs e)
+        {
+            if (Emps != null && Emps.Count > 0)
+            {
+                Emps.ForEach(p =>
+                {
+                    p.EmpChecks.ForEach(check =>
+                    {
+                       check.NewChecks = check.NewChecks.OrderBy(c => c.CHECKTIME).ToList();
+                        if (check.NewChecks.Count > 2)
+                        {
+                            var first = check.NewChecks.First();
+                            var last = check.NewChecks.Last();
+                            check.NewChecks.Clear();
+                            check.NewChecks.Add(first);
+                            check.NewChecks.Add(last);
+                        }
+                    });
+                });
+                dayDgv.Refresh();
+
+            }
+        }
+
+        private void shiftdgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

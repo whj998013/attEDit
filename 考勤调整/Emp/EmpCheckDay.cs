@@ -13,19 +13,66 @@ namespace 考勤调整
         假日 = 2
     }
 
+    /// <summary>
+    /// 表示单个员工单日的考勤数据和相关计算逻辑。
+    /// 包含原始打卡、调整后打卡、班次映射以及工时/加班的计算方法。
+    /// </summary>
     public class EmpCheckDay
     {
 
+        /// <summary>
+        /// 前一天的日考勤对象（用于跨天打卡或连续班次判断）
+        /// </summary>
         public EmpCheckDay PreCheckDay { get; set; }
+
+        /// <summary>
+        /// 后一天的日考勤对象（用于跨天打卡或重复打卡清理）
+        /// </summary>
         public EmpCheckDay AfterCheckDay { get; set; }
+
+        /// <summary>
+        /// 上午上班打卡记录（按班次映射）
+        /// </summary>
         public CHECKINOUT AmIn { get; set; }
+
+        /// <summary>
+        /// 上午下班打卡记录（按班次映射）
+        /// </summary>
         public CHECKINOUT AmOut { get; set; }
+
+        /// <summary>
+        /// 下午上班打卡记录（按班次映射）
+        /// </summary>
         public CHECKINOUT PmIn { get; set; }
+
+        /// <summary>
+        /// 下午下班打卡记录（按班次映射）
+        /// </summary>
         public CHECKINOUT PmOut { get; set; }
+
+        /// <summary>
+        /// 加班上班打卡记录（按班次映射）
+        /// </summary>
         public CHECKINOUT OtIn { get; set; }
+
+        /// <summary>
+        /// 加班下班打卡记录（按班次映射）
+        /// </summary>
         public CHECKINOUT OtOut { get; set; }
+
+        /// <summary>
+        /// 员工信息引用（USERINFO）
+        /// </summary>
         public USERINFO Emp { get; set; }
+
+        /// <summary>
+        /// 指示该日类型（平日/休息日/假日）
+        /// </summary>
         public DayType DayType { get; set; }
+
+        /// <summary>
+        /// 当前日考勤对应的日期（仅包含日期部分）
+        /// </summary>
         public DateTime CheckDate { get; set; }
         /// <summary>
         /// 班次
@@ -53,6 +100,10 @@ namespace 考勤调整
             }
         }
         /// <summary>
+        /// 根据班次时间段将当天的多条打卡记录映射到对应的检查点数组（Ciol），
+        /// 以便后续按班次的上下班口径计算工作时长和加班。
+        /// </summary>
+        /// <summary>
         /// 员工姓名
         /// </summary>
         public string EmpName
@@ -67,6 +118,11 @@ namespace 考勤调整
         /// </summary>
         public string DeptName { get; set; }
 
+        /// <summary>
+        /// 生成删除当前日打卡记录的 SQL 语句片段，用于批量删除操作。
+        /// 返回空字符串表示没有可删除的记录。
+        /// </summary>
+        /// <returns>可用于执行的 DELETE SQL 字符串</returns>
         public string GetDeleteSqlStr()
         {
             Checks = RawChecks;
@@ -106,14 +162,17 @@ namespace 考勤调整
             }
         }
         /// <summary>
-        /// 原始打卡记录
+        /// 当天从设备读取到的原始打卡列表（未经过调整）。
         /// </summary>
         public List<CHECKINOUT> RawChecks { get; set; } = new List<CHECKINOUT>();
 
-
-        public List<CHECKINOUT> Checks { get; set; }
         /// <summary>
-        /// 调整后的待写入的打卡记录
+        /// 当前正在用于计算的打卡集合（可以是 RawChecks 或 NewChecks，取决于 ShowNewCheckData 标志）。
+        /// </summary>
+        public List<CHECKINOUT> Checks { get; set; }
+
+        /// <summary>
+        /// 调整后的打卡记录集合，准备写回数据库时使用。
         /// </summary>
         public List<CHECKINOUT> NewChecks { get; set; } = new List<CHECKINOUT>();
 
@@ -142,6 +201,12 @@ namespace 考勤调整
             Checks = RawChecks;
 
         }
+
+        /// <summary>
+        /// 构造函数：从单条打卡记录创建日考勤对象。
+        /// </summary>
+        /// <param name="emp">员工信息</param>
+        /// <param name="obj">单条打卡记录</param>
 
 
         /// <summary>
@@ -229,6 +294,9 @@ namespace 考勤调整
             }
 
         }
+        /// <summary>
+        /// 根据 FirstCheck 和 LastCheck 计算出当天的首末打卡相对时间（FTS/LTS）。
+        /// </summary>
         /// <summary>
         /// 首次打卡修正
         /// </summary>

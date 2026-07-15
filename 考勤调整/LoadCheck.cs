@@ -17,7 +17,7 @@ namespace 考勤调整
         List<Empb> emps { get; set; } = new List<Empb>();
         attContent Dc { get; set; }
         List<StNode> nodes { get; set; }
-        List<CHECKINOUT> clist = new List<CHECKINOUT>();
+        List<CHECKINOUT> clist { get; set; } = new List<CHECKINOUT>();
         GetDeptNameDelgate GetDeptName { get; set; }
         public LoadCheck(List<Dept> depts, attContent dc, GetDeptNameDelgate _GetDeptName)
         {
@@ -72,7 +72,7 @@ namespace 考勤调整
             foreach (TreeNode n in e.Node.Nodes)
             {
                 n.Checked = e.Node.Checked;
-                
+
             }
             emps.Clear();
             empBindingSource.DataSource = null;
@@ -81,7 +81,7 @@ namespace 考勤调整
         private void Button2_Click(object sender, EventArgs e)
         {
             List<int> re = nodes.Where(p => p.Checked).Select(n => n.Id).ToList();
-            var ulist = Dc.USERINFO.Where(p => re.Contains((short)p.DEFAULTDEPTID)&&p.DEFAULTDEPTID>=0).ToList();
+            var ulist = Dc.USERINFO.Where(p => re.Contains((short)p.DEFAULTDEPTID) && p.DEFAULTDEPTID >= 0).ToList();
             emps = new List<Empb>();
             ulist.ForEach((Action<USERINFO>)(p => emps.Add(new Empb
             {
@@ -93,7 +93,7 @@ namespace 考勤调整
                 DeptId = (short)p.DEFAULTDEPTID,
             })));
 
-            empBindingSource.DataSource =new BindingCollection<Empb>(emps.OrderBy(p => p.DeptId).ToList());
+            empBindingSource.DataSource = new BindingCollection<Empb>(emps.OrderBy(p => p.DeptId).ToList());
         }
 
         private void Button3_Click(object sender, EventArgs e)
@@ -118,7 +118,8 @@ namespace 考勤调整
             {
                 MessageBox.Show("请选择要导入的员工.");
                 return;
-            };
+            }
+            ;
             if (BeginDate.Value > EndDate.Value)
             {
                 MessageBox.Show("日期范围不正确.");

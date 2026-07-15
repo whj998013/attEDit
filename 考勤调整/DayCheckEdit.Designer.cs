@@ -113,6 +113,7 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2});
             this.cdgv.DataSource = this.cHECKINOUTBindingSource;
+            this.cdgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.cdgv.Location = new System.Drawing.Point(0, 28);
             this.cdgv.Name = "cdgv";
             this.cdgv.RowTemplate.Height = 23;

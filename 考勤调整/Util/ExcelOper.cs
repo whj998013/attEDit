@@ -1,41 +1,61 @@
-﻿using System;
+﻿using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//using NPOI.XSSF.UserModel;
+//using NPOI.SS.UserModel;
+//using System.Data;
+//using System.IO;
 
 namespace 考勤调整
 {
     public class ExcelOper
     {
 
-        //根据excle的路径把第一个sheel中的内容放入datatable
-        public static DataTable ReadExcelToTable(string path)//excel存放的路径
-        {
-            try
-            {   //连接字符串
-                string connstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + path + ";Extended Properties='Excel 8.0;HDR=YES;IMEX=1';"; // Office 07及以上版本 不能出现多余的空格 而且分号注意
-                //string connstring = Provider=Microsoft.JET.OLEDB.4.0;Data Source=" + path + ";Extended Properties='Excel 8.0;HDR=NO;IMEX=1';"; //Office 07以下版本 
-                using (OleDbConnection conn = new OleDbConnection(connstring))
-                {
-                    conn.Open();
-                    DataTable sheetsName = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "Table" }); //得到所有sheet的名字
-                    string firstSheetName = sheetsName.Rows[0][2].ToString(); //得到第一个sheet的名字
-                    string sql = string.Format("SELECT * FROM [{0}A2:Z600]", "签字工资表$"); //查询字符串
-                    //string sql = string.Format("SELECT * FROM [{0}] WHERE [日期] is not null", firstSheetName); //查询字符串
 
-                    OleDbDataAdapter ada = new OleDbDataAdapter(sql, connstring);
-                    DataSet set = new DataSet();
-                    ada.Fill(set);
-                    return set.Tables[0];
+
+
+        public static DataTable ExcelToDataTable(string filePath, string sheetname, int HeaderRowId = 0, int BeginRowId = 1)
+        {
+            DataTable dt = new DataTable();
+
+            using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            {
+                XSSFWorkbook workbook = new XSSFWorkbook(fs);
+                ISheet sheet = workbook.GetSheet(sheetname); // 只读取第一个 Sheet
+                // 添加列名
+                IRow headerRow = sheet.GetRow(HeaderRowId);
+                for (int i = 0; i < headerRow.LastCellNum; i++)
+                {
+                    dt.Columns.Add(headerRow.GetCell(i)?.ToString());
+                }
+
+                // 添加数据行
+                for (int i = BeginRowId; i <= sheet.LastRowNum; i++)
+                {
+                    IRow row = sheet.GetRow(i);
+                    if (row == null) continue;
+
+                    DataRow dataRow = dt.NewRow();
+                    for (int j = 0; j < row.LastCellNum; j++)
+                    {
+                        try
+                        {
+                            dataRow[j] = row.GetCell(j)?.ToString();
+                        }
+                        catch { }
+                    }
+
+                    dt.Rows.Add(dataRow);
                 }
             }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
+            return dt;
         }
     }
 }

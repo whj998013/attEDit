@@ -58,6 +58,7 @@ namespace 考勤调整
         /// </summary>
         public USERINFO Emp { get; set; }
 
+
         public EmpNoteInfo EmpNote { get; set; }
 
         /// <summary>
@@ -80,7 +81,12 @@ namespace 考勤调整
                 return Checks.Max(p => p.CHECKTIME).Date;
             }
         }
-
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="emp"></param>
+        /// <param name="attControl"></param>
+        /// <param name="GetDeptName"></param>
         public EmpCheckMonth(USERINFO emp, AttControlClass attControl, GetDeptNameDelgate GetDeptName)
         {
             Emp = emp;
@@ -100,7 +106,11 @@ namespace 考勤调整
         }
 
         /// <summary>
-        /// 设置班次
+        /// 根据员工偏好与已有打卡信息为每个考勤日设置班次。
+        /// 处理顺序：
+        /// 1) 如果员工有默认班次配置（EmpNote），按自动或单一班次应用到所有天；
+        /// 2) 如果某天已有打卡并在 Memoinfo 中记录了班次 ID，则以该班次为准；
+        /// 3) 消除与次日重复的打卡项（当跨天打卡存在重复引用时进行清理）。
         /// </summary>
         public void SetShifts()
         {
@@ -207,10 +217,12 @@ namespace 考勤调整
             }
         }
         /// <summary>
-        /// 更改班次
+        /// 为指定日期（EmpCheckDay）更改班次并重计算该日的上下班时间区间与考勤点。
+        /// 如果目标班次与当前班次不同，则会根据当前日、次日是否为假日来计算考勤区间边界，
+        /// 并重构该日的打卡判定逻辑（例如跨夜班次的处理）。
         /// </summary>
-        /// <param name="ecd"></param>
-        /// <param name="newShift"></param>
+        /// <param name="ecd">要修改班次的日考勤对象</param>
+        /// <param name="ns">新的班次对象</param>
         public void ChangeShift(EmpCheckDay ecd, Shift ns)
         {
             DateTime bd, ed;
@@ -257,8 +269,11 @@ namespace 考勤调整
         }
         /// <summary>
         /// 更改员工全部的班次
+        /// <summary>
+        /// 将整个月的考勤日期都更改为同一个班次，并更新员工默认班次（保存为 EmpNote）。
+        /// 此方法会遍历所有日考勤并调用 ChangeShift(EmpCheckDay, Shift)。
         /// </summary>
-        /// <param name="newShift"></param>
+        /// <param name="newShift">要应用到每一天的班次</param>
         public void ChangeShift(Shift newShift)
         {
             EmpChecks.ForEach(p =>
@@ -280,6 +295,12 @@ namespace 考勤调整
         }
 
 
+        /// <summary>
+        /// 自动排班：根据传入的班次序列尝试为每一天选择最合适的班次。
+        /// 算法会比较每个候选班次在当天的得分（通过 ShiftPoint 等字段），保留得分最高的班次；
+        /// 并修正连续日期间的班次不一致问题，最终将排班结果写入 EmpNote（并设置 AutoShift=true）。
+        /// </summary>
+        /// <param name="shifts">候选班次列表（优先顺序或轮换顺序）</param>
         public void AutoChangeShift(List<Shift> shifts)
         {
 
@@ -330,6 +351,10 @@ namespace 考勤调整
             EmpNote.AutoShift = true;
         }
 
+        /// <summary>
+        /// 将同一周内多数天使用的班次应用到该周所有工作日。
+        /// 用于一周内多数天班次一致时快速统一排班。
+        /// </summary>
         public void SetOneWeekIsSameShift()
         {
             BuildWeekCheck();
@@ -347,6 +372,10 @@ namespace 考勤调整
                 }
             });
         }
+        /// <summary>
+        /// 将所有日考勤的标准工作时长设置为 8 小时（或恢复为原始值），用于将年休/特殊情形计入 8 小时工作制。
+        /// </summary>
+        /// <param name="v">true 表示将工作小时设为 8 小时，false 表示取消该设置</param>
         public void SetWorkHourTo8(bool v)
         {
             EmpChecks.ForEach(p =>
@@ -355,6 +384,10 @@ namespace 考勤调整
             });
         }
 
+        /// <summary>
+        /// 设置是否根据打卡时间来计算加班/结算时间（JSTime），将该标志应用到所有日考勤对象。
+        /// </summary>
+        /// <param name="v">true 表示按打卡计算结算时间，false 表示使用其他规则</param>
         public void SetJSTimeByCheck(bool v)
         {
             EmpChecks.ForEach(p =>
@@ -362,6 +395,10 @@ namespace 考勤调整
                 p.JSTimeByCheck = v;
             });
         }
+        /// <summary>
+        /// 设置是否忽略 15 分钟内的打卡误差（避开短时间重复打卡影响），应用于所有日考勤对象。
+        /// </summary>
+        /// <param name="v">true 表示忽略 15 分钟内的打卡，false 表示不忽略</param>
         public void SetIgnore15MinuteCheck(bool v)
         {
             EmpChecks.ForEach(p =>
@@ -370,6 +407,10 @@ namespace 考勤调整
             });
         }
 
+        /// <summary>
+        /// 控制是否在界面上显示已计算/新增的打卡数据（例如模拟插入的 NewChecks）。
+        /// </summary>
+        /// <param name="v">true 显示新打卡数据，false 隐藏</param>
         public void SetShowNewCheckData(bool v)
         {
             EmpChecks.ForEach(p =>
@@ -378,9 +419,10 @@ namespace 考勤调整
             });
         }
         /// <summary>
-        /// 添加考勤记录
+        /// 向当前员工月度对象添加一条打卡记录，并将其分配到对应的日考勤（如果存在）。
+        /// 该方法同时将打卡记录保存在 Checks 列表用于后续批量写库。
         /// </summary>
-        /// <param name="obj"></param>
+        /// <param name="obj">要添加的 CHECKINOUT 打卡记录</param>
         public void Add(CHECKINOUT obj)
         {
             Checks.Add(obj);

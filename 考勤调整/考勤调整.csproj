@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>false</MapFileExtensions>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -177,6 +177,7 @@
     <Compile Include="Util\PinyinHelper.cs" />
     <EmbeddedResource Include="AttEdit.resx">
       <DependentUpon>AttEdit.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CheckSyncForm.resx">
       <DependentUpon>CheckSyncForm.cs</DependentUpon>
@@ -218,7 +219,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="考勤调整_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -243,6 +243,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="5.0sql\a.sql" />
+    <Content Include="5.0sql\b.sql" />
     <Content Include="b.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
